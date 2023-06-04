@@ -12,16 +12,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public login(user: User): Observable<any> {
+  public login(user: any): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
-      inst: user.instagram,
+      inst: user.inst,
       password: user.password
     })
   }
 
-  public register(user: User): Observable<any> {
+  public register(user: any): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
-      inst: user.instagram,
+      inst: user.inst,
       name: user.name,
       password: user.password,
       confirmPassword: user.confirmPassword

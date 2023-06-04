@@ -11,22 +11,28 @@ import {authErrorInterceptorProvider} from "./helper/error-interceptor.service";
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavigationComponent } from './layout/navigation/navigation.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { IndexComponent } from './layout/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavigationComponent,
+    IndexComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltipModule
+    ],
   providers: [
     authInterceptorProviders,
     authErrorInterceptorProvider
