@@ -3,7 +3,7 @@ import {Cake} from "./Cake";
 
 export interface Order {
   id?: number;
-  user: User;
+  customer: User;
   date: Date;
   resultPrice: number;
   cakes?: Cake[];

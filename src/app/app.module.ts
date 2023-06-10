@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { IndexComponent } from './layout/index/index.component';
+import { AddOrderComponent } from './user/add-order/add-order.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -21,18 +23,20 @@ import { IndexComponent } from './layout/index/index.component';
     LoginComponent,
     RegisterComponent,
     NavigationComponent,
-    IndexComponent
+    IndexComponent,
+    AddOrderComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTooltipModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltipModule,
+    MatSelectModule
+  ],
   providers: [
     authInterceptorProviders,
     authErrorInterceptorProvider

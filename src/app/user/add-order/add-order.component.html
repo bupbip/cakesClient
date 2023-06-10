@@ -1,0 +1,81 @@
+<h2 class="title">Создание нового заказа</h2>
+<form [formGroup]="orderForm" class="form-container">
+  <div>
+    <div class="justify-content-center">
+      <div></div>
+      <mat-form-field appearance="outline">
+        <mat-label>Имя заказчика</mat-label>
+        <input matInput formControlName="customerName">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Номер телефона заказчика</mat-label>
+        <input matInput formControlName="customerPhone">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Инстаграм заказчика</mat-label>
+        <input matInput formControlName="customerInst">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Дата заказа</mat-label>
+        <input matInput type="date" formControlName="orderDate">
+      </mat-form-field>
+    </div>
+
+    <div class="button-container">
+      <button style="width: 5rem" (click)="addCakeForm()" mat-flat-button
+              color="primary">Добавить торт</button>
+    </div>
+
+    <div *ngIf="cakeForms" class="index-page">
+      <form [formGroup]="cakeForm" *ngFor="let cakeForm of cakeForms; let i = index">
+        <mat-label>Торт {{i + 1}}</mat-label>
+        <button (click)="removeCakeForm(i)" mat-icon-button class="example-icon favorite-icon" matTooltip="Удалить">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Размер</mat-label>
+            <mat-select formControlName="cakeSize">
+              <mat-option value="XS">XS</mat-option>
+              <mat-option value="S">S</mat-option>
+              <mat-option value="M">M</mat-option>
+              <mat-option value="L">L</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Оценка дизайна (1-10)</mat-label>
+            <input matInput formControlName="designRating" type="number" min="1" max="10">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Цена торта</mat-label>
+            <input matInput formControlName="cakePrice" type="number" min="0">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Цена дизайна</mat-label>
+            <input matInput formControlName="designPrice" type="number" min="0">
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+
+    <div class="button-container">
+      <button id="submit-button" style="width: 10rem" [disabled]="orderForm.invalid" (click)="submit()" mat-flat-button
+              color="primary">
+        Создать заказ
+      </button>
+    </div>
+
+  </div>
+</form>
