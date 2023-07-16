@@ -6,3 +6,14 @@
   display: block;
   margin: 0 auto;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.user-info h3 {
+  margin-bottom: 3px;
+}
+
+

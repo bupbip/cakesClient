@@ -5,6 +5,7 @@ import {OrderService} from "../../services/order.service";
 import {NotificationService} from "../../services/notification.service";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
+import {MatFormField} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-add-order',
@@ -34,7 +35,8 @@ export class AddOrderComponent implements OnInit {
       customerName: [''],
       customerPhone: [''],
       customerInst: [''],
-      orderDate: ['']
+      orderDate: [''],
+      image:['']
     });
   }
 
@@ -68,7 +70,7 @@ export class AddOrderComponent implements OnInit {
     const orderData = {
       customer: customer,
       orderDate: this.orderForm.value.orderDate,
-      cakesData: cakesData
+      cakes: cakesData
     }
 
     console.log(orderData);

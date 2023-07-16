@@ -16,6 +16,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { IndexComponent } from './layout/index/index.component';
 import { AddOrderComponent } from './user/add-order/add-order.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {MatSelectModule} from "@angular/material/select";
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     authInterceptorProviders,

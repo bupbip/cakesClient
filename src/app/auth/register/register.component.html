@@ -1,36 +1,36 @@
 <div class="register-page">
-  <h2>Register</h2>
-  <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+  <h2>Регистрация</h2>
+  <p>Уже есть аккаунт? <a routerLink="/login">Войти</a></p>
   <form [formGroup]="registerForm">
     <div>
       <div class="justify-content-center">
         <div></div>
         <mat-form-field appearance="outline">
-          <mat-label>instagram</mat-label>
+          <mat-label>Инстаграм:</mat-label>
           <input matInput formControlName="inst">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>name</mat-label>
+          <mat-label>Имя:</mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
+          <mat-label>Пароль:</mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>Confirm password</mat-label>
+          <mat-label>Повторите пароль:</mat-label>
           <input matInput type="password" formControlName="confirmPassword">
         </mat-form-field>
       </div>
 
         <button style="width: 5rem" [disabled]="registerForm.invalid" (click)="submit()" mat-flat-button color="primary">
-          Login
+          Войти
         </button>
 
     </div>
