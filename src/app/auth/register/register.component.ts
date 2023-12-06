@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit{
 
   createRegisterForm(): FormGroup {
     return this.fb.group({
-      inst: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required])],
       name: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', Validators.compose([Validators.required])]
@@ -41,10 +41,10 @@ export class RegisterComponent implements OnInit{
 
   submit(): void {
     console.log('submit button');
-    console.log(this.registerForm.value.inst);
+    console.log(this.registerForm.value.email);
     console.log(this.registerForm.value.name);
     const regData = {
-      inst: this.registerForm.value.inst,
+      email: this.registerForm.value.email,
       name: this.registerForm.value.name,
       password: this.registerForm.value.password,
       confirmPassword: this.registerForm.value.confirmPassword

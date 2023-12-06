@@ -34,7 +34,7 @@ export class AddOrderComponent implements OnInit {
     return this.fb.group({
       customerName: [''],
       customerPhone: [''],
-      customerInst: [''],
+      customerEmail: [''],
       orderDate: [''],
       image:['']
     });
@@ -64,7 +64,7 @@ export class AddOrderComponent implements OnInit {
     const customer = {
       name: this.orderForm.value.customerName,
       phone: this.orderForm.value.customerPhone,
-      instagram: this.orderForm.value.customerInst
+      email: this.orderForm.value.customerEmail
     };
 
     const orderData = {

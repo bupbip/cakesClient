@@ -1,7 +1,9 @@
 <mat-toolbar color="primary">
   <span routerLink="/main" style="cursor: pointer;margin-left: 20px;">Cakes</span>
 
+  <span *ngIf="isLoggedIn" routerLink="/statistic" style="cursor: pointer; margin-left: 50px">Статистика</span>
   <span class="spacer"></span>
+
 
   <button *ngIf="!isLoggedIn" matTooltip="Login" routerLink="/login" mat-icon-button class="example-icon favorite-icon">
     <mat-icon>login</mat-icon>
@@ -9,7 +11,7 @@
 
   <div class="user-info">
     <h3 *ngIf="isDataLoaded">{{this.user.name}}</h3>
-    <h3 *ngIf="isDataLoaded">{{this.user.instagram}}</h3>
+    <h3 *ngIf="isDataLoaded">{{this.user.email}}</h3>
   </div>
 
   <button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" matTooltip="Профиль" mat-icon-button>

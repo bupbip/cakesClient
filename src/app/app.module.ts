@@ -18,6 +18,7 @@ import { AddOrderComponent } from './user/add-order/add-order.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { StatisticComponent } from './layout/statistic/statistic.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatInputModule} from "@angular/material/input";
     RegisterComponent,
     NavigationComponent,
     IndexComponent,
-    AddOrderComponent
+    AddOrderComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,

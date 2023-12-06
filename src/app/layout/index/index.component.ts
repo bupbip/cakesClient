@@ -34,7 +34,6 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getAllOrders()
       .subscribe(data => {
-        console.log(data);
         this.orders = data;
         this.isOrdersLoaded = true;
       });
@@ -42,7 +41,7 @@ export class IndexComponent implements OnInit {
       .subscribe(data => {
         this.user = data;
         this.isUserDataLoaded = true;
-      })
+      });
   }
 
   openOrderDialog() {

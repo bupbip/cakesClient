@@ -36,32 +36,36 @@ export class LoginComponent implements OnInit {
 
   createLoginForm(): FormGroup {
     return this.fb.group({
-      inst: ['', Validators.compose([Validators.required])],  // обязательное поле
+      email: ['', Validators.compose([Validators.required, Validators.email])],  // обязательное поле
       password: ['', Validators.compose([Validators.required])]
     });
   }
 
   submit(): void {
     const loginData = {
-      inst: this.loginForm.value.inst,
+      email: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
 
     this.authService.login(loginData).subscribe(data => {
-      console.log(data);
+        if (data.token == null) {
+          console.log(data);
+          this.notificationService.showSnackBar(data.error);
+        } else {
 
-      this.tokenStorage.saveToken(data.token);
-      this.tokenStorage.saveUser(data);
-      console.log(this.tokenStorage.getToken());
+          this.tokenStorage.saveToken(data.token);
+          this.tokenStorage.saveUser(data);
 
-      this.notificationService.showSnackBar('Successfully logged in');
-      this.router.navigate(['/']);
-      window.location.reload();
-    }, error => {
+          console.log(this.tokenStorage.getToken());
+
+          this.notificationService.showSnackBar('Successfully logged in');
+          this.router.navigate(['/']);
+          window.location.reload();
+        }
+      } , error => {
       console.log(error);
       this.notificationService.showSnackBar(error.message);
-    });
+    }
+    );
   }
-
-
 }

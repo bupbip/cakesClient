@@ -2,11 +2,10 @@ import {Order} from "./Order";
 
 export interface User {
   id: number;
-  instagram: String;
   name: String;
+  email: String;
   password: String;
   confirmPassword: String;
-  phone?: String;
-  info?: String;
+  username: String;
   orders?: Order[];
 }

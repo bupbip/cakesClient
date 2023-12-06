@@ -1,4 +1,4 @@
-<div style="text-align: right; margin-top: 3rem">
+<div style="text-align: right; margin-top: 3rem; margin-right: 10px">
   <button mat-flat-button color="primary" (click)="openOrderDialog()">Создать заказ</button>
 </div>
 
@@ -11,7 +11,7 @@
     </mat-card-header>
     <!--    <img mat-card-image [src]="formatImage(post.image)" alt="post image">-->
     <mat-card-subtitle>
-      Заказчик: {{order.customer.name}}  {{order.customer.instagram}} {{order.customer.phone}}</mat-card-subtitle>
+      Заказчик: {{order.customer.name}}  {{order.customer.email}} {{order.customer.username}}</mat-card-subtitle>
     <mat-card-content>
       <p *ngFor="let cake of order.cakes; let i = index">
         Торт № {{i + 1}}

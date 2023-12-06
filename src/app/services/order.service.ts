@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Order} from "../models/Order";
 import {Observable} from "rxjs";
+import {User} from "../models/User";
 
 const ORDER_API = 'http://localhost:8080/api/order/';
 
@@ -20,6 +21,11 @@ export class OrderService {
 
   getAllOrders(): Observable<any> {
     return this.http.get(ORDER_API + 'all');
+  }
+
+  getAllOrdersByConfectioner(user: User | undefined): Observable<any> {
+    // @ts-ignore
+    return this.http.get(ORDER_API + 'all?user=' + user?.email)
   }
 
 /*  getAllOrdersOnDate(date: Date): Observable<any> {
