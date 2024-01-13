@@ -1,29 +1,24 @@
 <div class="login-page">
-  <h2>Login</h2>
-  <form [formGroup]="loginForm">
-    <div>
-      <div class="justify-content-center">
-        <div></div>
-        <mat-form-field appearance="outline">
-          <mat-label>Почта:</mat-label>
-          <input matInput formControlName="email">
-        </mat-form-field>
+  <div class="registration-login">
+    <div class="form-container">
+      <div class="form">
+        <p class="login noselect">Вход</p>
+        <form [formGroup]="loginForm">
+          <div class="field">
+            <p class="field-name noselect">Имя пользователя</p>
+            <input matInput formControlName="username" class="rectangle">
+          </div>
+          <div class="field">
+            <p class="field-name noselect">Пароль</p>
+            <input matInput formControlName="password" class="rectangle">
+          </div>
+        </form>
       </div>
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label>Пароль:</mat-label>
-          <input matInput type="password" formControlName="password">
-        </mat-form-field>
-      </div>
-
-      <div id="controls" class="row">
-        <button style="width: 20%" [disabled]="loginForm.invalid" (click)="submit()" mat-flat-button color="primary">
-          Войти
+      <div class="button-container">
+        <button class="button" [disabled]="loginForm.invalid" (click)="submit()">
+          <p class="button-text noselect">Войти в систему</p>
         </button>
-
-        <a routerLink="/register">Зарегистрироваться</a>
       </div>
-
     </div>
-  </form>
+  </div>
 </div>

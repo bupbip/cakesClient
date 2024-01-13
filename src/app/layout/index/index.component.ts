@@ -32,16 +32,16 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orderService.getAllOrders()
-      .subscribe(data => {
-        this.orders = data;
-        this.isOrdersLoaded = true;
-      });
-    this.userService.getCurrentUser()
-      .subscribe(data => {
-        this.user = data;
-        this.isUserDataLoaded = true;
-      });
+    // this.orderService.getAllOrders()
+    //   .subscribe(data => {
+    //     this.orders = data;
+    //     this.isOrdersLoaded = true;
+    //   });
+    // this.userService.getCurrentUser()
+    //   .subscribe(data => {
+    //     this.user = data;
+    //     this.isUserDataLoaded = true;
+    //   });
   }
 
   openOrderDialog() {

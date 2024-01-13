@@ -11,7 +11,6 @@ import {authErrorInterceptorProvider} from "./helper/error-interceptor.service";
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NavigationComponent } from './layout/navigation/navigation.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { IndexComponent } from './layout/index/index.component';
 import { AddOrderComponent } from './user/add-order/add-order.component';
@@ -19,30 +18,31 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { StatisticComponent } from './layout/statistic/statistic.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavigationComponent,
     IndexComponent,
     AddOrderComponent,
     StatisticComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTooltipModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltipModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NgOptimizedImage
+    ],
   providers: [
     authInterceptorProviders,
     authErrorInterceptorProvider

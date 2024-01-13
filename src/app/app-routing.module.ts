@@ -11,16 +11,18 @@ import {AddOrderComponent} from "./user/add-order/add-order.component";
  */
 
 const routes: Routes = [
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: 'main', component: IndexComponent },
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'main', component: IndexComponent, canActivate: [AuthGuardService], children: [
-      {path: 'add', component: AddOrderComponent, canActivate: [AuthGuardService]}
-    ]},
-  {path: '', redirectTo: 'main', pathMatch: 'full'}
+  {path: 'registration', component: RegisterComponent},
+  // {path: 'main', component: IndexComponent, canActivate: [AuthGuardService], children: [
+  //     {path: 'add', component: AddOrderComponent, canActivate: [AuthGuardService]}
+  //   ]},
+  // {path: '', redirectTo: 'main', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 

@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   /**
    * Вызывается при появлении компонента в браузере
    */
-
   ngOnInit(): void {
     this.loginForm = this.createLoginForm();
   }

@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    console.log('RegisterComponent initialized');
+    // Другой код инициализации
     this.registerForm = this.createRegisterForm();
   }
 

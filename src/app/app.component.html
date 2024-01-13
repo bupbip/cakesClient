@@ -1,4 +1,17 @@
-<div>
-  <app-navigation></app-navigation>
+<div class="main-content">
+  <div class="navigation-bar">
+    <div class="sample-logo">
+      <img class="logo" src="./assets/logo-1.png"/>
+      <div class="cakes">cakes</div>
+    </div>
+    <a id="production" [href]="['/']">Продукция</a>
+    <a id="conditers"  [href]="['/']">Кондитеры</a>
+    <a id="profile"  [href]="['/']">Профиль</a>
+    <a id="orders"  [href]="['/']">Заказы</a>
+    <div class="buttons">
+      <button id="register-button" [routerLink]="['/registration']">Регистрация</button>
+      <button id="login-button" [routerLink]="['/login']">Вход</button>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>
