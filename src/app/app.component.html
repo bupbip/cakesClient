@@ -3,14 +3,18 @@
     <div class="sample-logo">
       <img class="logo" src="./assets/logo-1.png"/>
       <div class="cakes">cakes</div>
+      <nav class="nav-bar">
+        <a class="link" [href]="['/production']">Продукция</a>
+        <a class="link" [href]="['/']">Кондитеры</a>
+      </nav>
     </div>
-    <a id="production" [href]="['/']">Продукция</a>
-    <a id="conditers"  [href]="['/']">Кондитеры</a>
-    <a id="profile"  [href]="['/']">Профиль</a>
-    <a id="orders"  [href]="['/']">Заказы</a>
-    <div class="buttons">
-      <button id="register-button" [routerLink]="['/registration']">Регистрация</button>
-      <button id="login-button" [routerLink]="['/login']">Вход</button>
+    <div class="buttons-group">
+      <nav class="nav-bar">
+        <a class="link" [href]="['/']">Профиль</a>
+        <a class="link" [href]="['/']">Заказы</a>
+      </nav>
+      <button class="btn login-button" [routerLink]="['/login']">Вход</button>
+      <button class="btn register-button" [routerLink]="['/registration']">Регистрация</button>
     </div>
   </div>
   <router-outlet></router-outlet>

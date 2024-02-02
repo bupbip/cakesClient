@@ -1,0 +1,21 @@
+<body>
+  <p class="page-name">Продукция</p>
+  <div class="product-page">
+    <div class="products">
+      <div class="product-card" *ngFor="let product of products">
+        <div class="product-image">
+<!--          <img [src]="product.image" alt="Product Image">-->
+        </div>
+        <div class="product-text">
+          <p class="product-name">{{product.name}}</p>
+          <p class="product-price">{{product.price}}₽</p>
+          <p class="product-description">{{product.comment}}</p>
+        </div>
+        <div class="buttons">
+          <div class="confectioner-button">Кондитер</div>
+          <div class="order-button">Заказать</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

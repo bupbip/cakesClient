@@ -1,28 +1,27 @@
 <div class="main-page">
-  <p class="welcome-message">Добро пожаловать на сайт по заказу тортов</p>
+  <h2 class="welcome-message">Добро пожаловать на сайт по заказу тортов</h2>
   <div class="page">
     <div class="images">
-      <img class="image-1" ngSrc="./assets/image-1.png" height="800" width="1200"/>
-      <img class="image-2" ngSrc="./assets/image-2.png" height="600" width="800"/>
-    </div>
-    <div class="text-group">
-      <div class="text">Кондитер? Зарегистрируйся и получай заказы от клиентов, просматривай статистику</div>
-      <div class="text">Заказчик? Зарегистрируйся чтобы оформлять и отслеживать свои заказы, ставить оценки и
-        оставлять отзывы
+      <div class="image-left">
+        <img class="image-1" ngSrc="./assets/image-1.png" height="800" width="1200"/>
+        <div class="text">Кондитер? Зарегистрируйся и получай заказы от клиентов, просматривай статистику</div>
+      </div>
+      <div class="image-right">
+        <img class="image-2" ngSrc="./assets/image-2.png" height="600" width="800"/>
+        <div class="text">Заказчик? Зарегистрируйся чтобы оформлять и отслеживать свои заказы, ставить оценки и
+          оставлять отзывы
+        </div>
       </div>
     </div>
     <div class="buttons">
       <button class="button" [routerLink]="['/registration']">
-        <div class="rectangle">
-        </div>
-        <div class="button-text">Регистрация</div>
+        Регистрация
       </button>
       <button class="button" [routerLink]="['/login']">
-        <div class="rectangle">
-        </div>
-        <div class="button-text">Вход</div>
+        Вход
       </button>
     </div>
   </div>
   <router-outlet></router-outlet>
 </div>
+disp flex dir column

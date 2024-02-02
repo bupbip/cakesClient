@@ -19,6 +19,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { StatisticComponent } from './layout/statistic/statistic.component';
 import {NgOptimizedImage} from "@angular/common";
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {NgOptimizedImage} from "@angular/common";
     RegisterComponent,
     IndexComponent,
     AddOrderComponent,
-    StatisticComponent
+    StatisticComponent,
+    ProductComponent
   ],
     imports: [
         BrowserModule,

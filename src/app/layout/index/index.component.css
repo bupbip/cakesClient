@@ -1,12 +1,10 @@
 .main-page {
   width: 100%;
-  position: relative;
   align-items: center;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
 }
-
 .welcome-message {
   margin-right: 0.5rem;
   max-width: 81.3rem;
@@ -17,7 +15,6 @@
   font-family: Inter, 'Source Sans Pro';
   flex-shrink: 0;
 }
-
 .page {
   box-sizing: border-box;
   padding: 7.2rem 10.6rem 10.591rem 9.1rem;
@@ -27,15 +24,20 @@
   flex-direction: column;
   flex-shrink: 0;
 }
-
+.image-left {
+  display: flex;
+  flex-direction: column;
+}
+.image-right {
+  display: flex;
+  flex-direction: column;
+}
 .images {
-  margin-bottom: 1.7rem;
-  width: 100%;
+  margin-bottom: 10rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-
 .image-1 {
   margin-right: 29.1rem;
   width: 47.6rem;
@@ -45,7 +47,6 @@
   border-radius: 4.1rem;
   flex-shrink: 0;
 }
-
 .image-2 {
   width: 47.6rem;
   height: 31.7rem;
@@ -54,17 +55,14 @@
   border-radius: 4.1rem;
   flex-shrink: 0;
 }
-
 .text-group {
   margin: 0 0.45rem 7.009rem 0.45rem;
-  width: calc(100% - 0.9rem);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-shrink: 0;
+  justify-content: center;
 }
-
 .text {
-  margin: 0.35rem 29.4rem 0 0rem;
   max-width: 47rem;
   display: flex;
   align-items: center;
@@ -76,49 +74,30 @@
   font-family: Inter, 'Source Sans Pro';
   flex-shrink: 0;
 }
-
 .buttons {
-  margin: 0rem 33.9rem 0rem 31.2rem;
-  width: calc(100% - 65.1rem);
   height: 3.8rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  gap: 3rem;
 }
-
 .button {
-  margin-right: 17.6rem;
   width: 20.8rem;
   height: 100%;
-  position: relative;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
   border-radius: 5rem;
   flex-shrink: 0;
-}
-
-.rectangle {
-  width: 20.6rem;
-  height: 3.6rem;
-  position: absolute;
-  left: 0.0rem;
-  top: 0.0rem;
   background-color: #18a0fb;
-  border-radius: 5rem;
-}
-
-.button-text {
-  width: 17rem;
-  height: 3.8rem;
-  position: absolute;
-  left: 2rem;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  font-weight: 400;
-  line-height: 1.5;
   color: #ffffff;
   font-family: Poppins, 'Source Sans Pro';
-  white-space: nowrap;
+  font-size: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.button:hover {
+  background-color: white;
+  color: #18a0fb;
 }
