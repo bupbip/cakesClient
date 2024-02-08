@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit{
     private fb: FormBuilder
   ) {
     if (this.tokenStorage.getUser()) {
-      router.navigate(['main']);
+      router.navigate(['profile']);
     }
   }
 

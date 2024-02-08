@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import {MatInputModule} from "@angular/material/input";
 import { StatisticComponent } from './layout/statistic/statistic.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ProductComponent } from './product/product.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductComponent } from './product/product.component';
     IndexComponent,
     AddOrderComponent,
     StatisticComponent,
-    ProductComponent
+    ProductComponent,
+    ProfileComponent
   ],
     imports: [
         BrowserModule,
@@ -51,4 +53,6 @@ import { ProductComponent } from './product/product.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{
+
+}

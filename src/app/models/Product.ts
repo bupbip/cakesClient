@@ -8,6 +8,7 @@ export class Product {
     public topping: string,
     public comment: string,
     public type: string,
-    // public image: HTMLImageElement
+    public image: any,
+    public imageUrl: any
   ) {}
 }

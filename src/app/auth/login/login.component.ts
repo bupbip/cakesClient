@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder
   ) {
     if (this.tokenStorage.getUser()) {
-      router.navigate(['main']);
+      router.navigate(['profile']);
     }
   }
 
@@ -55,10 +55,11 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
 
+          console.log("test");
           console.log(this.tokenStorage.getToken());
 
           this.notificationService.showSnackBar('Successfully logged in');
-          this.router.navigate(['/']);
+          this.router.navigate(['/profile']);
           window.location.reload();
         }
       } , error => {

@@ -40,16 +40,16 @@
 }
 .image-1 {
   margin-right: 29.1rem;
-  width: 47.6rem;
-  height: 31.7rem;
+  width: 47rem;
+  height: 31rem;
   object-fit: cover;
   vertical-align: top;
   border-radius: 4.1rem;
   flex-shrink: 0;
 }
 .image-2 {
-  width: 47.6rem;
-  height: 31.7rem;
+  width: 47rem;
+  height: 31rem;
   object-fit: cover;
   vertical-align: top;
   border-radius: 4.1rem;
