@@ -10,7 +10,7 @@
     </div>
     <div class="buttons-group">
       <nav class="nav-bar">
-        <a class="link" [href]="['/profile']">Профиль</a>
+        <a class="link" [routerLink]="['/profile', this.tokenStorageService.getUser()?.username]">Профиль</a>
         <a class="link" [href]="['/']">Заказы</a>
       </nav>
       <div class="auth-buttons" *ngIf="!isAuth">

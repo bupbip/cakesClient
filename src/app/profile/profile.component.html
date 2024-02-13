@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <img class="settings" src="../../assets/settings.png"/>
+    <img class="settings" src="../../assets/settings.png" [routerLink]="['/edit']"/>
     <div class="photo">
     </div>
   </div>
@@ -58,93 +58,51 @@
   <div class="page">
     <p class="works-header">Мои работы</p>
     <div class="products-list">
-      <div class="product">
+      <div class="product-card" *ngFor="let product of products">
         <div class="product-image">
+          <img [src]="product.image" alt="Product Image" width="300rem" height="300rem">
         </div>
         <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+          <p class="product-name">{{product.name}}</p>
+          <p class="product-price">{{product.price}}₽</p>
+          <p class="product-description">{{product.comment}}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="item--vzG">
-  <p class="item--efN">
+<div class="feedback-list">
+  <p class="feedback-header">
     Отзывы
-    <br/>
-
   </p>
-  <div class="item-1-96L">
-    <div class="auto-group-ywi8-qUx">
-      <p class="item--Zfr">Никнейм</p>
-      <img class="star-5-EX6" src="./assets/star-filled.png"/>
-      <img class="star-2-mG8" src="./assets/star-filled.png"/>
-      <img class="star-1-GTn" src="./assets/star-filled.png"/>
-      <img class="star-3-QZz" src="./assets/star-filled.png"/>
-      <img class="star-4-91n" src="./assets/star-filled.png"/>
-      <p class="item-28112023-4Pe">28.11.2023</p>
+  <div class="feedback-card">
+    <div class="feedback-data">
+      <p class="feedback-username">Никнейм</p>
+      <div class="stars">
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+      </div>
+      <p class="feedback-date">28.11.2023</p>
     </div>
-    <p class="item-4-9vt">Заказывал продукт “Короткое наименование”. Произвёл приятное впечатление. Но был сладковат.
+    <p class="feedback-text">Заказывал продукт “Короткое наименование”. Произвёл приятное впечатление. Но был сладковат.
       Поэтому 4.</p>
   </div>
-  <div class="item-2-qSL">
-    <div class="auto-group-yric-Ltt">
-      <p class="item--UkC">Никнейм</p>
-      <img class="star-5-8pk" src="./assets/star-filled.png"/>
-      <img class="star-2-fpg" src="./assets/star-filled.png"/>
-      <img class="star-1-C3v" src="./assets/star-filled.png"/>
-      <img class="star-3-8CU" src="./assets/star-filled.png"/>
-      <img class="star-4-UGL" src="./assets/star-empty.png"/>
-      <p class="item-28112023-oJc">28.11.2023</p>
+  <div class="feedback-card">
+    <div class="feedback-data">
+      <p class="feedback-username">Никнейм</p>
+      <div class="stars">
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-filled.png"/>
+        <img class="star" src="./assets/star-empty.png"/>
+      </div>
+      <p class="feedback-date">28.11.2023</p>
     </div>
-    <p class="item-4-JWG">Заказывал продукт “Короткое наименование”. Произвёл приятное впечатление. Но был сладковат.
+    <p class="feedback-text">Заказывал продукт “Короткое наименование”. Произвёл приятное впечатление. Но был сладковат.
       Поэтому 4.</p>
   </div>
 </div>

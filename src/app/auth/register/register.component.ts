@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit{
 
     this.authService.register(regData).subscribe(data => {
       this.notificationService.showSnackBar(data.message);
+      this.router.navigate(['/login']);
     }, error => {
       this.notificationService.showSnackBar(error);
     });

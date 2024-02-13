@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "./services/token-storage.service";
+import {User} from "./models/User";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit{
 
   isAuth: boolean = false;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(public tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
     this.isAuth = this.tokenStorageService.getUser() != null;

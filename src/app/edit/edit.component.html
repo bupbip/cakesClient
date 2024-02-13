@@ -1,0 +1,120 @@
+<body>
+<div class="page">
+  <div class="header-all">
+    <div class="about-contacts">
+      <div class="about-me-group">
+        <p class="header-about-me">Обо мне</p>
+        <div class="about-me-field">
+          <textarea class="about-me-textarea textarea" [(ngModel)]="aboutMeText"></textarea>
+        </div>
+      </div>
+      <div class="contacts-group">
+        <p class="header-contacts">Мои контакты</p>
+        <div class="contacts-field">
+          <div class="contacts">
+            <div class="social">
+              <img class="social-image" src="./assets/ig.png" alt="Instagram"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="instagramLink" />
+            </div>
+            <div class="social">
+              <img class="social-image" src="./assets/vk.png"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="vkLink" />
+            </div>
+            <div class="social">
+              <img class="social-image" src="./assets/pinterest.png"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="pinterestLink" />
+            </div>
+            <div class="social">
+              <img class="social-image" src="./assets/telegram.png"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="telegramLink" />
+            </div>
+            <div class="social">
+              <img class="social-image" src="./assets/whatsapp.png"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="whatsappLink" />
+            </div>
+            <div class="social">
+              <img class="social-image social-image-long" src="./assets/youtube.png"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="youtubeLink" />
+            </div>
+            <div class="social">
+              <img class="social-image social-image-long" src="./assets/mail.png"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="emailLink" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="photo">
+      <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" class="photo-img">
+    </div>
+  </div>
+  <div class="main-info-group">
+    <p class="rating">Рейтинг: 4.75</p>
+    <div class="save noselect">Применить изменения</div>
+    <div class="update-image">
+      <label for="file-upload" class="custom-file-upload noselect">Изменить фотографию</label>
+      <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+    </div>
+  </div>
+  <div class="page">
+    <p class="works-header noselect">Мои работы</p>
+    <div class="products-list">
+      <div class="product">
+        <div class="product-image">
+          <img src="./assets/edit.png" class="edit-icon" (click)="openEditModal()" width="20px" height="20px">
+        </div>
+        <div class="product-info">
+          <p class="product-name">Короткое наименование</p>
+          <p class="product-price">5000₽</p>
+          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+        </div>
+        <div class="product-info">
+          <p class="product-name">Короткое наименование</p>
+          <p class="product-price">5000₽</p>
+          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+        </div>
+        <div class="product-info">
+          <p class="product-name">Короткое наименование</p>
+          <p class="product-price">5000₽</p>
+          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+        </div>
+        <div class="product-info">
+          <p class="product-name">Короткое наименование</p>
+          <p class="product-price">5000₽</p>
+          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+        </div>
+        <div class="product-info">
+          <p class="product-name">Короткое наименование</p>
+          <p class="product-price">5000₽</p>
+          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+        </div>
+        <div class="product-info">
+          <p class="product-name">Короткое наименование</p>
+          <p class="product-price">5000₽</p>
+          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

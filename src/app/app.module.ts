@@ -21,6 +21,8 @@ import { StatisticComponent } from './layout/statistic/statistic.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditComponent } from './edit/edit.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ProfileComponent } from './profile/profile.component';
     AddOrderComponent,
     StatisticComponent,
     ProductComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditComponent,
+    EditProductComponent
   ],
     imports: [
         BrowserModule,

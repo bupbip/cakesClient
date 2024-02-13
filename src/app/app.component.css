@@ -89,6 +89,9 @@
   background-color: #ffffff;
   transform: translate(40px);
 }
+.logout-button {
+  margin-right: 2rem;
+}
 .nav-bar {
   display: flex;
   gap: 16px;

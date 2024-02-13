@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   createLoginForm(): FormGroup {
     return this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],  // обязательное поле
+      email: ['', Validators.compose([Validators.required])],  // обязательное поле
       password: ['', Validators.compose([Validators.required])]
     });
   }
@@ -53,18 +53,21 @@ export class LoginComponent implements OnInit {
         } else {
 
           this.tokenStorage.saveToken(data.token);
-          this.tokenStorage.saveUser(data);
+          this.tokenStorage.saveUser(data.user);
 
-          console.log("test");
+          console.log(data);
           console.log(this.tokenStorage.getToken());
+          console.log(data.user.username)
+          console.log(this.tokenStorage.getUser().username);
 
-          this.notificationService.showSnackBar('Successfully logged in');
-          this.router.navigate(['/profile']);
-          window.location.reload();
+          this.notificationService.showSnackBar('Успешный вход!');
+          const username = this.tokenStorage.getUser().username;
+          this.router.navigate(['/profile', username]);
+          // window.location.reload();
         }
       } , error => {
       console.log(error);
-      this.notificationService.showSnackBar(error.message);
+      this.notificationService.showSnackBar(error);
     }
     );
   }
