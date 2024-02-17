@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Product} from "../models/Product";
 
 @Component({
   selector: 'app-edit-product',
@@ -19,20 +20,20 @@ export class EditProductComponent {
     {value: 'MANGO', viewValue: 'Манго'},
   ];
 
-  productImage: string | ArrayBuffer | null = null;
+  editedProduct: Product;
   constructor(
     public dialogRef: MatDialogRef<EditProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  onClose(): void {
-    this.dialogRef.close();
+    @Inject(MAT_DIALOG_DATA) public product: Product
+  ) {
+    console.log(product);
+    this.editedProduct = {...product};
   }
 
   onSave(): void {
-    // Реализуйте сохранение изменений продукта здесь
-    // После сохранения изменений, закройте модальное окно
-    this.dialogRef.close();
+    this.product = this.editedProduct;
+    console.log(this.product);
+    console.log(this.editedProduct);
+    this.dialogRef.close(this.product);
   }
 
   onFileSelected(event: any) {
@@ -41,7 +42,7 @@ export class EditProductComponent {
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target?.result) {
-          this.productImage = e.target.result as string;
+          this.editedProduct.image = e.target.result as string;
         }
       };
       reader.readAsDataURL(file);

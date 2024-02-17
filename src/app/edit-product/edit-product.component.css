@@ -91,6 +91,13 @@
   background-color: #18a0fb;
   border-radius: 0.6rem;
   flex-shrink: 0;
+}
+.update-image label {
+  display: flex; /* Используем flexbox */
+  align-items: center; /* Центрируем по вертикали */
+  justify-content: center; /* Центрируем по горизонтали */
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 }
 .product-image-container {

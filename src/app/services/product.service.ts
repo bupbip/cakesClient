@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../models/Product";
 import {TokenStorageService} from "./token-storage.service";
@@ -24,5 +24,15 @@ export class ProductService {
 
   public getAllUserProducts(username : String): Observable<Product[]> {
     return this.http.get<Product[]>(`${PRODUCTS_API}get-all?username=${username}`);
+  }
+
+  public saveProduct(product: Product): Observable<Product> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.tokenStorage.getToken(),
+      'Content-Type': 'application/json'
+    });
+    console.log("send request");
+     // Получаем строку Base64 из объекта изображения
+    return this.http.post<Product>(PRODUCTS_API + 'save-product', product, {headers: headers});
   }
 }

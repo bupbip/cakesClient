@@ -6,8 +6,7 @@
         <p class="header-about-me">Обо мне</p>
         <div class="about-me-field">
           <p class="about-me-text">
-            Привет, меня зовут Андрей и я уже 3 года пеку торты и пряники.
-            Советую заказывать именно у меня, вкусно, быстро и круто!
+            {{user?.description}}
           </p>
         </div>
       </div>
@@ -15,33 +14,9 @@
         <p class="header-contacts">Мои контакты</p>
         <div class="contacts-field">
           <div class="contacts">
-            <div class="social">
-              <img class="social-image" src="./assets/ig.png" alt="Instagram"/>
-              <p class="social-link">www.link.com</p>
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/vk.png"/>
-              <p class="social-link">www.link.com</p>
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/pinterest.png"/>
-              <p class="social-link">www.link.com</p>
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/telegram.png"/>
-              <p class="social-link">www.link.com</p>
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/whatsapp.png"/>
-              <p class="social-link">www.link.com</p>
-            </div>
-            <div class="social">
-              <img class="social-image social-image-long" src="./assets/youtube.png"/>
-              <p class="social-link">www.link.com</p>
-            </div>
-            <div class="social">
-              <img class="social-image social-image-long" src="./assets/mail.png"/>
-              <p class="social-link">email@mail.ru</p>
+            <div class="social" *ngFor="let link of user?.socialNetworks">
+              <img class="social-image" *ngIf="link.url !== ''" [src]="'./assets/' + link.type.toLowerCase() + '.png'" [alt]="link.type"/>
+              <p class="social-link" *ngIf="link.url">{{link.url}}</p>
             </div>
           </div>
         </div>
@@ -49,6 +24,7 @@
     </div>
     <img class="settings" src="../../assets/settings.png" [routerLink]="['/edit']"/>
     <div class="photo">
+      <img *ngIf="user?.image" [src]="user?.image" alt="User Image" class="photo-img">
     </div>
   </div>
   <div class="main-info-group">

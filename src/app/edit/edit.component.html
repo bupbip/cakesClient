@@ -5,41 +5,45 @@
       <div class="about-me-group">
         <p class="header-about-me">Обо мне</p>
         <div class="about-me-field">
-          <textarea class="about-me-textarea textarea" [(ngModel)]="aboutMeText"></textarea>
+          <textarea class="about-me-textarea textarea" [ngModel]="user ? user.description : ''" (ngModelChange)="user ? user.description = $event : null"></textarea>
         </div>
       </div>
       <div class="contacts-group">
         <p class="header-contacts">Мои контакты</p>
         <div class="contacts-field">
           <div class="contacts">
-            <div class="social">
-              <img class="social-image" src="./assets/ig.png" alt="Instagram"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="instagramLink" />
+            <div class="social" *ngFor="let link of socialLinks">
+              <img class="social-image" [src]="'./assets/' + link.type.toLowerCase() + '.png'" [alt]="link.type"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="link.url" />
             </div>
-            <div class="social">
-              <img class="social-image" src="./assets/vk.png"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="vkLink" />
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/pinterest.png"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="pinterestLink" />
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/telegram.png"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="telegramLink" />
-            </div>
-            <div class="social">
-              <img class="social-image" src="./assets/whatsapp.png"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="whatsappLink" />
-            </div>
-            <div class="social">
-              <img class="social-image social-image-long" src="./assets/youtube.png"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="youtubeLink" />
-            </div>
-            <div class="social">
-              <img class="social-image social-image-long" src="./assets/mail.png"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="emailLink" />
-            </div>
+<!--            <div class="social">-->
+<!--              <img class="social-image" src="./assets/instagram.png" alt="Instagram"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="instagramLink" />-->
+<!--            </div>-->
+<!--            <div class="social">-->
+<!--              <img class="social-image" src="./assets/vk.png"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="vkLink" />-->
+<!--            </div>-->
+<!--            <div class="social">-->
+<!--              <img class="social-image" src="./assets/pinterest.png"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="pinterestLink" />-->
+<!--            </div>-->
+<!--            <div class="social">-->
+<!--              <img class="social-image" src="./assets/telegram.png"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="telegramLink" />-->
+<!--            </div>-->
+<!--            <div class="social">-->
+<!--              <img class="social-image" src="./assets/whatsapp.png"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="whatsappLink" />-->
+<!--            </div>-->
+<!--            <div class="social">-->
+<!--              <img class="social-image social-image-long" src="./assets/youtube.png"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="youtubeLink" />-->
+<!--            </div>-->
+<!--            <div class="social">-->
+<!--              <img class="social-image social-image-long" src="./assets/email.png"/>-->
+<!--              <input class="social-link textarea" type="text" [(ngModel)]="emailLink" />-->
+<!--            </div>-->
           </div>
         </div>
       </div>
@@ -50,7 +54,7 @@
   </div>
   <div class="main-info-group">
     <p class="rating">Рейтинг: 4.75</p>
-    <div class="save noselect">Применить изменения</div>
+    <div class="save noselect" (click)="saveProfile()">Применить изменения</div>
     <div class="update-image">
       <label for="file-upload" class="custom-file-upload noselect">Изменить фотографию</label>
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
@@ -59,59 +63,15 @@
   <div class="page">
     <p class="works-header noselect">Мои работы</p>
     <div class="products-list">
-      <div class="product">
+      <div class="product-card" *ngFor="let product of products">
         <div class="product-image">
-          <img src="./assets/edit.png" class="edit-icon" (click)="openEditModal()" width="20px" height="20px">
+          <img [src]="product.image" alt="Product Image" width="300rem" height="300rem">
+          <img src="./assets/edit.png" class="edit-icon" (click)="openEditModal(product)" width="20px" height="20px">
         </div>
         <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-          <p class="product-name">Короткое наименование</p>
-          <p class="product-price">5000₽</p>
-          <p class="product-description">Подробное описание продукции, из чего сделано и другое</p>
+          <p class="product-name">{{product.name}}</p>
+          <p class="product-price">{{product.price}}₽</p>
+          <p class="product-description">{{product.comment}}</p>
         </div>
       </div>
     </div>

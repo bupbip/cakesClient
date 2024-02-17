@@ -23,7 +23,7 @@ export class ProductComponent {
       (products: Product[]) => {
         this.products = products.map(product => ({
           ...product,
-          image: this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + product.image)
+          // image: this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + product.image)
 
         }));
       },
