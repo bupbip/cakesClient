@@ -5,7 +5,8 @@
       <div class="about-me-group">
         <p class="header-about-me">Обо мне</p>
         <div class="about-me-field">
-          <textarea class="about-me-textarea textarea" [ngModel]="user ? user.description : ''" (ngModelChange)="user ? user.description = $event : null"></textarea>
+          <textarea class="about-me-textarea textarea" [ngModel]="user ? user.description : ''"
+                    (ngModelChange)="user ? user.description = $event : null"></textarea>
         </div>
       </div>
       <div class="contacts-group">
@@ -14,36 +15,36 @@
           <div class="contacts">
             <div class="social" *ngFor="let link of socialLinks">
               <img class="social-image" [src]="'./assets/' + link.type.toLowerCase() + '.png'" [alt]="link.type"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="link.url" />
+              <input class="social-link textarea" type="text" [(ngModel)]="link.url"/>
             </div>
-<!--            <div class="social">-->
-<!--              <img class="social-image" src="./assets/instagram.png" alt="Instagram"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="instagramLink" />-->
-<!--            </div>-->
-<!--            <div class="social">-->
-<!--              <img class="social-image" src="./assets/vk.png"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="vkLink" />-->
-<!--            </div>-->
-<!--            <div class="social">-->
-<!--              <img class="social-image" src="./assets/pinterest.png"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="pinterestLink" />-->
-<!--            </div>-->
-<!--            <div class="social">-->
-<!--              <img class="social-image" src="./assets/telegram.png"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="telegramLink" />-->
-<!--            </div>-->
-<!--            <div class="social">-->
-<!--              <img class="social-image" src="./assets/whatsapp.png"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="whatsappLink" />-->
-<!--            </div>-->
-<!--            <div class="social">-->
-<!--              <img class="social-image social-image-long" src="./assets/youtube.png"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="youtubeLink" />-->
-<!--            </div>-->
-<!--            <div class="social">-->
-<!--              <img class="social-image social-image-long" src="./assets/email.png"/>-->
-<!--              <input class="social-link textarea" type="text" [(ngModel)]="emailLink" />-->
-<!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image" src="./assets/instagram.png" alt="Instagram"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="instagramLink" />-->
+            <!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image" src="./assets/vk.png"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="vkLink" />-->
+            <!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image" src="./assets/pinterest.png"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="pinterestLink" />-->
+            <!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image" src="./assets/telegram.png"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="telegramLink" />-->
+            <!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image" src="./assets/whatsapp.png"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="whatsappLink" />-->
+            <!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image social-image-long" src="./assets/youtube.png"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="youtubeLink" />-->
+            <!--            </div>-->
+            <!--            <div class="social">-->
+            <!--              <img class="social-image social-image-long" src="./assets/email.png"/>-->
+            <!--              <input class="social-link textarea" type="text" [(ngModel)]="emailLink" />-->
+            <!--            </div>-->
           </div>
         </div>
       </div>
@@ -60,7 +61,7 @@
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
     </div>
   </div>
-  <div class="page">
+  <div>
     <p class="works-header noselect">Мои работы</p>
     <div class="products-list">
       <div class="product-card" *ngFor="let product of products">

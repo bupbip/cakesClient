@@ -1,6 +1,5 @@
 .page {
   box-sizing: border-box;
-  padding-bottom: 8rem;
   padding-left: 9rem;
   width: 100%;
   align-items: center;
@@ -50,6 +49,7 @@
   background-color: rgba(24, 160, 251, 0.46);
   border-radius: 4.5rem;
   flex-shrink: 0;
+  min-width: 45.9rem;
 }
 .about-me-text {
   max-width: 45.9rem;
@@ -170,13 +170,6 @@
   border-radius: 0.6rem;
   flex-shrink: 0;
 }
-.page {
-  margin: 0rem 4rem 9.7rem 0rem;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
 .works-header {
   margin-bottom: 3rem;
   text-align: center;
@@ -190,7 +183,7 @@
   flex-shrink: 0;
 }
 .products-list {
-  margin: 0rem 0.1rem 17.1rem 0rem;
+  margin: 0rem 0.1rem 10rem 0rem;
   height: 43.4rem;
   display: flex;
   column-gap: 15rem;

@@ -9,6 +9,5 @@ export class Product {
     public comment: string,
     public type: string,
     public image: any,
-    public imageUrl: any
   ) {}
 }

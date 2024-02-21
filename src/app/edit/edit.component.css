@@ -206,13 +206,6 @@
   flex-shrink: 0;
   cursor: pointer;
 }
-.page {
-  margin: 0rem 4rem 9.7rem 0rem;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
 .works-header {
   margin-bottom: 3rem;
   text-align: center;
@@ -226,7 +219,6 @@
   flex-shrink: 0;
 }
 .products-list {
-  margin: 0rem 0.1rem 17.1rem 0rem;
   height: 43.4rem;
   display: flex;
   column-gap: 15rem;

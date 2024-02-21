@@ -23,6 +23,7 @@ import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { ConfectionerComponent } from './confectioner/confectioner.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     ProductComponent,
     ProfileComponent,
     EditComponent,
-    EditProductComponent
+    EditProductComponent,
+    ConfectionerComponent
   ],
     imports: [
         BrowserModule,

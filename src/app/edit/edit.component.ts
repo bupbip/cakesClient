@@ -5,7 +5,7 @@ import {Product} from "../models/Product";
 import {ProductService} from "../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {NotificationService} from "../services/notification.service";
-import {ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 import {Social} from "../models/Social";
 import {User} from "../models/User";
 import {UserService} from "../services/user.service";
@@ -23,13 +23,13 @@ export class EditComponent implements OnInit {
 
   aboutMeText: String = "Привет, меня зовут Андрей и я уже 3 года пеку торты и пряники.\nСоветую заказывать именно у меня, вкусно, быстро и круто!";
   socialLinks: Social[] = [
-    { type: 'INSTAGRAM', url: '' },
-    { type: 'VK', url: '' },
-    { type: 'PINTEREST', url: '' },
-    { type: 'TELEGRAM', url: '' },
-    { type: 'WHATSAPP', url: '' },
-    { type: 'YOUTUBE', url: '' },
-    { type: 'EMAIL', url: '' }
+    {type: 'INSTAGRAM', url: ''},
+    {type: 'VK', url: ''},
+    {type: 'PINTEREST', url: ''},
+    {type: 'TELEGRAM', url: ''},
+    {type: 'WHATSAPP', url: ''},
+    {type: 'YOUTUBE', url: ''},
+    {type: 'EMAIL', url: ''}
   ];
   selectedImage: string | ArrayBuffer | null = null;
 
@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
               private tokenStorageService: TokenStorageService,
               private sanitizer: DomSanitizer,
               private notificationService: NotificationService,
-              private route: ActivatedRoute) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -57,13 +57,12 @@ export class EditComponent implements OnInit {
             }
           });
         }
+        this.selectedImage = this.user?.image;
       },
       error => {
         // this.notificationService.showSnackBar(error.message);
       }
     );
-
-    this.selectedImage = this.user?.image;
 
     this.productService.getAllUserProducts(this.username).subscribe(
       (products: Product[]) => {
@@ -124,7 +123,7 @@ export class EditComponent implements OnInit {
     this.socialLinks.forEach(link => {
       const existingNetwork = this.user?.socialNetworks.find(network => network.type === link.type);
       if (!existingNetwork) {
-        this.user?.socialNetworks.push({ type: link.type, url: link.url });
+        this.user?.socialNetworks.push({type: link.type, url: link.url});
       } else {
         existingNetwork.url = link.url;
       }
@@ -138,10 +137,16 @@ export class EditComponent implements OnInit {
     this.userService.saveUser(this.user).subscribe(
       response => {
         this.refreshProduct(response);
+        this.notificationService.showSnackBar("Успех!");
       },
       error => {
-        console.log("error");
+        console.log(error);
       });
+
+
+    this.router.navigateByUrl('/profile', {skipLocationChange: true}).then(() => {
+      this.router.navigate(['/profile', this.username]);
+    });
   };
 
 }

@@ -28,6 +28,9 @@ export class UserService {
     return this.http.get<User>(USER_API + 'get?username=' + username);
   }
 
+  getConfectioners(): Observable<User[]> {
+    return this.http.get<User[]>(USER_API + 'get-confectioners');
+  }
 
   saveUser(user: User | undefined) {
     const headers = new HttpHeaders({

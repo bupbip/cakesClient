@@ -7,17 +7,19 @@ import {AuthGuardService} from "./helper/auth-guard.service";
 import {ProductComponent} from "./product/product.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {EditComponent} from "./edit/edit.component";
+import {ConfectionerComponent} from "./confectioner/confectioner.component";
 
 /**
  * Что показывать когда пользователь заходит на URL
  */
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
-  { path: 'main', component: IndexComponent },
+  { path: '', redirectTo: '/main', pathMatch: 'full'},
+  { path: 'main', component: IndexComponent},
   { path: 'login', component: LoginComponent},
   { path: 'registration', component: RegisterComponent},
   { path: 'production', component: ProductComponent},
+  { path: 'confectioners', component: ConfectionerComponent},
   { path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardService]},
   { path: 'profile', redirectTo: '/profile/', pathMatch: 'full'},
   { path: 'edit', component: EditComponent, canActivate: [AuthGuardService]}

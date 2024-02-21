@@ -13,16 +13,18 @@
             <input matInput formControlName="username" class="rectangle">
           </div>
           <div class="field">
-            <p class="field-name noselect">Номер телефона</p>
-            <input matInput formControlName="phone" class="rectangle">
-          </div>
-          <div class="field">
             <p class="field-name noselect">Пароль</p>
             <input matInput formControlName="password" class="rectangle" type="password">
           </div>
           <div class="field">
             <p class="field-name noselect">Повтор пароля</p>
             <input matInput formControlName="confirmPassword" class="rectangle" type="password">
+          </div>
+          <div class="role">
+            <p class="field-name noselect">Заказчик</p>
+            <input formControlName="role" type="checkbox" id="switch"/>
+            <label for="switch">Role</label>
+            <p class="field-name noselect">Кондитер</p>
           </div>
         </form>
       </div>

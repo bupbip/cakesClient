@@ -1,6 +1,6 @@
 .registration-login {
   box-sizing: border-box;
-  padding-bottom: 16.8rem;
+  padding-bottom: 2rem;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -9,20 +9,16 @@
   flex-direction: column;
   background-color: #ffffff;
 }
-
 .form-container {
-  margin: 0 40.6rem 0 40.5rem;
-  width: calc(100% - 81.1rem);
   align-items: center;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
-
 .form {
   margin-bottom: 3.7rem;
   box-sizing: border-box;
-  padding: 2.5rem 6.9rem 11.084rem 4.4rem;
+  padding: 4.4rem;
   width: 100%;
   align-items: center;
   display: flex;
@@ -32,9 +28,7 @@
   border-radius: 5rem;
   flex-shrink: 0;
 }
-
 .registration {
-  margin: 0 0 1.7rem 2.5rem;
   text-align: center;
   font-size: 4rem;
   font-weight: 400;
@@ -43,15 +37,8 @@
   font-family: Poppins, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  margin: 0;
 }
-
-.username {
-  margin: 0 0 1.144rem 0.3rem;
-  width: 50rem;
-  border-radius: 2rem;
-  flex-shrink: 0;
-}
-
 .field-name {
   margin: 0rem 0rem 0.456rem 0.3rem;
   font-size: 2.5rem;
@@ -61,14 +48,12 @@
   font-family: Poppins, 'Source Sans Pro';
   white-space: nowrap;
 }
-
 .field {
   margin: 0rem 0.7rem 1.2rem 0rem;
   width: 50rem;
   border-radius: 2rem;
   flex-shrink: 0;
 }
-
 .rectangle {
   width: 100%;
   height: 5.2437rem;
@@ -81,7 +66,49 @@
   font-family: Poppins, 'Source Sans Pro';
   white-space: nowrap;
 }
-
+.role {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 40px;
+  height: 20px;
+  background: grey;
+  display: block;
+  border-radius: 20px;
+  position: relative;
+  margin-right: 7px;
+}
+label:after {
+  content: '';
+  position: absolute;
+  top: 1.6px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+input:checked + label {
+  background: #bada55;
+}
+input:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+label:active:after {
+  width: 26px;
+}
 .button-container {
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
   border-radius: 5rem;
@@ -91,7 +118,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .button {
   height: 6.5rem;
   top: 0;
@@ -101,7 +127,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .button-text {
   height: 4.5rem;
   font-size: 3rem;
@@ -111,4 +136,5 @@
   position: inherit;
   font-family: Poppins, 'Source Sans Pro';
   white-space: nowrap;
+  cursor: pointer;
 }

@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit{
     return this.fb.group({
       email: ['', Validators.compose([Validators.required])],
       username: ['', Validators.compose([Validators.required])],
-      phone: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
-      confirmPassword: ['', Validators.compose([Validators.required])]
+      confirmPassword: ['', Validators.compose([Validators.required])],
+      role: [false]
     });
   }
 
@@ -44,11 +44,12 @@ export class RegisterComponent implements OnInit{
     const regData = {
       email: this.registerForm.value.email,
       username: this.registerForm.value.username,
-      phone: this.registerForm.value.phone,
       password: this.registerForm.value.password,
-      confirmPassword: this.registerForm.value.confirmPassword
+      confirmPassword: this.registerForm.value.confirmPassword,
+      role: this.registerForm.value.role
     };
 
+    console.log(regData);
     this.authService.register(regData).subscribe(data => {
       this.notificationService.showSnackBar(data.message);
       this.router.navigate(['/login']);
