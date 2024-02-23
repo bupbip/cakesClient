@@ -169,6 +169,7 @@
   background-color: #18a0fb;
   border-radius: 0.6rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .works-header {
   margin-bottom: 3rem;

@@ -7,6 +7,9 @@ import {NotificationService} from "../services/notification.service";
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../models/User";
 import {UserService} from "../services/user.service";
+import {EditProductComponent} from "../edit-product/edit-product.component";
+import {MatDialog} from "@angular/material/dialog";
+import {OrderComponent} from "../order/order.component";
 
 @Component({
   selector: 'app-profile',
@@ -18,14 +21,14 @@ export class ProfileComponent implements OnInit {
   private username: string = '';
   public user: User | undefined;
 
-  constructor(private tokenStorageService: TokenStorageService,
+  constructor(private dialog: MatDialog,
+              private tokenStorageService: TokenStorageService,
               private productService: ProductService,
               private userService: UserService,
               private sanitizer: DomSanitizer,
               private notificationService: NotificationService,
               private route: ActivatedRoute) {
   }
-
 
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username') || '';
@@ -49,4 +52,24 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  makeOrder(): void {
+    const dialogRef = this.dialog.open(OrderComponent, {
+      width: 'auto',
+      height: '1000px',
+      data: this.user
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == undefined) return;
+      this.productService.saveProduct(result).subscribe(
+        response => {
+
+        },
+        error => {
+          console.log("error");
+        });
+    })
+  };
+
 }

@@ -1,0 +1,87 @@
+<body>
+<div class="main-window">
+  <div *ngFor="let orderItem of orderItems; let i = index" class="product">
+    <div class="header-fields">
+      <p class="header-label">Товар {{ i + 1 }}</p>
+      <div class="header-buttons">
+        <div class="btn remove-button" *ngIf="orderItems.length > 1" (click)="removeProduct(i)">Удалить</div>
+        <div class="btn remove-button" (click)="addProduct()">Добавить</div>
+      </div>
+    </div>
+    <div class="main-fields">
+      <div class="fields-list">
+        <div class="field">
+          <label class="field-label">Тип изделия:</label>
+          <select class="field-input" [(ngModel)]="orderItem.product.type">
+            <option *ngFor="let food of foods" [value]="food.value" class="product-type-label">
+              {{food.viewValue}}
+            </option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Количество:</label>
+          <input class="field-input" type="number" [(ngModel)]="orderItem.product.count"/>
+        </div>
+        <div class="field">
+          <label class="field-label">Вес (кг.):</label>
+          <input class="field-input" type="number" [(ngModel)]="orderItem.product.weight"/>
+        </div>
+        <div class="field">
+          <label class="field-label">Начинка:</label>
+          <select class="field-input" [(ngModel)]="orderItem.product.topping">
+            <option *ngFor="let topping of toppings" [value]="topping.value" class="field-label">
+              {{topping.viewValue}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="image-group">
+        <div class="image-container">
+          <p class="image-label">Референс:</p>
+          <div class="product-image-container">
+            <img *ngIf="orderItem.product.image" [src]="orderItem.product.image"  alt="Product Image" class="image">
+          </div>
+        </div>
+        <div class="update-image">
+          <label for="product-image-upload">Добавить референс</label>
+          <input id="product-image-upload" type="file" (change)="onFileSelected($event, orderItem)" accept="image/*"
+                 style="display: none;">
+        </div>
+      </div>
+    </div>
+    <div class="description-field">
+      <label class="field-label">Комментарий:</label>
+      <textarea class="description-input" [(ngModel)]="orderItem.product.comment"></textarea>
+    </div>
+    <div class="product-count-pre-price-group">
+      <div class="product-count-group">
+        <div class="count-change-buttons noselect" (click)="decreaseCount(orderItem)">-</div>
+        <div class="product-count">{{orderItem.count}}</div>
+        <div class="count-change-buttons noselect" (click)="increaseCount(orderItem)">+</div>
+      </div>
+      <div class="pre-price">Предварительная стоимость товара: 5000</div>
+    </div>
+  </div>
+  <div class="external-fields">
+    <div class="product-count-pre-price-group">
+      <div class="field">
+        <label class="field-label">Тип получения:</label>
+        <select class="field-input" [(ngModel)]="deliveryType">
+          <option *ngFor="let deliveryType of deliveryTypes" [value]="deliveryType.value" class="product-type-label">
+            {{deliveryType.viewValue}}
+          </option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label">Адрес:</label>
+        <input class="field-input" type="text" [(ngModel)]="address"/>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">Дата выполнения заказа:</label>
+      <input class="field-input" type="datetime-local" [(ngModel)]="completeDate"/>
+    </div>
+  </div>
+</div>
+<div class="accept-button" (click)="makeOrder()">Сформировать заказ</div>
+</body>

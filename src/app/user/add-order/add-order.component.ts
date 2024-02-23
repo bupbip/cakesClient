@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Order} from "../../models/Order";
-import {OrderService} from "../../services/order.service";
 import {NotificationService} from "../../services/notification.service";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
@@ -20,7 +19,6 @@ export class AddOrderComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<AddOrderComponent>,
-    private orderService: OrderService,
     private notificationService: NotificationService,
     private router: Router,
     private fb: FormBuilder) {
@@ -75,14 +73,6 @@ export class AddOrderComponent implements OnInit {
 
     console.log(orderData);
 
-    this.orderService.createOrder(orderData).subscribe(data => {
-      console.log(data);
-
-      this.notificationService.showSnackBar('Заказ успешно создан');
-    }, () => {
-      this.notificationService.showSnackBar('Произошла ошибка.');
-    });
-    this.dialogRef.close();
   }
 
   removeCakeForm(index: number) {

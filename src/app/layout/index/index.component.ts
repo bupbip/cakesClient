@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Order} from "../../models/Order";
 import {User} from "../../models/User";
-import {OrderService} from "../../services/order.service";
 import {UserService} from "../../services/user.service";
 import {NotificationService} from "../../services/notification.service";
-import {CakeService} from "../../services/cake.service";
 import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dialog";
 import {AddOrderComponent} from "../../user/add-order/add-order.component";
 
@@ -23,10 +21,8 @@ export class IndexComponent implements OnInit {
   showOrderForm: boolean = false;
 
   constructor(
-    private orderService: OrderService,
     private userService: UserService,
     private notificationService: NotificationService,
-    private cakeService: CakeService,
     private dialog: MatDialog
   ) {
   }
@@ -53,12 +49,6 @@ export class IndexComponent implements OnInit {
 
   closeOrderDialog() {
     this.dialog.closeAll();
-  }
-
-  getCakesToOrders(orders: Order[]): void {
-    orders.forEach(o => {
-      this.cakeService.getCakesToOrder(o.id);
-    })
   }
 
 
