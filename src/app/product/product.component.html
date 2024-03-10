@@ -12,7 +12,7 @@
           <p class="product-description">{{product.comment}}</p>
         </div>
         <div class="buttons">
-          <div class="confectioner-button noselect"> <!--[routerLink]="['/profile', product.confectioner.username]"-->Кондитер</div>
+          <div class="confectioner-button noselect" [routerLink]="['/profile', product.ownerUsername]">Кондитер</div>
           <div class="order-button noselect">Заказать</div>
         </div>
       </div>

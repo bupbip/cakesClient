@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenStorageService} from "../services/token-storage.service";
-import {Product} from "../models/Product";
-import {ProductService} from "../services/product.service";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {Product} from "../../models/Product";
+import {ProductService} from "../../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {NotificationService} from "../services/notification.service";
+import {NotificationService} from "../../services/notification.service";
 import {ActivatedRoute} from "@angular/router";
-import {User} from "../models/User";
-import {UserService} from "../services/user.service";
+import {User} from "../../models/User";
+import {UserService} from "../../services/user.service";
 import {EditProductComponent} from "../edit-product/edit-product.component";
 import {MatDialog} from "@angular/material/dialog";
-import {OrderComponent} from "../order/order.component";
+import {CreateOrderComponent} from "../../order/create-order/create-order.component";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'app-profile',
@@ -27,7 +28,8 @@ export class ProfileComponent implements OnInit {
               private userService: UserService,
               private sanitizer: DomSanitizer,
               private notificationService: NotificationService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -54,17 +56,18 @@ export class ProfileComponent implements OnInit {
   }
 
   makeOrder(): void {
-    const dialogRef = this.dialog.open(OrderComponent, {
+    let usr = this.user;
+    const dialogRef = this.dialog.open(CreateOrderComponent, {
       width: 'auto',
       height: '1000px',
-      data: this.user
+      data: {usr}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result == undefined) return;
-      this.productService.saveProduct(result).subscribe(
+      this.orderService.createOrder(result).subscribe(
         response => {
-
+            console.log(response);
         },
         error => {
           console.log("error");

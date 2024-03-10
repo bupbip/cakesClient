@@ -94,4 +94,5 @@
   position: inherit;
   font-family: Poppins, 'Source Sans Pro';
   white-space: nowrap;
+  cursor: pointer;
 }

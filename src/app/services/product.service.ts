@@ -31,8 +31,10 @@ export class ProductService {
       'Authorization': 'Bearer ' + this.tokenStorage.getToken(),
       'Content-Type': 'application/json'
     });
-    console.log("send request");
-     // Получаем строку Base64 из объекта изображения
     return this.http.post<Product>(PRODUCTS_API + 'save-product', product, {headers: headers});
+  }
+
+  public deleteProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(PRODUCTS_API + 'delete-product', product);
   }
 }

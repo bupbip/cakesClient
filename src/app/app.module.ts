@@ -13,18 +13,19 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { IndexComponent } from './layout/index/index.component';
-import { AddOrderComponent } from './user/add-order/add-order.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { StatisticComponent } from './layout/statistic/statistic.component';
-import {NgOptimizedImage} from "@angular/common";
+import {DatePipe, NgOptimizedImage} from "@angular/common";
 import { ProductComponent } from './product/product.component';
-import { ProfileComponent } from './profile/profile.component';
-import { EditComponent } from './edit/edit.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { EditComponent } from './user/edit/edit.component';
+import { EditProductComponent } from './user/edit-product/edit-product.component';
 import { ConfectionerComponent } from './confectioner/confectioner.component';
-import { OrderComponent } from './order/order.component';
+import { CreateOrderComponent } from './order/create-order/create-order.component';
+import { DeleteProductComponent } from './user/delete-product/delete-product.component';
+import { OrderComponent } from './order/order/order.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +33,14 @@ import { OrderComponent } from './order/order.component';
     LoginComponent,
     RegisterComponent,
     IndexComponent,
-    AddOrderComponent,
     StatisticComponent,
     ProductComponent,
     ProfileComponent,
     EditComponent,
     EditProductComponent,
     ConfectionerComponent,
+    CreateOrderComponent,
+    DeleteProductComponent,
     OrderComponent
   ],
     imports: [
@@ -57,7 +59,8 @@ import { OrderComponent } from './order/order.component';
     ],
   providers: [
     authInterceptorProviders,
-    authErrorInterceptorProvider
+    authErrorInterceptorProvider,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

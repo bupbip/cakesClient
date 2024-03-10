@@ -218,6 +218,9 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+.custom-file-upload {
+  cursor: pointer;
+}
 .products-list {
   height: 43.4rem;
   display: flex;
@@ -243,8 +246,14 @@
 }
 .edit-icon {
   position: absolute;
-  top: 0;
-  right: 0;
+  left: 0px;
+  top: 0px;
+  cursor: pointer;
+}
+.delete-icon {
+  position: absolute;
+  right: 0px;
+  top: 0px;
   cursor: pointer;
 }
 .product-info {

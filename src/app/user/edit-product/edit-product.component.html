@@ -8,7 +8,7 @@
       </div>
       <div class="field">
         <label class="field-label">Тип изделия:</label>
-        <select class="field-input" [(ngModel)]="editedProduct.type">
+        <select class="field-input" [(ngModel)]="editedProduct.productType">
           <option *ngFor="let food of foods" [value]="food.value" class="product-type-label">
             {{food.viewValue}}
           </option>

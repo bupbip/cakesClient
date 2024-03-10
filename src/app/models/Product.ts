@@ -7,7 +7,8 @@ export class Product {
     public weight?: number,
     public topping?: string,
     public comment?: string,
-    public type?: string,
+    public productType?: string,
+    public ownerUsername?: string,
     public image?: any
   ) {}
 }

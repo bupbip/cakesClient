@@ -97,6 +97,7 @@
   white-space: nowrap;
   background-color: #18a0fb;
   border-radius: 0.6rem;
+  cursor: pointer;
 }
 .order-button {
   width: 14.6rem;
@@ -118,6 +119,7 @@
   box-sizing: border-box;
   background-color: #ffffff;
   border-radius: 0.6rem;
+  cursor: pointer;
 }
 .page-name {
   width: 17.1rem;

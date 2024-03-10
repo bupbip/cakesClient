@@ -1,6 +1,5 @@
 .page {
   box-sizing: border-box;
-  padding-left: 9rem;
   width: 100%;
   align-items: center;
   display: flex;
@@ -126,6 +125,7 @@
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .photo {
   width: 32rem;
@@ -171,6 +171,10 @@
   flex-shrink: 0;
   cursor: pointer;
 }
+.works {
+  width: 100%;
+  margin-left: 20rem;
+}
 .works-header {
   margin-bottom: 3rem;
   text-align: center;
@@ -184,8 +188,7 @@
   flex-shrink: 0;
 }
 .products-list {
-  margin: 0rem 0.1rem 10rem 0rem;
-  height: 43.4rem;
+  margin: 0rem 0.1rem 5rem 0rem;
   display: flex;
   column-gap: 15rem;
   align-items: center;
@@ -263,6 +266,7 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  clear: both;
 }
 .feedback-header {
   margin-bottom: 2.1rem;

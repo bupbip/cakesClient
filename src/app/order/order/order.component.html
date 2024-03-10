@@ -1,0 +1,56 @@
+<p class="item--uNb">Заказы</p>
+<div class="auto-group-fjm1-RLw">
+  <div class="order-list">
+    <div class="order" *ngFor="let order of orders">
+      <p class="order-dates">Заказ №{{order.orderId}}</p>
+      <div class="order-header">
+        <p class="order-dates">
+          Дата оформления: {{order.createdDate | date:'dd.MM.yyyy'}}
+          <br/>
+          Дата выполнения: {{order.completeDate | date:'dd.MM.yyyy'}}
+        </p>
+        <div class="order-costs">Стоимость: {{order.resultPrice}}</div>
+        <div class="order-expenses">Расходы: {{order.spentPrice}}</div>
+        <div class="order-income" *ngIf="order && order.resultPrice !== undefined && order.spentPrice !== undefined">
+          Доход: {{ order.resultPrice - order.spentPrice }}
+        </div>
+      </div>
+      <div class="order-body">
+        <div class="products-list" *ngFor="let product of order.products">
+          <div class="order-desire-image">
+            <p class="desire-image-label">Желаемый результат</p>
+            <div class="desire-image">
+              <img [src]="product.reference" alt="Product Image" width="100%" height="100%">
+            </div>
+          </div>
+          <div class="auto-group-ayhu-ooq">
+            <div class="order-description">
+              <p class="description-text">
+                {{product.product.comment}}
+              </p>
+              <p class="order-weight">Вес: {{product.product.weight}} кг.</p>
+              <p class="order-count">Количество: {{product.quantity}} шт.</p>
+            </div>
+          </div>
+          <div class="order-result-image">
+            <p class="result-image-label">Результат</p>
+            <div class="result-image">
+              <img [src]="product.product.image" alt="Product Image" width="100%" height="100%">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-info">
+        <p class="order-users">
+          Заказчик: {{order.customer?.username}}
+          <br/>
+          Кондитер: {{order.confectioner?.username}}
+        </p>
+        <div class="order-status">Статус: {{getStatusView(order.status)}}</div>
+        <div class="edit-order">
+          <p class="edit-order-label noselect" (click)="editOrder(order)">Редактировать заказ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

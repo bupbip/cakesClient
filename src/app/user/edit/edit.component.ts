@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {EditProductComponent} from "../edit-product/edit-product.component";
-import {Product} from "../models/Product";
-import {ProductService} from "../services/product.service";
+import {Product} from "../../models/Product";
+import {ProductService} from "../../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {NotificationService} from "../services/notification.service";
+import {NotificationService} from "../../services/notification.service";
 import {Router} from "@angular/router";
-import {Social} from "../models/Social";
-import {User} from "../models/User";
-import {UserService} from "../services/user.service";
-import {TokenStorageService} from "../services/token-storage.service";
+import {Social} from "../../models/Social";
+import {User} from "../../models/User";
+import {UserService} from "../../services/user.service";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {DeleteProductComponent} from "../delete-product/delete-product.component";
 
 @Component({
   selector: 'app-edit',
@@ -111,6 +112,14 @@ export class EditComponent implements OnInit {
     })
   };
 
+  openDeleteModal(product: Product): void {
+    this.dialog.open(DeleteProductComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: product
+    });
+  }
+
   refreshProduct(product: Product): void {
     const index = this.products.findIndex(p => p.productId === product.productId);
     if (index !== -1) {
@@ -147,6 +156,28 @@ export class EditComponent implements OnInit {
     this.router.navigateByUrl('/profile', {skipLocationChange: true}).then(() => {
       this.router.navigate(['/profile', this.username]);
     });
+  };
+
+  addProduct(): void {
+    const dialogRef = this.dialog.open(EditProductComponent, {
+      width: '1000px',
+      height: '1000px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == undefined) return;
+      result.ownerUsername = this.username;
+      console.log(result);
+      this.productService.saveProduct(result).subscribe(
+        response => {
+          this.router.navigateByUrl('/profile', {skipLocationChange: true}).then(() => {
+            this.router.navigate(['/profile', this.username]);
+          });
+        },
+        error => {
+          console.log("error");
+        });
+    })
   };
 
 }
