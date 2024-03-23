@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.tokenStorageService.getUser());
-    if (this.user.role === "ROLE_CONFECTIONER") {
+    // if (this.user.role === "ROLE_CONFECTIONER") {
       this.orderService.getAllOrdersByUser(this.user).subscribe(
         (orders: Order[]) => {
           this.orders = orders;
@@ -35,7 +35,7 @@ export class OrderComponent implements OnInit {
           this.notificationService.showSnackBar(error.message);
         }
       );
-    }
+    // }
   };
 
   editOrder(order: Order): void {
@@ -51,11 +51,12 @@ export class OrderComponent implements OnInit {
       this.orderService.createOrder(result).subscribe(
         response => {
           console.log(response);
+          window.location.reload();
         },
         error => {
           console.log("error");
         });
-    })
+    });
   };
 
   getStatusView(status: string | undefined) {

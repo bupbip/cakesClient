@@ -2,11 +2,12 @@
 <div class="page">
   <div class="header-all">
     <div class="about-contacts">
-      <div class="about-me-group">
+      <div class="about-me-group" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
         <p class="header-about-me">Обо мне</p>
         <div class="about-me-field">
           <textarea class="about-me-textarea textarea" [ngModel]="user ? user.description : ''"
-                    (ngModelChange)="user ? user.description = $event : null"></textarea>
+                    (ngModelChange)="user ? user.description = $event : null"
+                    placeholder="Нажмите чтобы добавить"></textarea>
         </div>
       </div>
       <div class="contacts-group">
@@ -15,7 +16,8 @@
           <div class="contacts">
             <div class="social" *ngFor="let link of socialLinks">
               <img class="social-image" [src]="'./assets/' + link.type.toLowerCase() + '.png'" [alt]="link.type"/>
-              <input class="social-link textarea" type="text" [(ngModel)]="link.url"/>
+              <input class="social-link textarea" type="text" [(ngModel)]="link.url"
+                     placeholder="Нажмите чтобы добавить"/>
             </div>
           </div>
         </div>
@@ -26,22 +28,90 @@
     </div>
   </div>
   <div class="main-info-group">
-    <p class="rating">Рейтинг: 4.75</p>
-    <div class="save noselect" (click)="saveProfile()">Применить изменения</div>
-    <div class="save noselect" (click)="addProduct()">Добавить продукт</div>
+    <div class="button noselect" (click)="saveProfile()">Применить изменения</div>
+    <div class="button noselect" (click)="addProduct()" *ngIf="user?.role === 'ROLE_CONFECTIONER'">Добавить продукт
+    </div>
+    <div class="button noselect" (click)="changeRole()" *ngIf="user?.role === 'ROLE_CUSTOMER'">Стать кондитером</div>
     <div class="update-image">
       <label for="file-upload" class="custom-file-upload noselect">Изменить фотографию</label>
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
     </div>
   </div>
-  <div>
+  <table class="table" title="Краткая справочная информация" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+    <thead class="table-header">
+    <tr class="table-header-col">
+      <th class="table-header-text" colspan="6">Начинки</th>
+      <p class="add-element" (click)="addFilling()">+</p>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Название</div></th>
+      <td class="table-cell" *ngFor="let filling of fillings; let i = index">
+        <input [(ngModel)]="filling.name" class="textarea"/>
+        <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="removeFilling(i)">
+      </td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Описание</div></th>
+      <td class="table-cell" *ngFor="let filling of fillings">
+        <textarea class="textarea" placeholder="Нажмите чтобы заполнить..."></textarea>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+    <thead class="table-header">
+    <tr class="table-header-col">
+      <th class="table-header-text" colspan="6">Моя продукция</th>
+      <div class="empty-button" (click)="saveFillings()">Обновить список начинок</div>
+      <p class="add-element" (click)="addProductType()">+</p>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Тип продукции</div></th>
+      <td class="table-cell" *ngFor="let productType of productTypes ; let i = index">
+        <input [(ngModel)]="productType.name" class="textarea"/>
+        <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="removeProductType(i)">
+      </td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Возможность заказа</div></th>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [ngModel]="productType.canOrder"></td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Возможность выбора веса</div></th>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [ngModel]="productType.canWeight"></td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Возможность выбора количества</div></th>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [ngModel]="productType.canCount"></td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Начинки</div></th>
+      <td class="table-cell fillings" *ngFor="let productType of productTypes">
+        <div *ngFor="let filling of user?.fillings">
+          <label class="filling noselect" *ngIf="filling.name.trim().length > 0">
+            <input type="checkbox" [ngModel]="isFillingSelected(productType, filling?.fillingId)" (change)="toggleFillingSelection(productType, filling?.fillingId)">
+            {{ filling.name }}
+          </label>
+        </div>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <div *ngIf="user?.role === 'ROLE_CONFECTIONER'">
     <p class="works-header noselect">Мои работы</p>
     <div class="products-list">
       <div class="product-card" *ngFor="let product of products">
         <div class="product-image">
           <img [src]="product.image" alt="Product Image" width="300rem" height="300rem">
-          <img src="../../../assets/edit.png" class="edit-icon" (click)="openEditModal(product)" width="20px" height="20px">
-          <img src="../../../assets/bin.png" class="delete-icon" (click)="openDeleteModal(product)" width="20px" height="20px">
+          <img src="../../../assets/edit.png" class="edit-icon" (click)="openEditModal(product)" width="20px"
+               height="20px">
+          <img src="../../../assets/bin.png" class="delete-icon" (click)="openDeleteModal(product)" width="20px"
+               height="20px">
         </div>
         <div class="product-info">
           <p class="product-name">{{product.name}}</p>

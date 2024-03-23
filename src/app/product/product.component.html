@@ -13,7 +13,7 @@
         </div>
         <div class="buttons">
           <div class="confectioner-button noselect" [routerLink]="['/profile', product.ownerUsername]">Кондитер</div>
-          <div class="order-button noselect">Заказать</div>
+          <div class="order-button noselect" (click)="makeOrder(product)">Заказать</div>
         </div>
       </div>
     </div>

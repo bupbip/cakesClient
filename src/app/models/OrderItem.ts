@@ -4,7 +4,7 @@ export class OrderItem {
   constructor(
     public product: Product,
     public quantity: number,
-    public reference?: any,
+    public resultImage?: any,
     public orderItemId?: number
   ) {}
 }

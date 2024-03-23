@@ -1,7 +1,10 @@
 <div class="page">
   <div class="header-all">
+    <div class="photo">
+      <img *ngIf="user?.image" [src]="user?.image" alt="User Image" class="photo-img">
+    </div>
     <div class="about-contacts">
-      <div class="about-me-group">
+      <div class="about-me-group" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
         <p class="header-about-me">Обо мне</p>
         <div class="about-me-field">
           <p class="about-me-text">
@@ -22,15 +25,14 @@
       </div>
     </div>
     <img class="settings" src="../../assets/settings.png" [routerLink]="['/edit']"/>
-    <div class="photo">
-      <img *ngIf="user?.image" [src]="user?.image" alt="User Image" class="photo-img">
-    </div>
+
   </div>
-  <div class="main-info-group">
+  <div class="main-info-group" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+    <p class="rating">Мой никнейм</p>
     <p class="rating">Рейтинг: 4.75</p>
     <div class="make-order noselect" (click)="makeOrder()">Оформить заказ</div>
   </div>
-  <div class="works">
+  <div class="works" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
     <p class="works-header">Мои работы</p>
     <div class="products-list">
       <div class="product-card" *ngFor="let product of products">
@@ -45,7 +47,7 @@
       </div>
     </div>
   </div>
-  <div class="feedback-list">
+  <div class="feedback-list" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
     <p class="feedback-header">
       Отзывы
     </p>

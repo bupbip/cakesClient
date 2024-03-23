@@ -11,6 +11,9 @@ import {User} from "../../models/User";
 import {UserService} from "../../services/user.service";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {DeleteProductComponent} from "../delete-product/delete-product.component";
+import {ProductType} from "../../models/ProductType";
+import {Filling} from "../../models/Filling";
+import {FillingsService} from "../../services/fillings.service";
 
 @Component({
   selector: 'app-edit',
@@ -22,7 +25,6 @@ export class EditComponent implements OnInit {
   username: string = "";
   public user: User | undefined;
 
-  aboutMeText: String = "Привет, меня зовут Андрей и я уже 3 года пеку торты и пряники.\nСоветую заказывать именно у меня, вкусно, быстро и круто!";
   socialLinks: Social[] = [
     {type: 'INSTAGRAM', url: ''},
     {type: 'VK', url: ''},
@@ -34,9 +36,13 @@ export class EditComponent implements OnInit {
   ];
   selectedImage: string | ArrayBuffer | null = null;
 
+  productTypes: ProductType[] = [];
+  fillings: Filling[] = [];
+
   constructor(private dialog: MatDialog,
               private productService: ProductService,
               private userService: UserService,
+              private fillingService: FillingsService,
               private tokenStorageService: TokenStorageService,
               private sanitizer: DomSanitizer,
               private notificationService: NotificationService,
@@ -49,15 +55,16 @@ export class EditComponent implements OnInit {
     this.userService.getUserByUsername(this.username).subscribe(
       (user: User) => {
         this.user = user;
-        console.log(user);
-        if (this.user) {
+
+        if (this.user.fillings) this.fillings = this.user.fillings.slice();
+        if (this.user.productTypes) this.productTypes = this.user.productTypes;
+        console.log(this.user);
           this.socialLinks.forEach(link => {
             const userSocial = this.user?.socialNetworks.find(social => social.type.toUpperCase() === link.type);
             if (userSocial) {
               link.url = userSocial.url;
             }
           });
-        }
         this.selectedImage = this.user?.image;
       },
       error => {
@@ -179,5 +186,72 @@ export class EditComponent implements OnInit {
         });
     })
   };
+
+  changeRole() {
+    if (this.user) {
+      this.user.role = "ROLE_CONFECTIONER";
+      this.saveProfile();
+    }
+  }
+
+  addFilling(): void {
+    const newFilling = { name: '', description: '', userId: this.user?.userId};
+    this.fillings.push(<Filling> newFilling);
+  }
+
+  removeFilling(index: number): void {
+    if (this.fillings.at(index)?.fillingId !== undefined) {
+      // @ts-ignore
+      this.fillingService.deleteFilling(this.fillings.at(index).fillingId).subscribe(
+        message => {
+          this.notificationService.showSnackBar(message)
+        },
+        error => {
+          console.log("error");
+        });
+    }
+    this.fillings.splice(index, 1);
+  }
+
+  addProductType(): void {
+    const emptyProductType: ProductType = {
+      name: '',
+      canOrder: false,
+      canWeight: false,
+      canCount: false,
+      fillings: []
+    };
+    this.productTypes.push(emptyProductType);
+  }
+
+  removeProductType(index: number): void {
+    this.productTypes.splice(index, 1);
+  }
+
+  saveFillings(): void {
+    this.fillingService.saveFillings(this.fillings).subscribe(
+      savedFillings => {
+        if (this.user) {
+          this.user.fillings = savedFillings;
+        }
+
+      },
+      error => {
+        console.log("error");
+      });
+  };
+
+  isFillingSelected(productType: ProductType, fillingId: number | undefined): boolean {
+    return productType.fillings.includes(<number>fillingId);
+  }
+
+  toggleFillingSelection(productType: ProductType, fillingId: number | undefined): void {
+      const index = productType.fillings.indexOf(<number>fillingId);
+      if (index !== -1) {
+        productType.fillings.splice(index, 1);
+      } else {
+        productType.fillings.push(<number>fillingId);
+      }
+  }
 
 }

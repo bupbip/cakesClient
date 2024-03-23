@@ -4,8 +4,9 @@ import {OrderItem} from "../../models/OrderItem";
 import {Order} from "../../models/Order";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TokenStorageService} from "../../services/token-storage.service";
-import {DatePipe} from "@angular/common";
 import {OrderService} from "../../services/order.service";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-create-order',
@@ -39,19 +40,25 @@ export class CreateOrderComponent {
     @Inject(MAT_DIALOG_DATA) private data: any,
     private tokenStorageService: TokenStorageService,
     private orderService: OrderService,
-    private datePipe: DatePipe
+    private userService: UserService
   ) {
     console.log(data);
     if (data.usr != undefined) {
       this.order.confectioner = {...data.usr};
-      this.addProduct();
+      this.addEmptyProduct();
+    } else if (data.product != undefined) {
+      this.addProduct(data.product);
     } else if (data.order != undefined) {
       this.order = data.order;
     }
   }
 
-  addProduct() {
+  addEmptyProduct() {
     this.order.products.push(new OrderItem(new Product(), 1));
+  }
+
+  addProduct(product: Product) {
+    this.order.products.push(new OrderItem(product, 1));
   }
 
   removeProduct(index: number) {
@@ -70,14 +77,19 @@ export class CreateOrderComponent {
   }
 
   makeOrder() {
-    const currentUser = this.tokenStorageService.getUser();
-    let formattedCompleteDate: Date | undefined;
+    // this.order.status = "CREATED";
+    this.order.customer = this.tokenStorageService.getUser();
 
-    if (this.order.completeDate) {
-      const transformedDate = this.datePipe.transform(this.order.completeDate, 'yyyy-MM-ddTHH:mm:ss');
-      if (transformedDate) {
-        formattedCompleteDate = new Date(transformedDate);
-      }
+    if (this.order.products && this.order.products.length > 0 &&
+      this.order.products[0].product && this.order.products[0].product.ownerUsername) {
+      this.userService.getUserByUsername(this.order.products[0].product.ownerUsername).subscribe(
+        (user: User) => {
+          this.order.confectioner = user;
+        },
+        error => {
+          // this.notificationService.showSnackBar(error.message);
+        }
+      );
     }
 
     console.log(this.order);
@@ -92,14 +104,18 @@ export class CreateOrderComponent {
       reader.onload = (e) => {
         if (e.target?.result) {
           if (imageType === 'reference') {
-            item.reference = e.target.result as string;
-          } else if (imageType === 'result') {
             item.product.image = e.target.result as string;
+          } else if (imageType === 'result') {
+            item.resultImage = e.target.result as string;
           }
         }
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
 }

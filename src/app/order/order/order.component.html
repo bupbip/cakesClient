@@ -1,4 +1,5 @@
-<p class="item--uNb">Заказы</p>
+<p class="order-page-header">Заказы</p>
+<p class="no-orders-message" *ngIf="orders?.length == 0">У вас пока нет заказов</p>
 <div class="auto-group-fjm1-RLw">
   <div class="order-list">
     <div class="order" *ngFor="let order of orders">
@@ -20,7 +21,7 @@
           <div class="order-desire-image">
             <p class="desire-image-label">Желаемый результат</p>
             <div class="desire-image">
-              <img [src]="product.reference" alt="Product Image" width="100%" height="100%">
+              <img [src]="product.product.image" alt="Product Image" width="100%" height="100%">
             </div>
           </div>
           <div class="auto-group-ayhu-ooq">
@@ -35,7 +36,7 @@
           <div class="order-result-image">
             <p class="result-image-label">Результат</p>
             <div class="result-image">
-              <img [src]="product.product.image" alt="Product Image" width="100%" height="100%">
+              <img [src]="product.resultImage" alt="Product Image" width="100%" height="100%">
             </div>
           </div>
         </div>

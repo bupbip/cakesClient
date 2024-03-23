@@ -1,4 +1,7 @@
 <div class="main-window">
+  <div class="close">
+    <img src="../../../assets/close.svg" width="30px" height="30px" (click)="close()">
+  </div>
   <div *ngFor="let orderItem of order.products; let i = index" class="product">
     <div class="header-fields">
       <p class="header-label">Товар {{ i + 1 }}</p>
@@ -6,7 +9,7 @@
         <div class="btn remove-button" *ngIf="order.products && order.products.length > 1" (click)="removeProduct(i)">
           Удалить
         </div>
-        <div class="btn remove-button" (click)="addProduct()">Добавить</div>
+        <div class="btn remove-button" (click)="addEmptyProduct()">Добавить</div>
       </div>
     </div>
     <div class="main-fields">
@@ -44,7 +47,7 @@
         <div class="image-container">
           <p class="image-label">Референс:</p>
           <div class="product-image-container">
-            <img *ngIf="orderItem.reference" [src]="orderItem.reference" alt="Product Image" class="image">
+            <img *ngIf="orderItem.product.image" [src]="orderItem.product.image" alt="Product Image" class="image">
           </div>
         </div>
         <div class="update-image">
@@ -58,7 +61,7 @@
         <div class="image-container">
           <p class="image-label">Результат:</p>
           <div class="product-image-container">
-            <img *ngIf="orderItem.product.image" [src]="orderItem.product.image" alt="Product Image" class="image">
+            <img *ngIf="orderItem.resultImage" [src]="orderItem.resultImage" alt="Product Image" class="image">
           </div>
         </div>
         <div class="update-image">
@@ -98,7 +101,7 @@
         <label class="field-label">Дата выполнения заказа:</label>
         <input class="field-input" type="datetime-local" [(ngModel)]="order.completeDate"/>
       </div>
-      <div class="field">
+      <div class="field" *ngIf="order.orderId">
         <label class="field-label">Статус заказа:</label>
         <select class="field-input" [(ngModel)]="order.status">
           <option *ngFor="let status of statuses" [value]="status.value" class="product-type-label">
