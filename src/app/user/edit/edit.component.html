@@ -78,15 +78,15 @@
     </tr>
     <tr class="table-column">
       <th class="table-column-header"><div class="table-column-header-text">Возможность заказа</div></th>
-      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [ngModel]="productType.canOrder"></td>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [(ngModel)]="productType.canOrder"></td>
     </tr>
     <tr class="table-column">
       <th class="table-column-header"><div class="table-column-header-text">Возможность выбора веса</div></th>
-      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [ngModel]="productType.canWeight"></td>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [(ngModel)]="productType.canWeight"></td>
     </tr>
     <tr class="table-column">
       <th class="table-column-header"><div class="table-column-header-text">Возможность выбора количества</div></th>
-      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [ngModel]="productType.canCount"></td>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [(ngModel)]="productType.canCount"></td>
     </tr>
     <tr class="table-column">
       <th class="table-column-header"><div class="table-column-header-text">Начинки</div></th>

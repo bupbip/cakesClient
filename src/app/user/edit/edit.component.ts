@@ -225,6 +225,18 @@ export class EditComponent implements OnInit {
   }
 
   removeProductType(index: number): void {
+    console.log("was");
+    if (this.productTypes.at(index)?.productTypeId !== undefined) {
+      console.log("here");
+      // @ts-ignore
+      this.productService.deleteProductType(this.productTypes.at(index).productTypeId).subscribe(
+        message => {
+          this.notificationService.showSnackBar(message)
+        },
+        error => {
+          console.log("error");
+        });
+    }
     this.productTypes.splice(index, 1);
   }
 

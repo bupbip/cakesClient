@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../models/Product";
 import {TokenStorageService} from "./token-storage.service";
+import {ProductType} from "../models/ProductType";
 
 const PRODUCTS_API = 'http://localhost:4302/api/v1/product/';
 
@@ -36,5 +37,9 @@ export class ProductService {
 
   public deleteProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(PRODUCTS_API + 'delete-product', product);
+  }
+
+  public deleteProductType(productTypeId: number): Observable<any> {
+    return this.http.post<any>(PRODUCTS_API + 'delete-product-type', productTypeId);
   }
 }
