@@ -15,6 +15,8 @@ import {ProductType} from "../../models/ProductType";
 import {Filling} from "../../models/Filling";
 import {FillingsService} from "../../services/fillings.service";
 
+export type DeletableItem = Product | Filling | ProductType;
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -119,11 +121,25 @@ export class EditComponent implements OnInit {
     })
   };
 
-  openDeleteModal(product: Product): void {
-    this.dialog.open(DeleteProductComponent, {
+  openDeleteModal(item: DeletableItem): void {
+    const dialogRef = this.dialog.open(DeleteProductComponent, {
       width: 'auto',
       height: 'auto',
-      data: product
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result === "delete") {
+        console.log(item);
+        console.log("fillingId" in item);
+        console.log("productTypeId" in item);
+        if ("fillings" in item) {
+          this.productTypes = this.productTypes.filter(productType => productType !== item);
+        } else if ("name" in item) {
+          this.fillings = this.fillings.filter(filling => filling !== item);
+        }
+      }
     });
   }
 
@@ -199,20 +215,6 @@ export class EditComponent implements OnInit {
     this.fillings.push(<Filling> newFilling);
   }
 
-  removeFilling(index: number): void {
-    if (this.fillings.at(index)?.fillingId !== undefined) {
-      // @ts-ignore
-      this.fillingService.deleteFilling(this.fillings.at(index).fillingId).subscribe(
-        message => {
-          this.notificationService.showSnackBar(message)
-        },
-        error => {
-          console.log("error");
-        });
-    }
-    this.fillings.splice(index, 1);
-  }
-
   addProductType(): void {
     const emptyProductType: ProductType = {
       name: '',
@@ -222,22 +224,6 @@ export class EditComponent implements OnInit {
       fillings: []
     };
     this.productTypes.push(emptyProductType);
-  }
-
-  removeProductType(index: number): void {
-    console.log("was");
-    if (this.productTypes.at(index)?.productTypeId !== undefined) {
-      console.log("here");
-      // @ts-ignore
-      this.productService.deleteProductType(this.productTypes.at(index).productTypeId).subscribe(
-        message => {
-          this.notificationService.showSnackBar(message)
-        },
-        error => {
-          console.log("error");
-        });
-    }
-    this.productTypes.splice(index, 1);
   }
 
   saveFillings(): void {
@@ -254,14 +240,18 @@ export class EditComponent implements OnInit {
   };
 
   isFillingSelected(productType: ProductType, fillingId: number | undefined): boolean {
+    // @ts-ignore
     return productType.fillings.includes(<number>fillingId);
   }
 
   toggleFillingSelection(productType: ProductType, fillingId: number | undefined): void {
-      const index = productType.fillings.indexOf(<number>fillingId);
+      // @ts-ignore
+    const index = productType.fillings.indexOf(<number>fillingId);
       if (index !== -1) {
+        // @ts-ignore
         productType.fillings.splice(index, 1);
       } else {
+        // @ts-ignore
         productType.fillings.push(<number>fillingId);
       }
   }

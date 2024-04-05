@@ -1,7 +1,6 @@
-
-export interface Filling {
+export class Filling {
   fillingId?: number;
-  name: string;
-  description: string;
-  userId: number;
+  name?: string;
+  description?: string;
+  userId?: number;
 }

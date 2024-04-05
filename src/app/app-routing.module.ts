@@ -9,6 +9,8 @@ import {ProfileComponent} from "./user/profile/profile.component";
 import {EditComponent} from "./user/edit/edit.component";
 import {ConfectionerComponent} from "./confectioner/confectioner.component";
 import {OrderComponent} from "./order/order/order.component";
+import {AdminpageComponent} from "./adminpage/adminpage.component";
+import {AdminGuardService} from "./helper/admin-guard.service";
 
 /**
  * Что показывать когда пользователь заходит на URL
@@ -24,11 +26,8 @@ const routes: Routes = [
   { path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardService]},
   { path: 'profile', redirectTo: '/profile/', pathMatch: 'full'},
   { path: 'edit', component: EditComponent, canActivate: [AuthGuardService]},
-  { path: 'orders', component: OrderComponent, canActivate: [AuthGuardService]}
-  // {path: 'main', component: IndexComponent, canActivate: [AuthGuardService], children: [
-  //     {path: 'add', component: AddOrderComponent, canActivate: [AuthGuardService]}
-  //   ]},
-  // {path: '', redirectTo: 'main', pathMatch: 'full'}
+  { path: 'orders', component: OrderComponent, canActivate: [AuthGuardService]},
+  { path: 'admin', component: AdminpageComponent, canActivate: [AdminGuardService] }
 ];
 
 @NgModule({

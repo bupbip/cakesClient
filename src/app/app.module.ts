@@ -26,6 +26,7 @@ import { ConfectionerComponent } from './confectioner/confectioner.component';
 import { CreateOrderComponent } from './order/create-order/create-order.component';
 import { DeleteProductComponent } from './user/delete-product/delete-product.component';
 import { OrderComponent } from './order/order/order.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { OrderComponent } from './order/order/order.component';
     ConfectionerComponent,
     CreateOrderComponent,
     DeleteProductComponent,
-    OrderComponent
+    OrderComponent,
+    AdminpageComponent
   ],
     imports: [
         BrowserModule,

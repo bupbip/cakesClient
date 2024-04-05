@@ -3,6 +3,10 @@ import {Product} from "../../models/Product";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProductService} from "../../services/product.service";
 import {NotificationService} from "../../services/notification.service";
+import {Filling} from "../../models/Filling";
+import {ProductType} from "../../models/ProductType";
+
+export type DeletableItem = Product | Filling | ProductType;
 
 @Component({
   selector: 'app-delete-product',
@@ -10,29 +14,49 @@ import {NotificationService} from "../../services/notification.service";
   styleUrls: ['./delete-product.component.css']
 })
 export class DeleteProductComponent {
-  deletedProduct: Product;
+  deletedItem: DeletableItem;
   constructor(
     public dialogRef: MatDialogRef<DeleteProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public product: Product,
+    @Inject(MAT_DIALOG_DATA) public item: DeletableItem,
     public productService: ProductService,
     private notificationService: NotificationService,
   ) {
-    console.log(product);
-    this.deletedProduct = {...product};
+    this.deletedItem = {...item};
   }
 
-  deleteProduct() {
-    this.productService.deleteProduct(this.deletedProduct).subscribe(
-      response => {
-        this.notificationService.showSnackBar("Успешно удалено.")
-      },
-      error => {
-        console.log("Что-то пошло не так...");
-      });
-    this.dialogRef.close();
+  deleteItem() {
+    console.log(typeof this.deletedItem);
+    if ('productId' in this.deletedItem) {
+      this.productService.deleteProduct(this.deletedItem).subscribe(
+        response => {
+          this.notificationService.showSnackBar("Успешно удалено.")
+        },
+        error => {
+          console.log("Что-то пошло не так...");
+        });
+    } else if ('fillingId' in this.deletedItem) {
+      // @ts-ignore
+      this.fillingService.deleteFilling(this.deletedItem.fillingId).subscribe(
+        (message: string) => {
+          this.notificationService.showSnackBar(message);
+        },
+        (error: string) => {
+          console.log("Ошибка удаления начинки.");
+        });
+    } else if ('productTypeId' in this.deletedItem) {
+      // @ts-ignore
+      this.productService.deleteProductType(this.deletedItem.productTypeId).subscribe(
+        message => {
+          this.notificationService.showSnackBar(message)
+        },
+        error => {
+          this.notificationService.showSnackBar(error);
+        });
+    }
+    this.dialogRef.close("delete");
   }
 
   undo() {
-    this.dialogRef.close();
+    this.dialogRef.close("undo");
   }
 }

@@ -2,7 +2,7 @@
 <div class="page">
   <div class="header-all">
     <div class="about-contacts">
-      <div class="about-me-group" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+      <div class="about-me-group" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
         <p class="header-about-me">Обо мне</p>
         <div class="about-me-field">
           <textarea class="about-me-textarea textarea" [ngModel]="user ? user.description : ''"
@@ -29,7 +29,7 @@
   </div>
   <div class="main-info-group">
     <div class="button noselect" (click)="saveProfile()">Применить изменения</div>
-    <div class="button noselect" (click)="addProduct()" *ngIf="user?.role === 'ROLE_CONFECTIONER'">Добавить продукт
+    <div class="button noselect" (click)="addProduct()" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">Добавить продукт
     </div>
     <div class="button noselect" (click)="changeRole()" *ngIf="user?.role === 'ROLE_CUSTOMER'">Стать кондитером</div>
     <div class="update-image">
@@ -37,7 +37,7 @@
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
     </div>
   </div>
-  <table class="table" title="Краткая справочная информация" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+  <table class="table" title="Краткая справочная информация" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Начинки</th>
@@ -49,7 +49,7 @@
       <th class="table-column-header"><div class="table-column-header-text">Название</div></th>
       <td class="table-cell" *ngFor="let filling of fillings; let i = index">
         <input [(ngModel)]="filling.name" class="textarea"/>
-        <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="removeFilling(i)">
+        <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="openDeleteModal(filling)">
       </td>
     </tr>
     <tr class="table-column">
@@ -60,7 +60,7 @@
     </tr>
     </tbody>
   </table>
-  <table class="table" *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+  <table class="table" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Моя продукция</th>
@@ -73,7 +73,7 @@
       <th class="table-column-header"><div class="table-column-header-text">Тип продукции</div></th>
       <td class="table-cell" *ngFor="let productType of productTypes ; let i = index">
         <input [(ngModel)]="productType.name" class="textarea"/>
-        <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="removeProductType(i)">
+        <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="openDeleteModal(productType)">
       </td>
     </tr>
     <tr class="table-column">
@@ -92,7 +92,7 @@
       <th class="table-column-header"><div class="table-column-header-text">Начинки</div></th>
       <td class="table-cell fillings" *ngFor="let productType of productTypes">
         <div *ngFor="let filling of user?.fillings">
-          <label class="filling noselect" *ngIf="filling.name.trim().length > 0">
+          <label class="filling noselect" *ngIf="filling && filling.name && filling.name.trim().length > 0">
             <input type="checkbox" [ngModel]="isFillingSelected(productType, filling?.fillingId)" (change)="toggleFillingSelection(productType, filling?.fillingId)">
             {{ filling.name }}
           </label>
@@ -102,7 +102,7 @@
 
     </tbody>
   </table>
-  <div *ngIf="user?.role === 'ROLE_CONFECTIONER'">
+  <div *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <p class="works-header noselect">Мои работы</p>
     <div class="products-list">
       <div class="product-card" *ngFor="let product of products">

@@ -1,0 +1,9 @@
+<div class="adminpage">
+  <h1 class="page-name">Список заявок на переход в роль кондитера</h1>
+  <div class="role-request" *ngFor="let roleRequest of requests">
+    <p class="request-date">{{roleRequest.requestDatetime | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+    <p class="username">{{roleRequest.user.username}}</p>
+    <div class="change-role-button accept-role-button" (click)="approve(roleRequest)">Одобрить</div>
+    <div class="change-role-button decline-role-button" (click)="decline(roleRequest)">Отклонить</div>
+  </div>
+</div>
