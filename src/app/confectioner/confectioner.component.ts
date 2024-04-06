@@ -18,7 +18,6 @@ export class ConfectionerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAll(this.limit, this.skip);
   }
 
   getAll(limit: number, skip: number) {

@@ -26,7 +26,6 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAll(this.limit, this.skip);
   };
 
   makeOrder(product: Product): void {
