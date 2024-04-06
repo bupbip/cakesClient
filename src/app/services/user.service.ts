@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/User";
 import {Product} from "../models/Product";
@@ -28,8 +28,12 @@ export class UserService {
     return this.http.get<User>(USER_API + 'get?username=' + username);
   }
 
-  getConfectioners(): Observable<User[]> {
-    return this.http.get<User[]>(USER_API + 'get-confectioners');
+  getConfectioners(skip: number, limit: number): Observable<User[]> {
+    let params = new HttpParams()
+      .set('skip', skip.toString())
+      .set('limit', limit.toString());
+
+    return this.http.get<User[]>(USER_API + 'get-confectioners', { params: params });
   }
 
   saveUser(user: User | undefined) {

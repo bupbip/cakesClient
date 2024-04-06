@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../models/Product";
 import {TokenStorageService} from "./token-storage.service";
@@ -15,11 +15,12 @@ export class ProductService {
               private tokenStorage: TokenStorageService) {
   }
 
-  public getAllProducts(): Observable<Product[]> {
-    const headers = {
-      Authorization: 'Bearer ' + this.tokenStorage.getToken()
-    };
-    return this.http.get<Product[]>(PRODUCTS_API + 'get-all', {headers: headers});
+  public getAllProducts(skip: number, limit: number): Observable<Product[]> {
+    let params = new HttpParams()
+      .set('skip', skip.toString())
+      .set('limit', limit.toString());
+
+    return this.http.get<Product[]>(PRODUCTS_API + 'get-all', { params: params });
   }
 
   public getAllUserProducts(username : String): Observable<Product[]> {

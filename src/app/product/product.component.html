@@ -17,5 +17,8 @@
         </div>
       </div>
     </div>
+    <div appEnterTheViewportNotifier
+         style="width: 100%; height: 50px;"
+         (visibilityChange)="onScroll($event)"></div>
   </div>
 </body>

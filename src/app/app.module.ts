@@ -27,6 +27,8 @@ import { CreateOrderComponent } from './order/create-order/create-order.componen
 import { DeleteProductComponent } from './user/delete-product/delete-product.component';
 import { OrderComponent } from './order/order/order.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {EnterTheViewportNotifierDirective} from "./services/enter-the-viewport-notifier.directive";
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
     CreateOrderComponent,
     DeleteProductComponent,
     OrderComponent,
-    AdminpageComponent
+    AdminpageComponent,
+    EnterTheViewportNotifierDirective
   ],
     imports: [
         BrowserModule,
@@ -57,7 +60,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
         MatSelectModule,
         MatFormFieldModule,
         MatInputModule,
-        NgOptimizedImage
+        NgOptimizedImage,
+      MatPaginatorModule
     ],
   providers: [
     authInterceptorProviders,

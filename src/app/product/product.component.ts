@@ -15,6 +15,8 @@ import {Order} from "../models/Order";
 })
 export class ProductComponent implements OnInit {
   public products: Product[] = [];
+  private skip = 0;
+  private limit = 6;
 
   constructor(private productService: ProductService,
               private notificationService: NotificationService,
@@ -24,15 +26,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe(
-      (products: Product[]) => {
-        this.products = products;
-        console.log(products);
-      },
-      error => {
-        this.notificationService.showSnackBar(error.message);
-      }
-    );
+    this.getAll(this.limit, this.skip);
   };
 
   makeOrder(product: Product): void {
@@ -53,5 +47,28 @@ export class ProductComponent implements OnInit {
         });
     })
   };
+
+  getAll(limit: number, skip: number) {
+    this.productService.getAllProducts(skip, limit).subscribe(
+      (products: Product[]) => {
+        products.forEach(p => {
+          this.products.push(p);
+        });
+      },
+      error => {
+        this.notificationService.showSnackBar(error.message);
+      }
+    );
+  }
+
+  onScroll(e: any) {
+    if (e) {
+      console.log("here");
+      this.getAll(this.limit, this.skip);
+      this.skip += this.limit;
+      console.log(`skip - ${this.skip}`);
+      console.log(`limit - ${this.limit}`);
+    }
+  }
 
 }
