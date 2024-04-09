@@ -1,3 +1,6 @@
+import {Filling} from "./Filling";
+import {ProductType} from "./ProductType";
+
 export class Product {
   constructor(
     public productId?: number,
@@ -5,9 +8,9 @@ export class Product {
     public price?: number,
     public count?: number,
     public weight?: number,
-    public topping?: string,
+    public topping?: Filling,
     public comment?: string,
-    public productType?: string,
+    public productType?: ProductType,
     public ownerUsername?: string,
     public image?: any
   ) {}

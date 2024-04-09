@@ -7,6 +7,8 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {OrderService} from "../../services/order.service";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
+import {ProductType} from "../../models/ProductType";
+import {Filling} from "../../models/Filling";
 
 @Component({
   selector: 'app-create-order',
@@ -14,17 +16,9 @@ import {User} from "../../models/User";
   styleUrls: ['./create-order.component.css']
 })
 export class CreateOrderComponent {
-  foods: any[] = [
-    {value: 'COOKIE', viewValue: 'Печенье'},
-    {value: 'CAKE', viewValue: 'Торт'},
-    {value: 'CUPCAKE', viewValue: 'Пирожные'},
-  ];
+  productTypes: ProductType[] = []
 
-  toppings: any[] = [
-    {value: 'CHOCOLATE', viewValue: 'Шоколад'},
-    {value: 'STRAWBERRY', viewValue: 'Клубника'},
-    {value: 'MANGO', viewValue: 'Манго'},
-  ];
+  toppings: Filling[] = []
 
   deliveryTypes: any[] = [
     {value: 'DELIVERY', viewValue: 'Доставка'},
@@ -45,6 +39,8 @@ export class CreateOrderComponent {
     console.log(data);
     if (data.usr != undefined) {
       this.order.confectioner = {...data.usr};
+      // @ts-ignore
+      this.productTypes = this.order.confectioner.productTypes;
       this.addEmptyProduct();
     } else if (data.product != undefined) {
       this.addProduct(data.product);
@@ -116,6 +112,17 @@ export class CreateOrderComponent {
 
   close() {
     this.dialogRef.close();
+  }
+
+  getFillingsForProductType(productType: ProductType | undefined): void {
+    console.log("test");
+    console.log(productType?.name);
+    console.log(productType?.fillings);
+    if (productType && productType.fillings) {
+      // @ts-ignore
+      this.toppings = this.order.confectioner?.fillings.filter(filling => productType.fillings.includes(filling.fillingId));
+      console.log(this.toppings);
+    }
   }
 
 }
