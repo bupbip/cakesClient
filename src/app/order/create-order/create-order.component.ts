@@ -44,6 +44,14 @@ export class CreateOrderComponent {
       this.addEmptyProduct();
     } else if (data.product != undefined) {
       this.addProduct(data.product);
+      this.userService.getUserByUsername(data.product.ownerUsername).subscribe(
+        (user: User) => {
+          this.order.confectioner = user;
+        },
+        error => {
+          // this.notificationService.showSnackBar(error.message);
+        }
+      );
     } else if (data.order != undefined) {
       this.order = data.order;
     }
