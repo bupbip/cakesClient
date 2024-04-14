@@ -1,11 +1,12 @@
 .statistic-page {
-   width: 100%;
-   overflow: hidden;
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   background-color: #ffffff;
- }
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
 .statistic-header {
   text-align: center;
   font-size: 3rem;
@@ -18,6 +19,7 @@
   flex-shrink: 0;
   margin-top: 0;
 }
+
 .diagrams {
   width: 100%;
   height: 43.5rem;
@@ -29,6 +31,7 @@
   border-radius: 1.6rem;
   gap: 2rem;
 }
+
 .month {
   width: 3.9rem;
   align-items: center;
@@ -38,6 +41,7 @@
   justify-content: flex-end;
   height: 100%;
 }
+
 .stats-bars {
   width: 100%;
   display: flex;
@@ -45,6 +49,7 @@
   border-radius: 0.4rem;
   flex-shrink: 0;
 }
+
 .outcome {
   margin-right: 0.3rem;
   width: 1.8rem;
@@ -53,6 +58,7 @@
   border-radius: 0.4rem;
   flex-shrink: 0;
 }
+
 .income {
   width: 1.8rem;
   height: 10.6rem;
@@ -60,6 +66,7 @@
   border-radius: 0.4rem;
   flex-shrink: 0;
 }
+
 .month-name {
   text-align: center;
   font-size: 1rem;
@@ -70,6 +77,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .current-month {
   box-sizing: border-box;
   padding: 10.9rem 1.6rem 0 1.5rem;
@@ -80,6 +88,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .income-outcome-group {
   width: 100%;
   height: 4.9rem;
@@ -88,6 +97,7 @@
   justify-content: center;
   margin: 3rem 0;
 }
+
 .income-text {
   margin: 0.1rem 41.8rem 0rem 0rem;
   width: 40.8rem;
@@ -106,6 +116,7 @@
   border-radius: 1.2rem;
   flex-shrink: 0;
 }
+
 .outcome-text {
   margin-bottom: 0.1rem;
   width: 40.8rem;
@@ -124,6 +135,7 @@
   border-radius: 1.2rem;
   flex-shrink: 0;
 }
+
 .email-button-year-group {
   width: 71.5rem;
   height: 4.8rem;
@@ -131,12 +143,14 @@
   display: flex;
   align-items: center;
 }
+
 .email-button-group {
   margin: 0rem 20rem 1rem 0rem;
   width: 39.9rem;
   position: relative;
   flex-shrink: 0;
 }
+
 .rectangle {
   max-width: 38.5rem;
   height: 3.8rem;
@@ -146,11 +160,13 @@
   display: flex;
   align-items: center;
 }
+
 .mail-logo {
   width: 2rem;
   height: 1.6rem;
   margin: 0 0.7rem;
 }
+
 .email-text {
   height: 2.5rem;
   font-size: 2rem;
@@ -160,6 +176,7 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .year-label {
   margin-top: 1rem;
   text-align: center;
@@ -172,6 +189,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .month-stats-group {
   width: 100%;
   height: 7.5rem;
@@ -180,6 +198,7 @@
   justify-content: space-evenly;
   gap: 34rem;
 }
+
 .income-stats-label {
   width: 37.3rem;
   max-width: 37.3rem;
@@ -191,6 +210,7 @@
   font-family: Poppins, 'Source Sans Pro';
   flex-shrink: 0;
 }
+
 .outcome-stats-label {
   width: 37.3rem;
   max-width: 37.3rem;
@@ -202,6 +222,7 @@
   font-family: Poppins, 'Source Sans Pro';
   flex-shrink: 0;
 }
+
 .rectangle-95-nvX {
   margin-right: 0.3rem;
   width: 1.8rem;
@@ -210,6 +231,7 @@
   border-radius: 0.4rem;
   flex-shrink: 0;
 }
+
 .rectangle-90-WLj {
   width: 1.8rem;
   height: 24.2rem;
