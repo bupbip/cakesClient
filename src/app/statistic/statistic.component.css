@@ -53,7 +53,7 @@
 .outcome {
   margin-right: 0.3rem;
   width: 1.8rem;
-  height: 7.6rem;
+  height: 2rem;
   background: linear-gradient(180deg, rgba(176, 159, 255, 0.400000006) -0%, rgba(141, 121, 246, 0.400000006) 100%);
   border-radius: 0.4rem;
   flex-shrink: 0;
@@ -61,7 +61,7 @@
 
 .income {
   width: 1.8rem;
-  height: 10.6rem;
+  height: 2rem;
   background: linear-gradient(180deg, #b09fff -0%, #8d79f6 100%);
   border-radius: 0.4rem;
   flex-shrink: 0;
@@ -149,6 +149,7 @@
   width: 39.9rem;
   position: relative;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .rectangle {
