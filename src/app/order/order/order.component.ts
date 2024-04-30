@@ -26,15 +26,15 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.tokenStorageService.getUser());
     // if (this.user.role === "ROLE_CONFECTIONER") {
-      this.orderService.getAllOrdersByUser(this.user).subscribe(
-        (orders: Order[]) => {
-          this.orders = orders;
-          console.log(orders);
-        },
-        error => {
-          this.notificationService.showSnackBar(error.message);
-        }
-      );
+    this.orderService.getAllOrdersByUser(this.user).subscribe(
+      (orders: Order[]) => {
+        this.orders = orders;
+        console.log(orders);
+      },
+      error => {
+        this.notificationService.showSnackBar(error.message);
+      }
+    );
     // }
   };
 

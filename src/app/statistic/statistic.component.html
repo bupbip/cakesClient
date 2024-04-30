@@ -13,8 +13,8 @@
     <div class="month" *ngFor="let stat of statistic" [ngClass]="{'current-month': stat?.month === currMonth}"
          [title]="'Расходы: ' + (stat.expences || 0) + '\nДоход: ' + (stat.income || 0)">
       <div class="stats-bars">
-        <div class="outcome" [style.height.rem]="stat !== undefined && stat.expences ? stat.expences / 1000 : 2"></div>
-        <div class="income" [style.height.rem]="stat !== undefined && stat.income ? stat.income / 1000 : 2"></div>
+        <div class="outcome" [style.height.px]="calculateHeight(stat?.expences)"></div>
+        <div class="income" [style.height.px]="calculateHeight(stat?.income)"></div>
       </div>
       <p class="month-name">{{ stat.month !== undefined && months[stat.month - 1]?.viewValue }}</p>
     </div>
@@ -26,13 +26,54 @@
   <div class="month-stats-group">
     <p class="income-stats-label">
       Количество заказов: {{statistic[currMonth - 1].orderCount}}
-      <br/>
-      Количество клиентов: {{statistic[currMonth - 1].customerCount}}
     </p>
     <p class="outcome-stats-label">
-      Доставка: 5500
-      <br/>
-      Расходные материалы: 3000
+      Количество клиентов: {{statistic[currMonth - 1].customerCount}}
     </p>
+  </div>
+  <div class="consumables">
+  <table class="table">
+    <thead class="table-header">
+    <tr class="table-header-col">
+      <th class="table-header-text" colspan="6">Расходные материалы</th>
+      <p class="add-element">+</p>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Название</div></th>
+      <td class="table-cell" *ngFor="let consumable of consumables ; let i = index">
+        <input [(ngModel)]="consumable.name" class="textarea"/>
+        <img src="../../../assets/bin.png" class="delete-filling" width="20px">
+      </td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Наличие</div></th>
+      <td class="table-cell" *ngFor="let consumable of consumables">
+        <div class="frame">
+          <div *ngIf="consumable && consumable.quantity !== undefined && consumable.threshold !== undefined">
+            <div *ngIf="consumable.quantity >= consumable.threshold" class="availability-ok-figure">
+              <div class="availability-ok-text">В достатке</div>
+            </div>
+            <div *ngIf="consumable.quantity < consumable.threshold" class="availability-bad-figure">
+              <div class="availability-bad-text">Мало</div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="table-column">
+      <th class="table-column-header"><div class="table-column-header-text">Количество</div></th>
+      <td class="table-cell" *ngFor="let consumable of consumables"><div class="table-cell-text">
+        {{consumable.quantity}} {{consumable.quantityType}}
+      </div></td>
+    </tr>
+    <tr class="table-column table-column-settings">
+      <th class="table-column-header"><div class="table-column-header-text"></div></th>
+      <td class="table-cell" *ngFor="let consumable of consumables"><img class="consumable-settings-img" src="../../assets/tablecellcontrols.png"></td>
+    </tr>
+
+    </tbody>
+  </table>
   </div>
 </div>

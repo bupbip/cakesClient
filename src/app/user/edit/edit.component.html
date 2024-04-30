@@ -1,6 +1,9 @@
 <body>
 <div class="page">
   <div class="header-all">
+    <div class="photo">
+      <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" class="photo-img">
+    </div>
     <div class="about-contacts">
       <div class="about-me-group" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
         <p class="header-about-me">Обо мне</p>
@@ -22,9 +25,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="photo">
-      <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" class="photo-img">
     </div>
   </div>
   <div class="main-info-group">

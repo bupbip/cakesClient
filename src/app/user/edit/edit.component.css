@@ -1,7 +1,6 @@
 .page {
   box-sizing: border-box;
   padding-bottom: 8rem;
-  padding-left: 9rem;
   width: 100%;
   align-items: center;
   display: flex;
@@ -139,16 +138,17 @@
   background-color: #d9d9d9;
   flex-shrink: 0;
   margin-right: 5rem;
-  margin-left: 5rem;
+  border-radius: 4.5rem;
 }
 .photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 4.5rem;
 }
 .main-info-group {
-  margin: 0rem 0rem 3.4rem 0.5rem;
-  width: calc(100% - 0.5rem);
+  margin: 0rem 0rem 3.4rem 5rem;
+  gap: 13rem;
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
@@ -180,26 +180,6 @@
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   background-color: #18a0fb;
-  border-radius: 0.6rem;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-.empty-button {
-  margin-left: 6rem;
-  padding: 0 2rem 0 2rem;
-  width: auto;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.2175;
-  letter-spacing: -0.03rem;
-  color: #18a0fb;
-  font-family: Montserrat, 'Source Sans Pro';
-  white-space: nowrap;
-  border: 2px solid #18a0fb;
   border-radius: 0.6rem;
   flex-shrink: 0;
   cursor: pointer;

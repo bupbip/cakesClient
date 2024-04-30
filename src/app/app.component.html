@@ -6,12 +6,18 @@
       <nav class="nav-bar">
         <a class="link" [href]="['/production']">Продукция</a>
         <a class="link" [href]="['/confectioners']">Кондитеры</a>
+        <a class="link" [href]="['/admin']" *ngIf="tokenStorageService.getUser()?.role === 'ROLE_ADMIN'">
+          Панель администратора
+        </a>
       </nav>
     </div>
     <div class="buttons-group">
       <nav class="nav-bar">
         <a class="link" [routerLink]="['/profile', this.tokenStorageService.getUser()?.username]">Профиль</a>
         <a class="link" [href]="['/orders']">Заказы</a>
+        <a class="link" [href]="['/statistic']" *ngIf="tokenStorageService.getUser()?.role === 'ROLE_CONFECTIONER'">
+          Статистика
+        </a>
       </nav>
       <div class="auth-buttons" *ngIf="!isAuth">
         <button class="btn login-button" [routerLink]="['/login']">Вход</button>

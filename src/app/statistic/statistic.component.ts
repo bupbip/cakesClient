@@ -3,6 +3,7 @@ import {NotificationService} from "../services/notification.service";
 import {Statistic} from "../models/Statistic";
 import {StatisticService} from "../services/statistic.service";
 import {User} from "../models/User";
+import {Consumable} from "../models/Consumable";
 import {TokenStorageService} from "../services/token-storage.service";
 
 @Component({
@@ -30,6 +31,8 @@ export class StatisticComponent implements OnInit {
     {value: 12, viewValue: 'Дек'},
   ];
 
+  consumables: Consumable[] = [];
+
   constructor(private statisticService: StatisticService,
               private notificationService: NotificationService,
               private tokenStorage: TokenStorageService) {
@@ -55,7 +58,26 @@ export class StatisticComponent implements OnInit {
         this.notificationService.showSnackBar(error.message);
       }
     );
+    this.statisticService.getAllConsumables().subscribe(
+      (consumables: Consumable[]) => {
+        console.log(consumables);
+        this.consumables = consumables;
+      },
+      error => {
+        this.notificationService.showSnackBar(error.message);
+      }
+    );
   }
 
+  calculateHeight(value: number | undefined): number {
+    const maxHeight = 370;
+    const scaleFactor = 0.005;
+
+    if (value !== undefined) {
+      return Math.min(value * scaleFactor, maxHeight);
+    } else {
+      return 0;
+    }
+  }
 
 }
