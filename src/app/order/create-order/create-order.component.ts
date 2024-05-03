@@ -36,7 +36,6 @@ export class CreateOrderComponent {
     private orderService: OrderService,
     private userService: UserService
   ) {
-    console.log(data);
     if (data.usr != undefined) {
       this.order.confectioner = {...data.usr};
       // @ts-ignore
@@ -123,9 +122,6 @@ export class CreateOrderComponent {
   }
 
   getFillingsForProductType(productType: ProductType | undefined): void {
-    console.log("test");
-    console.log(productType?.name);
-    console.log(productType?.fillings);
     if (productType && productType.fillings) {
       // @ts-ignore
       this.toppings = this.order.confectioner?.fillings.filter(filling => productType.fillings.includes(filling.fillingId));

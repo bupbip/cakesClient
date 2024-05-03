@@ -1,38 +1,68 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Product} from "../../models/Product";
+import {ProductType} from "../../models/ProductType";
+import {Filling} from "../../models/Filling";
+import {User} from "../../models/User";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {UserService} from "../../services/user.service";
+import {Consumable} from "../../models/Consumable";
+import {StatisticService} from "../../services/statistic.service";
+import {NotificationService} from "../../services/notification.service";
 
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.css']
 })
-export class EditProductComponent {
-  foods: any[] = [
-    {value: 'COOKIE', viewValue: 'Печенье'},
-    {value: 'CAKE', viewValue: 'Торт'},
-    {value: 'CUPCAKE', viewValue: 'Пирожные'},
-  ];
-
-  toppings: any[] = [
-    {value: 'CHOCOLATE', viewValue: 'Шоколад'},
-    {value: 'STRAWBERRY', viewValue: 'Клубника'},
-    {value: 'MANGO', viewValue: 'Манго'},
-  ];
+export class EditProductComponent implements OnInit {
+  productTypes: ProductType[] = [];
+  toppings: Filling[] = [];
 
   editedProduct: Product;
+  confectioner!: User;
+
+  consumables: Consumable[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<EditProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public product: Product
+    @Inject(MAT_DIALOG_DATA) public product: Product,
+    private tokenStorageService: TokenStorageService,
+    private userService: UserService,
+    private statisticService: StatisticService,
+    private notificationService: NotificationService
   ) {
-    console.log(product);
     this.editedProduct = {...product};
   }
 
+
+  ngOnInit() {
+    this.userService.getUserByUsername(this.tokenStorageService.getUser().username).subscribe(
+      (user: User) => {
+        this.confectioner = user;
+        console.log(user);
+        if (this.confectioner.fillings) this.toppings = this.confectioner.fillings.slice();
+        if (this.confectioner.productTypes) this.productTypes = this.confectioner.productTypes;
+      },
+      error => {
+        this.notificationService.showSnackBar(error.message);
+      }
+    );
+
+    this.statisticService.getAllConsumables().subscribe(
+      (consumables: Consumable[]) => {
+        console.log(consumables);
+        this.consumables = consumables;
+      },
+      error => {
+        this.notificationService.showSnackBar(error.message);
+      }
+    );
+  }
+
+
   onSave(): void {
     this.product = this.editedProduct;
-    console.log(this.product);
-    console.log(this.editedProduct);
     this.dialogRef.close(this.product);
   }
 
@@ -46,6 +76,13 @@ export class EditProductComponent {
         }
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  getFillingsForProductType(productType: ProductType | undefined): void {
+    if (productType && productType.fillings) {
+      // @ts-ignore
+      this.toppings = this.confectioner?.fillings.filter(filling => productType.fillings.includes(filling.fillingId));
     }
   }
 }
