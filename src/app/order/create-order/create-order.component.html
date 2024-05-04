@@ -71,6 +71,33 @@
                  style="display: none;">
         </div>
       </div>
+      <div class="consumables-list">
+        <p class="consumables-label">Расходные материалы</p>
+        <div class="consumable-line-group" *ngFor="let consumableProduct of orderItem.product.consumableProducts; let i = index">
+          <div class="consumable-column-group">
+            <div class="consumable-name">
+              <div class="field">
+                <label class="field-label">Название:</label>
+                <select class="field-input" [(ngModel)]="consumableProduct.consumable">
+                  <option *ngFor="let consumable of consumables" [ngValue]="consumableProduct.consumable" class="product-type-label">
+                    {{consumable.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="consumable-expenses">
+              <div class="field">
+                <label class="field-label">Затраты:</label>
+                <input class="field-input" type="number" [(ngModel)]="consumableProduct.count"/>
+              </div>
+            </div>
+            <div class="consumable-add-button" (click)="addEmptyConsumableProduct(orderItem)" *ngIf="orderItem.product.consumableProducts && i === orderItem.product.consumableProducts.length - 1">Добавить</div>
+          </div>
+          <div class="delete-button" (click)="removeConsumableProduct(orderItem, i)">Удалить
+          </div>
+        </div>
+        <div class="consumable-add-button" (click)="addEmptyConsumableProduct(orderItem)" *ngIf="orderItem.product.consumableProducts && orderItem.product.consumableProducts.length == 0">Добавить</div>
+      </div>
     </div>
     <div class="product-count-pre-price-group">
       <div class="product-count-group">

@@ -24,7 +24,7 @@ export class UserService {
     return this.http.get(USER_API);
   }
 
-  getUserByUsername(username: string): Observable<User> {
+  getUserByUsername(username: String): Observable<User> {
     return this.http.get<User>(USER_API + 'get?username=' + username);
   }
 

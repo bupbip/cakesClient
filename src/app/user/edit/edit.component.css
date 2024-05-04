@@ -219,6 +219,7 @@
   cursor: pointer;
 }
 .products-list {
+  margin-left: 8rem;
   height: 43.4rem;
   display: flex;
   column-gap: 15rem;
@@ -422,4 +423,24 @@
   margin: 0;
   display: flex;
   align-items: center;
+}
+.empty-button {
+  margin-left: 6rem;
+  padding: 0 2rem 0 2rem;
+  width: auto;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2175;
+  letter-spacing: -0.03rem;
+  color: #18a0fb;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  border: 2px solid #18a0fb;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+  cursor: pointer;
 }

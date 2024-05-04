@@ -8,9 +8,9 @@
       </div>
       <div class="field">
         <label class="field-label">Тип изделия:</label>
-        <select class="field-input" [(ngModel)]="editedProduct.productType">
-          <option *ngFor="let food of foods" [value]="food.value" class="product-type-label">
-            {{food.viewValue}}
+        <select class="field-input" [(ngModel)]="editedProduct.productType" (change)="getFillingsForProductType(editedProduct.productType)">
+          <option *ngFor="let productType of productTypes" [ngValue]="productType" class="product-type-label">
+            {{productType.name}}
           </option>
         </select>
       </div>
@@ -25,8 +25,8 @@
       <div class="field">
         <label class="field-label">Начинка:</label>
         <select class="field-input" [(ngModel)]="editedProduct.topping">
-          <option *ngFor="let topping of toppings" [value]="topping.value" class="field-label">
-            {{topping.viewValue}}
+          <option *ngFor="let topping of toppings" [value]="topping.fillingId" class="field-label">
+            {{topping.name}}
           </option>
         </select>
       </div>
@@ -46,23 +46,27 @@
     </div>
     <div class="consumables-list">
       <p class="consumables-label">Расходные материалы</p>
-      <div class="consumable-line-group">
+      <div class="consumable-line-group" *ngFor="let consumableProduct of editedProduct.consumableProducts; let i = index">
         <div class="consumable-column-group">
           <div class="consumable-name">
             <div class="field">
               <label class="field-label">Название:</label>
-              <input class="field-input" type="text"/>
+              <select class="field-input" [(ngModel)]="consumableProduct.consumable">
+                <option *ngFor="let consumable of consumables" [ngValue]="consumableProduct.consumable" class="product-type-label">
+                  {{consumable.name}}
+                </option>
+              </select>
             </div>
           </div>
           <div class="consumable-expenses">
             <div class="field">
               <label class="field-label">Затраты:</label>
-              <input class="field-input" type="number"/>
+              <input class="field-input" type="number" [(ngModel)]="consumableProduct.count"/>
             </div>
           </div>
-          <div class="consumable-add-button">Добавить</div>
+          <div class="consumable-add-button" (click)="addEmptyConsumableProduct()" *ngIf="editedProduct && editedProduct.consumableProducts && i === editedProduct.consumableProducts.length - 1">Добавить</div>
         </div>
-        <div class="delete-button">Удалить
+        <div class="delete-button" (click)="removeConsumableProduct(i)" *ngIf="editedProduct && editedProduct.consumableProducts && editedProduct.consumableProducts.length > 1">Удалить
         </div>
       </div>
     </div>
@@ -72,14 +76,6 @@
       <label class="field-label">Комментарий:</label>
       <textarea class="description-input" [(ngModel)]="editedProduct.comment"></textarea>
     </div>
-    <!--    <div class="prepare-result-group">-->
-    <!--      <div class="prepare-result">-->
-    <!--        <div class="prepare-result-label">Предварительные затраты: 3000</div>-->
-    <!--      </div>-->
-    <!--      <div class="prepare-result">-->
-    <!--        <div class="prepare-result-label">Предварительная стоимость товара: 5000</div>-->
-    <!--      </div>-->
-    <!--    </div>-->
     <div class="result-group">
       <div class="result-field">
         <label class="field-label">Итоговая стоимость товара:</label>
