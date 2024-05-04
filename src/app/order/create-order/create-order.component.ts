@@ -9,6 +9,8 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
 import {ProductType} from "../../models/ProductType";
 import {Filling} from "../../models/Filling";
+import {Consumable} from "../../models/Consumable";
+import {ConsumableProduct} from "../../models/ConsumableProduct";
 
 @Component({
   selector: 'app-create-order',
@@ -19,6 +21,7 @@ export class CreateOrderComponent {
   productTypes: ProductType[] = []
 
   toppings: Filling[] = []
+  consumables: Consumable[] = [];
 
   deliveryTypes: any[] = [
     {value: 'DELIVERY', viewValue: 'Доставка'},
@@ -127,6 +130,17 @@ export class CreateOrderComponent {
       this.toppings = this.order.confectioner?.fillings.filter(filling => productType.fillings.includes(filling.fillingId));
       console.log(this.toppings);
     }
+  }
+
+  addEmptyConsumableProduct(item: OrderItem) {
+    console.log(item);
+    // @ts-ignore
+    item.product.consumableProducts.push(new ConsumableProduct(new Consumable(), 0));
+  }
+
+  removeConsumableProduct(item: OrderItem, index: number) {
+    // @ts-ignore
+    item.product.consumableProducts.splice(index, 1);
   }
 
 }

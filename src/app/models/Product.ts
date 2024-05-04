@@ -1,6 +1,6 @@
 import {Filling} from "./Filling";
 import {ProductType} from "./ProductType";
-import {Consumable} from "./Consumable";
+import {ConsumableProduct} from "./ConsumableProduct";
 
 export class Product {
   constructor(
@@ -14,6 +14,6 @@ export class Product {
     public productType?: ProductType,
     public ownerUsername?: string,
     public image?: any,
-    public consumables?: Consumable[]
+    public consumableProducts?: ConsumableProduct[]
   ) {}
 }

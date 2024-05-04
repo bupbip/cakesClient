@@ -9,6 +9,7 @@ import {UserService} from "../../services/user.service";
 import {Consumable} from "../../models/Consumable";
 import {StatisticService} from "../../services/statistic.service";
 import {NotificationService} from "../../services/notification.service";
+import {ConsumableProduct} from "../../models/ConsumableProduct";
 
 @Component({
   selector: 'app-edit-product',
@@ -33,6 +34,10 @@ export class EditProductComponent implements OnInit {
     private notificationService: NotificationService
   ) {
     this.editedProduct = {...product};
+    if (product == undefined) {
+      this.editedProduct.consumableProducts = [];
+      this.addEmptyConsumableProduct();
+    }
   }
 
 
@@ -85,4 +90,17 @@ export class EditProductComponent implements OnInit {
       this.toppings = this.confectioner?.fillings.filter(filling => productType.fillings.includes(filling.fillingId));
     }
   }
+
+  addEmptyConsumableProduct() {
+    console.log(this.editedProduct);
+    // @ts-ignore
+    this.editedProduct.consumableProducts.push(new ConsumableProduct(new Consumable(), 0));
+    console.log(this.editedProduct.consumableProducts);
+  }
+
+  removeConsumableProduct(index: number) {
+    // @ts-ignore
+    this.editedProduct.consumableProducts.splice(index, 1);
+  }
+
 }
