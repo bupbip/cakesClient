@@ -34,6 +34,7 @@ export class EditProductComponent implements OnInit {
     private notificationService: NotificationService
   ) {
     this.editedProduct = {...product};
+    console.log(this.editedProduct);
     if (product == undefined) {
       this.editedProduct.consumableProducts = [];
       this.addEmptyConsumableProduct();
@@ -93,14 +94,27 @@ export class EditProductComponent implements OnInit {
 
   addEmptyConsumableProduct() {
     console.log(this.editedProduct);
+    const defaultConsumable = this.consumables && this.consumables.length > 0 ? this.consumables[0] : new Consumable();
     // @ts-ignore
-    this.editedProduct.consumableProducts.push(new ConsumableProduct(new Consumable(), 0));
+    this.editedProduct.consumableProducts.push(new ConsumableProduct(defaultConsumable, 0));
     console.log(this.editedProduct.consumableProducts);
   }
 
   removeConsumableProduct(index: number) {
     // @ts-ignore
     this.editedProduct.consumableProducts.splice(index, 1);
+  }
+
+  onProductTypeChange(event: Event) {
+    const selectedProductTypeName = (event.target as HTMLSelectElement).value;
+    this.editedProduct.productType = this.productTypes.find(pt => pt.name === selectedProductTypeName);
+    this.getFillingsForProductType(this.editedProduct.productType);
+  }
+
+  onToppingChange(event: Event) {
+    const selectedToppingId = (event.target as HTMLSelectElement).value;
+    // @ts-ignore
+    this.editedProduct.topping = this.toppings.find(topping => topping.fillingId === selectedToppingId);
   }
 
 }

@@ -5,6 +5,11 @@ import {StatisticService} from "../services/statistic.service";
 import {User} from "../models/User";
 import {Consumable} from "../models/Consumable";
 import {TokenStorageService} from "../services/token-storage.service";
+import {DeletableItem} from "../user/edit/edit.component";
+import {EditConsumableComponent} from "../edit-consumable/edit-consumable.component";
+import {MatDialog} from "@angular/material/dialog";
+import {DeleteProductComponent} from "../user/delete-product/delete-product.component";
+import {ProductType} from "../models/ProductType";
 
 @Component({
   selector: 'app-statistic',
@@ -33,7 +38,8 @@ export class StatisticComponent implements OnInit {
 
   consumables: Consumable[] = [];
 
-  constructor(private statisticService: StatisticService,
+  constructor(private dialog: MatDialog,
+              private statisticService: StatisticService,
               private notificationService: NotificationService,
               private tokenStorage: TokenStorageService) {
     this.year = new Date().getFullYear();
@@ -48,7 +54,7 @@ export class StatisticComponent implements OnInit {
         for (let i = 1; i <= 12; i++) {
           const existingStat = this.statistic.find(stat => stat.month === i);
           if (!existingStat) {
-            this.statistic.push({ month: i });
+            this.statistic.push({month: i});
           }
         }
         // @ts-ignore
@@ -80,4 +86,50 @@ export class StatisticComponent implements OnInit {
     }
   }
 
+  openDeleteModal(consumable: Consumable): void {
+    const dialogRef = this.dialog.open(DeleteProductComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: consumable
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === "delete") {
+        this.statisticService.deleteConsumable(consumable)?.subscribe(
+          (result: String) => {
+            console.log(result);
+          },
+          error => {
+            this.notificationService.showSnackBar("Удалено.");
+          }
+        );
+        this.consumables = this.consumables.filter(cons => cons !== consumable)
+      }
+    });
+  }
+
+  openEditModal(consumable: Consumable): void {
+    const dialogRef = this.dialog.open(EditConsumableComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: consumable
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === "approve") {
+        window.location.reload();
+      }
+    });
+  }
+
+  addConsumable() {
+    const emptyConsumable : Consumable = {
+      name: '',
+      quantity: undefined,
+      threshold: undefined,
+      quantityType: '',
+      userId: this.user.userId
+    };
+    this.consumables.push(emptyConsumable);
+  }
 }

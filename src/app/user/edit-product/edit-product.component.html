@@ -8,8 +8,8 @@
       </div>
       <div class="field">
         <label class="field-label">Тип изделия:</label>
-        <select class="field-input" [(ngModel)]="editedProduct.productType" (change)="getFillingsForProductType(editedProduct.productType)">
-          <option *ngFor="let productType of productTypes" [ngValue]="productType" class="product-type-label">
+        <select class="field-input" [value]="editedProduct.productType?.name" (change)="onProductTypeChange($event)">
+          <option *ngFor="let productType of productTypes" [value]="productType.name" class="product-type-label">
             {{productType.name}}
           </option>
         </select>
@@ -24,7 +24,7 @@
       </div>
       <div class="field">
         <label class="field-label">Начинка:</label>
-        <select class="field-input" [(ngModel)]="editedProduct.topping">
+        <select class="field-input" [value]="editedProduct.topping?.fillingId" (change)="onToppingChange($event)">
           <option *ngFor="let topping of toppings" [value]="topping.fillingId" class="field-label">
             {{topping.name}}
           </option>
@@ -51,8 +51,8 @@
           <div class="consumable-name">
             <div class="field">
               <label class="field-label">Название:</label>
-              <select class="field-input" [(ngModel)]="consumableProduct.consumable">
-                <option *ngFor="let consumable of consumables" [ngValue]="consumableProduct.consumable" class="product-type-label">
+              <select class="field-input" [(ngModel)]="consumableProduct.consumable.consumableId">
+                <option *ngFor="let consumable of consumables" [ngValue]="consumable.consumableId" class="product-type-label">
                   {{consumable.name}}
                 </option>
               </select>
@@ -69,6 +69,8 @@
         <div class="delete-button" (click)="removeConsumableProduct(i)" *ngIf="editedProduct && editedProduct.consumableProducts && editedProduct.consumableProducts.length > 1">Удалить
         </div>
       </div>
+      <div class="consumable-add-button" (click)="addEmptyConsumableProduct()" *ngIf="editedProduct && editedProduct.consumableProducts && 0 == editedProduct.consumableProducts.length">Добавить</div>
+
     </div>
   </div>
   <div class="external-fields">
