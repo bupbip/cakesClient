@@ -4,4 +4,5 @@ export class Consumable {
   quantity? : number;
   threshold? : number;
   quantityType? : string;
+  userId? : number;
 }

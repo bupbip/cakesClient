@@ -5,8 +5,9 @@ import {ProductService} from "../../services/product.service";
 import {NotificationService} from "../../services/notification.service";
 import {Filling} from "../../models/Filling";
 import {ProductType} from "../../models/ProductType";
+import {Consumable} from "../../models/Consumable";
 
-export type DeletableItem = Product | Filling | ProductType;
+export type DeletableItem = Product | Filling | ProductType | Consumable;
 
 @Component({
   selector: 'app-delete-product',

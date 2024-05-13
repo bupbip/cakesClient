@@ -31,4 +31,17 @@ export class StatisticService {
       .set('username', username);
     return this.http.get<Consumable[]>(CONSUMABLE_API + 'get-consumable', {params: params});
   }
+
+  public deleteConsumable(consumable: Consumable): Observable<String> | undefined {
+    if (consumable.consumableId != undefined) {
+      let params = new HttpParams()
+        .set('consumableId', consumable.consumableId)
+      return this.http.delete<String>(CONSUMABLE_API + 'delete-consumable', {params: params});
+    }
+    return undefined;
+  }
+
+  public updateConsumable(consumable: Consumable): Observable<Consumable> {
+    return this.http.post<Consumable>(CONSUMABLE_API + 'update-consumable', consumable);
+  }
 }

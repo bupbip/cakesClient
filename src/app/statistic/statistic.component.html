@@ -36,7 +36,7 @@
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Расходные материалы</th>
-      <p class="add-element">+</p>
+      <p class="add-element" (click)="addConsumable()">+</p>
     </tr>
     </thead>
     <tbody class="table-body">
@@ -44,7 +44,7 @@
       <th class="table-column-header"><div class="table-column-header-text">Название</div></th>
       <td class="table-cell" *ngFor="let consumable of consumables ; let i = index">
         <input [(ngModel)]="consumable.name" class="textarea"/>
-        <img src="../../../assets/bin.png" class="delete-filling" width="20px">
+        <img src="../../../assets/bin.png" class="delete-filling" (click)="openDeleteModal(consumable)" width="20px">
       </td>
     </tr>
     <tr class="table-column">
@@ -70,7 +70,7 @@
     </tr>
     <tr class="table-column table-column-settings">
       <th class="table-column-header"><div class="table-column-header-text"></div></th>
-      <td class="table-cell" *ngFor="let consumable of consumables"><img class="consumable-settings-img" src="../../assets/tablecellcontrols.png"></td>
+      <td class="table-cell" *ngFor="let consumable of consumables"><img class="consumable-settings-img" src="../../assets/tablecellcontrols.png" (click)="openEditModal(consumable)"></td>
     </tr>
 
     </tbody>

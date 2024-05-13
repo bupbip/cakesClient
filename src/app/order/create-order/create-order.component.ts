@@ -11,6 +11,8 @@ import {ProductType} from "../../models/ProductType";
 import {Filling} from "../../models/Filling";
 import {Consumable} from "../../models/Consumable";
 import {ConsumableProduct} from "../../models/ConsumableProduct";
+import {StatisticService} from "../../services/statistic.service";
+import {NotificationService} from "../../services/notification.service";
 
 @Component({
   selector: 'app-create-order',
@@ -34,29 +36,52 @@ export class CreateOrderComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CreateOrderComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private tokenStorageService: TokenStorageService,
     private orderService: OrderService,
-    private userService: UserService
+    private userService: UserService,
+    private statisticService: StatisticService,
+    private notificationService: NotificationService
   ) {
     if (data.usr != undefined) {
+      this.order.customer = this.tokenStorageService.getUser();
       this.order.confectioner = {...data.usr};
       // @ts-ignore
       this.productTypes = this.order.confectioner.productTypes;
       this.addEmptyProduct();
     } else if (data.product != undefined) {
+      this.order.customer = this.tokenStorageService.getUser();
       this.addProduct(data.product);
       this.userService.getUserByUsername(data.product.ownerUsername).subscribe(
         (user: User) => {
           this.order.confectioner = user;
+          // @ts-ignore
+          this.productTypes = user.productTypes;
+          // @ts-ignore
+          this.toppings = user.fillings;
         },
         error => {
           // this.notificationService.showSnackBar(error.message);
         }
       );
+      console.log(data.product);
+      console.log(this.productTypes);
     } else if (data.order != undefined) {
       this.order = data.order;
+      // @ts-ignore
+      this.productTypes = this.order.confectioner.productTypes;
+      // @ts-ignore
+      this.toppings = this.order.confectioner.fillings;
     }
+    this.statisticService.getAllConsumables().subscribe(
+      (consumables: Consumable[]) => {
+        console.log(consumables);
+        this.consumables = consumables;
+      },
+      error => {
+        this.notificationService.showSnackBar(error.message);
+      }
+    );
   }
 
   addEmptyProduct() {
@@ -83,9 +108,6 @@ export class CreateOrderComponent {
   }
 
   makeOrder() {
-    // this.order.status = "CREATED";
-    this.order.customer = this.tokenStorageService.getUser();
-
     if (this.order.products && this.order.products.length > 0 &&
       this.order.products[0].product && this.order.products[0].product.ownerUsername) {
       this.userService.getUserByUsername(this.order.products[0].product.ownerUsername).subscribe(
@@ -133,9 +155,9 @@ export class CreateOrderComponent {
   }
 
   addEmptyConsumableProduct(item: OrderItem) {
-    console.log(item);
+    const defaultConsumable = this.consumables && this.consumables.length > 0 ? this.consumables[0] : new Consumable();
     // @ts-ignore
-    item.product.consumableProducts.push(new ConsumableProduct(new Consumable(), 0));
+    item.product.consumableProducts.push(new ConsumableProduct(defaultConsumable, 0));
   }
 
   removeConsumableProduct(item: OrderItem, index: number) {

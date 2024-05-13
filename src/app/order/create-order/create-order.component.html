@@ -16,11 +16,13 @@
       <div class="fields-list">
         <div class="field">
           <label class="field-label">Тип изделия:</label>
-          <select class="field-input" [(ngModel)]="orderItem.product.productType" (change)="getFillingsForProductType(orderItem.product.productType)">
-            <option *ngFor="let productType of productTypes" [ngValue]="productType" class="product-type-label">
-              {{productType.name}}
-            </option>
-          </select>
+          <div *ngIf="orderItem.product.productType">
+            <select class="field-input" [(ngModel)]="orderItem.product.productType.productTypeId" (change)="getFillingsForProductType(orderItem.product.productType)">
+              <option *ngFor="let productType of productTypes" [value]="productType.productTypeId" class="product-type-label">
+                {{productType.name}}
+              </option>
+            </select>
+          </div>
         </div>
         <div class="field">
           <label class="field-label">Количество:</label>
@@ -32,11 +34,13 @@
         </div>
         <div class="field">
           <label class="field-label">Начинка:</label>
-          <select class="field-input" [(ngModel)]="orderItem.product.topping">
-            <option *ngFor="let topping of toppings" [value]="topping.fillingId" class="field-label">
-              {{topping.name}}
-            </option>
-          </select>
+          <div *ngIf="orderItem.product.topping">
+            <select class="field-input" [(ngModel)]="orderItem.product.topping.fillingId">
+              <option *ngFor="let topping of toppings" [value]="topping.fillingId" class="field-label">
+                {{topping.name}}
+              </option>
+            </select>
+          </div>
         </div>
         <div class="field">
           <label class="field-label">Комментарий:</label>
@@ -71,15 +75,15 @@
                  style="display: none;">
         </div>
       </div>
-      <div class="consumables-list">
+      <div class="consumables-list" *ngIf="data.order != undefined">
         <p class="consumables-label">Расходные материалы</p>
         <div class="consumable-line-group" *ngFor="let consumableProduct of orderItem.product.consumableProducts; let i = index">
           <div class="consumable-column-group">
             <div class="consumable-name">
               <div class="field">
                 <label class="field-label">Название:</label>
-                <select class="field-input" [(ngModel)]="consumableProduct.consumable">
-                  <option *ngFor="let consumable of consumables" [ngValue]="consumableProduct.consumable" class="product-type-label">
+                <select class="field-input" [(ngModel)]="consumableProduct.consumable.consumableId">
+                  <option *ngFor="let consumable of consumables" [ngValue]="consumable.consumableId" class="product-type-label">
                     {{consumable.name}}
                   </option>
                 </select>
@@ -105,7 +109,7 @@
         <div class="product-count">{{orderItem.quantity}}</div>
         <div class="count-change-buttons noselect" (click)="increaseCount(orderItem)">+</div>
       </div>
-      <div class="pre-price">Предварительная стоимость товара: 5000</div>
+      <div class="pre-price">Предварительная стоимость товара: {{orderItem.product.price}}</div>
     </div>
   </div>
   <div class="external-fields">
@@ -122,6 +126,10 @@
         <label class="field-label">Адрес:</label>
         <input class="field-input" type="text" [(ngModel)]="order.address"/>
       </div>
+      <div class="field">
+        <label class="field-label">Затраты на заказ:</label>
+        <input class="field-input" type="text" [(ngModel)]="order.spentPrice"/>
+      </div>
     </div>
     <div class="product-count-pre-price-group">
       <div class="field">
@@ -135,6 +143,10 @@
             {{status.viewValue}}
           </option>
         </select>
+      </div>
+      <div class="field">
+        <label class="field-label">Стоимость заказа:</label>
+        <input class="field-input" type="text" [(ngModel)]="order.resultPrice"/>
       </div>
     </div>
   </div>

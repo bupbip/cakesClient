@@ -1,9 +1,7 @@
-import { User } from "./User";
+import {User} from "./User";
 import {OrderItem} from "./OrderItem";
 
 export class Order {
-  public spentPrice?: number;
-  public resultPrice?: number;
   constructor(
     public orderId?: number,
     public customer?: User,
@@ -13,6 +11,9 @@ export class Order {
     public deliveryType?: string,
     public address?: string,
     public status?: string,
+    public preferPrice?: number,
+    public spentPrice?: number,
+    public resultPrice?: number,
     public products: OrderItem[] = []
   ) {
   }

@@ -29,6 +29,7 @@ import {OrderComponent} from './order/order/order.component';
 import {AdminpageComponent} from './adminpage/adminpage.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {EnterTheViewportNotifierDirective} from "./services/enter-the-viewport-notifier.directive";
+import { EditConsumableComponent } from './edit-consumable/edit-consumable.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {EnterTheViewportNotifierDirective} from "./services/enter-the-viewport-n
     DeleteProductComponent,
     OrderComponent,
     AdminpageComponent,
-    EnterTheViewportNotifierDirective
+    EnterTheViewportNotifierDirective,
+    EditConsumableComponent
   ],
   imports: [
     BrowserModule,
