@@ -126,7 +126,7 @@
         <label class="field-label">Адрес:</label>
         <input class="field-input" type="text" [(ngModel)]="order.address"/>
       </div>
-      <div class="field">
+      <div class="field" *ngIf="this.data.order">
         <label class="field-label">Затраты на заказ:</label>
         <input class="field-input" type="text" [(ngModel)]="order.spentPrice"/>
       </div>
@@ -144,7 +144,7 @@
           </option>
         </select>
       </div>
-      <div class="field">
+      <div class="field" *ngIf="this.data.order">
         <label class="field-label">Стоимость заказа:</label>
         <input class="field-input" type="text" [(ngModel)]="order.resultPrice"/>
       </div>

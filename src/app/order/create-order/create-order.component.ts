@@ -120,6 +120,13 @@ export class CreateOrderComponent {
       );
     }
 
+    this.order.products.forEach(product => {
+      product.product.productId = undefined;
+      product.product.consumableProducts?.forEach(cp => {
+        cp.consumableProductId = undefined;
+      })
+    });
+
     console.log(this.order);
     this.dialogRef.close(this.order);
   }
