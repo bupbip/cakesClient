@@ -168,7 +168,6 @@ export class EditComponent implements OnInit {
 
     this.userService.saveUser(this.user).subscribe(
       response => {
-        this.refreshProduct(response);
         this.notificationService.showSnackBar("Успех!");
       },
       error => {

@@ -2,6 +2,7 @@ import {Order} from "./Order";
 import {Social} from "./Social";
 import {Filling} from "./Filling";
 import {ProductType} from "./ProductType";
+import {Subscriptions} from "./Subscriptions";
 
 export interface User {
   userId: number;
@@ -17,4 +18,5 @@ export interface User {
   image: any;
   fillings?: Filling[];
   productTypes?: ProductType[];
+  subscriptions?: Subscriptions;
 }

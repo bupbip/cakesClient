@@ -1,0 +1,19 @@
+<div class="subscribe-page">
+  <div>
+    <p class="subscribe-header">Подписка на рассылку уведомлений на электронную почту {{user?.email}}</p>
+  </div>
+  <div class="subscriptions-group">
+    <div class="subscriptions-item" *ngIf="subscriptions">
+      <input type="checkbox" id="materials" [(ngModel)]="subscriptions.consumable">
+      <label for="materials" class="subscriptions-label">На расходные материалы</label>
+    </div>
+    <div class="subscriptions-item" *ngIf="subscriptions">
+      <input type="checkbox" id="monthly" [(ngModel)]="subscriptions.monthly">
+      <label for="monthly" class="subscriptions-label">На ежемесячную рассылку о доходах и расходах</label>
+    </div>
+  </div>
+  <div class="btn-group">
+    <div class="btn noselect" (click)="apply()">Применить</div>
+    <div class="btn noselect" (click)="cancel()">Отмена</div>
+  </div>
+</div>

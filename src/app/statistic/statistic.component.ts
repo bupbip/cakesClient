@@ -10,6 +10,9 @@ import {EditConsumableComponent} from "../edit-consumable/edit-consumable.compon
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteProductComponent} from "../user/delete-product/delete-product.component";
 import {ProductType} from "../models/ProductType";
+import {CreateOrderComponent} from "../order/create-order/create-order.component";
+import {MailsubscribeComponent} from "../mailsubscribe/mailsubscribe.component";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-statistic',
@@ -41,7 +44,8 @@ export class StatisticComponent implements OnInit {
   constructor(private dialog: MatDialog,
               private statisticService: StatisticService,
               private notificationService: NotificationService,
-              private tokenStorage: TokenStorageService) {
+              private tokenStorage: TokenStorageService,
+              private userService: UserService) {
     this.year = new Date().getFullYear();
     this.currMonth = new Date().getMonth() + 1;
   }
@@ -132,4 +136,13 @@ export class StatisticComponent implements OnInit {
     };
     this.consumables.push(emptyConsumable);
   }
+
+  emailSubscribe(): void {
+    this.dialog.open(MailsubscribeComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: this.user.username
+    });
+  };
+
 }

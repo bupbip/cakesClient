@@ -30,6 +30,7 @@ import {AdminpageComponent} from './adminpage/adminpage.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {EnterTheViewportNotifierDirective} from "./services/enter-the-viewport-notifier.directive";
 import { EditConsumableComponent } from './edit-consumable/edit-consumable.component';
+import { MailsubscribeComponent } from './mailsubscribe/mailsubscribe.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { EditConsumableComponent } from './edit-consumable/edit-consumable.compo
     OrderComponent,
     AdminpageComponent,
     EnterTheViewportNotifierDirective,
-    EditConsumableComponent
+    EditConsumableComponent,
+    MailsubscribeComponent
   ],
   imports: [
     BrowserModule,

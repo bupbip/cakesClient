@@ -41,6 +41,7 @@ export class UserService {
       'Authorization': 'Bearer ' + this.tokenStorage.getToken(),
       'Content-Type': 'application/json'
     });
-    return this.http.post<Product>(USER_API + 'save-user', user, {headers: headers});
+    console.log(user);
+    return this.http.post<User>(USER_API + 'save-user', user, {headers: headers});
   }
 }
