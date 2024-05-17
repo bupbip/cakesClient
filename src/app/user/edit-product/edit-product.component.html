@@ -46,13 +46,15 @@
     </div>
     <div class="consumables-list">
       <p class="consumables-label">Расходные материалы</p>
-      <div class="consumable-line-group" *ngFor="let consumableProduct of editedProduct.consumableProducts; let i = index">
+      <div class="consumable-line-group"
+           *ngFor="let consumableProduct of editedProduct.consumableProducts; let i = index">
         <div class="consumable-column-group">
           <div class="consumable-name">
             <div class="field">
               <label class="field-label">Название:</label>
               <select class="field-input" [(ngModel)]="consumableProduct.consumable.consumableId">
-                <option *ngFor="let consumable of consumables" [ngValue]="consumable.consumableId" class="product-type-label">
+                <option *ngFor="let consumable of consumables" [ngValue]="consumable.consumableId"
+                        class="product-type-label">
                   {{consumable.name}}
                 </option>
               </select>
@@ -64,12 +66,20 @@
               <input class="field-input" type="number" [(ngModel)]="consumableProduct.count"/>
             </div>
           </div>
-          <div class="consumable-add-button" (click)="addEmptyConsumableProduct()" *ngIf="editedProduct && editedProduct.consumableProducts && i === editedProduct.consumableProducts.length - 1">Добавить</div>
+          <div class="consumable-add-button" (click)="addEmptyConsumableProduct()"
+               *ngIf="editedProduct && editedProduct.consumableProducts && i === editedProduct.consumableProducts.length - 1">
+            Добавить
+          </div>
         </div>
-        <div class="delete-button" (click)="removeConsumableProduct(i)" *ngIf="editedProduct && editedProduct.consumableProducts && editedProduct.consumableProducts.length > 1">Удалить
+        <div class="delete-button" (click)="removeConsumableProduct(i)"
+             *ngIf="editedProduct && editedProduct.consumableProducts && editedProduct.consumableProducts.length > 1">
+          Удалить
         </div>
       </div>
-      <div class="consumable-add-button" (click)="addEmptyConsumableProduct()" *ngIf="editedProduct && editedProduct.consumableProducts && 0 == editedProduct.consumableProducts.length">Добавить</div>
+      <div class="consumable-add-button" (click)="addEmptyConsumableProduct()"
+           *ngIf="editedProduct && editedProduct.consumableProducts && 0 == editedProduct.consumableProducts.length">
+        Добавить
+      </div>
 
     </div>
   </div>

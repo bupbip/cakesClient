@@ -1,15 +1,18 @@
 <div class="delete-page">
   <div class="product-count-group">
     <div class="count-change-buttons noselect" (click)="decreaseCount()">-</div>
-    <input class="product-count" type="number" [ngModel]="editedItem.quantity" (ngModelChange)="editedItem.quantity=$event">
+    <input class="product-count" type="number" [ngModel]="editedItem.quantity"
+           (ngModelChange)="editedItem.quantity=$event">
     <div class="count-change-buttons noselect" (click)="increaseCount()">+</div>
     <div class="fields">
       <label for="product-count" class="delete-header">Ед. изм.</label>
-      <input id="product-count" class="product-count" type="text" [ngModel]="editedItem.quantityType" (ngModelChange)="editedItem.quantityType=$event">
+      <input id="product-count" class="product-count" type="text" [ngModel]="editedItem.quantityType"
+             (ngModelChange)="editedItem.quantityType=$event">
     </div>
     <div class="fields">
       <label for="threshold" class="delete-header">Дефицит при</label>
-      <input id="threshold" class="product-count" type="number" [ngModel]="editedItem.threshold" (ngModelChange)="editedItem.threshold=$event">
+      <input id="threshold" class="product-count" type="number" [ngModel]="editedItem.threshold"
+             (ngModelChange)="editedItem.threshold=$event">
     </div>
   </div>
   <div class="btn-group">

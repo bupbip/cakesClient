@@ -1,5 +1,4 @@
 import {User} from "./User";
-import {Timestamp} from "rxjs";
 
 export interface RoleRequest {
   roleRequestId: number;

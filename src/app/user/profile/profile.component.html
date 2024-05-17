@@ -56,7 +56,7 @@
     <div class="feedback-card" *ngFor="let feedback of user?.feedbacksTo">
       <div class="feedback-data">
         <p class="feedback-username">{{feedback.userFrom?.username}}</p>
-        <div class="stars"*ngIf="feedback.rating !== undefined">
+        <div class="stars" *ngIf="feedback.rating !== undefined">
           <img class="star" src="../../../assets/star-filled.png" *ngFor="let _ of [].constructor(feedback.rating)"/>
           <img class="star" src="../../../assets/star-empty.png" *ngFor="let _ of [].constructor(5 - feedback.rating)"/>
         </div>

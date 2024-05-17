@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Filling} from "../models/Filling";
 import {Observable} from "rxjs";
 
@@ -17,7 +17,7 @@ export class FillingsService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<Filling[]>(FILLING_API + 'save-fillings', fillings, { headers });
+    return this.http.post<Filling[]>(FILLING_API + 'save-fillings', fillings, {headers});
   }
 
   deleteFilling(fillingId: number): Observable<any> {

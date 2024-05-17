@@ -7,11 +7,9 @@ import {NotificationService} from "../../services/notification.service";
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../../models/User";
 import {UserService} from "../../services/user.service";
-import {EditProductComponent} from "../edit-product/edit-product.component";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateOrderComponent} from "../../order/create-order/create-order.component";
 import {OrderService} from "../../services/order.service";
-import {Order} from "../../models/Order";
 import {FeedbackComponent} from "../../feedback/feedback.component";
 
 @Component({
@@ -69,7 +67,7 @@ export class ProfileComponent implements OnInit {
       if (result == undefined) return;
       this.orderService.createOrder(result).subscribe(
         response => {
-            console.log(response);
+          console.log(response);
         },
         error => {
           console.log("error");

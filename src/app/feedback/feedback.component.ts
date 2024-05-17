@@ -6,7 +6,6 @@ import {UserService} from "../services/user.service";
 import {StatisticService} from "../services/statistic.service";
 import {NotificationService} from "../services/notification.service";
 import {User} from "../models/User";
-import {Consumable} from "../models/Consumable";
 import {Order} from "../models/Order";
 import {Feedback} from "../models/Feedback";
 
@@ -40,8 +39,8 @@ export class FeedbackComponent {
     if (this.order != undefined) {
       console.log(this.order);
       this.orderService.createOrder(this.order).subscribe(response => {
-        this.notificationService.showSnackBar("Спасибо за ваше мнение!")
-      },
+          this.notificationService.showSnackBar("Спасибо за ваше мнение!")
+        },
         error => {
           console.log("Не удалось оставить отзыв, пожалуйста попробуйте позже.");
         }
@@ -68,6 +67,7 @@ export class FeedbackComponent {
     }
     this.dialogRef.close();
   }
+
   undo() {
     this.dialogRef.close();
   }

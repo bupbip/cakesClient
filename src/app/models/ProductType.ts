@@ -13,5 +13,6 @@ export class ProductType {
     canWeight?: boolean,
     canCount?: boolean,
     fillings?: number[]
-  ) {}
+  ) {
+  }
 }

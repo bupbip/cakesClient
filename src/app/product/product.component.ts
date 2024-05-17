@@ -6,7 +6,6 @@ import {CreateOrderComponent} from "../order/create-order/create-order.component
 import {TokenStorageService} from "../services/token-storage.service";
 import {MatDialog} from "@angular/material/dialog";
 import {OrderService} from "../services/order.service";
-import {Order} from "../models/Order";
 
 @Component({
   selector: 'app-product',

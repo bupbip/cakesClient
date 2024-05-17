@@ -17,8 +17,10 @@
         <div class="field">
           <label class="field-label">Тип изделия:</label>
           <div *ngIf="orderItem.product.productType">
-            <select class="field-input" [(ngModel)]="orderItem.product.productType.productTypeId" (change)="getFillingsForProductType(orderItem.product.productType)">
-              <option *ngFor="let productType of productTypes" [value]="productType.productTypeId" class="product-type-label">
+            <select class="field-input" [(ngModel)]="orderItem.product.productType.productTypeId"
+                    (change)="getFillingsForProductType(orderItem.product.productType)">
+              <option *ngFor="let productType of productTypes" [value]="productType.productTypeId"
+                      class="product-type-label">
                 {{productType.name}}
               </option>
             </select>
@@ -77,13 +79,15 @@
       </div>
       <div class="consumables-list" *ngIf="data.order != undefined">
         <p class="consumables-label">Расходные материалы</p>
-        <div class="consumable-line-group" *ngFor="let consumableProduct of orderItem.product.consumableProducts; let i = index">
+        <div class="consumable-line-group"
+             *ngFor="let consumableProduct of orderItem.product.consumableProducts; let i = index">
           <div class="consumable-column-group">
             <div class="consumable-name">
               <div class="field">
                 <label class="field-label">Название:</label>
                 <select class="field-input" [(ngModel)]="consumableProduct.consumable.consumableId">
-                  <option *ngFor="let consumable of consumables" [ngValue]="consumable.consumableId" class="product-type-label">
+                  <option *ngFor="let consumable of consumables" [ngValue]="consumable.consumableId"
+                          class="product-type-label">
                     {{consumable.name}}
                   </option>
                 </select>
@@ -95,12 +99,17 @@
                 <input class="field-input" type="number" [(ngModel)]="consumableProduct.count"/>
               </div>
             </div>
-            <div class="consumable-add-button" (click)="addEmptyConsumableProduct(orderItem)" *ngIf="orderItem.product.consumableProducts && i === orderItem.product.consumableProducts.length - 1">Добавить</div>
+            <div class="consumable-add-button" (click)="addEmptyConsumableProduct(orderItem)"
+                 *ngIf="orderItem.product.consumableProducts && i === orderItem.product.consumableProducts.length - 1">
+              Добавить
+            </div>
           </div>
           <div class="delete-button" (click)="removeConsumableProduct(orderItem, i)">Удалить
           </div>
         </div>
-        <div class="consumable-add-button" (click)="addEmptyConsumableProduct(orderItem)" *ngIf="orderItem.product.consumableProducts && orderItem.product.consumableProducts.length == 0">Добавить</div>
+        <div class="consumable-add-button" (click)="addEmptyConsumableProduct(orderItem)"
+             *ngIf="orderItem.product.consumableProducts && orderItem.product.consumableProducts.length == 0">Добавить
+        </div>
       </div>
     </div>
     <div class="product-count-pre-price-group">

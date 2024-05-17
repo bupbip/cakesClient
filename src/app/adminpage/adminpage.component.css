@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .page-name {
   text-align: center;
   font-size: 3rem;
@@ -12,6 +13,7 @@
   font-family: Poppins, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .role-request {
   display: flex;
   flex-direction: row;
@@ -19,15 +21,18 @@
   justify-content: flex-start;
   margin-bottom: 1rem;
 }
+
 .request-date {
   font-size: 1.5rem;
   margin-left: 4rem;
 }
+
 .username {
   font-size: 1.5rem;
   margin: 0 4rem;
   width: 8rem;
 }
+
 .change-role-button {
   width: 10rem;
   height: 4rem;
@@ -45,12 +50,15 @@
   cursor: pointer;
   margin: 0 1rem;
 }
+
 .accept-role-button {
   background-color: #25d366;
 }
+
 .decline-role-button {
   background-color: crimson;
 }
+
 .change-role-button:hover {
   background-color: #18a0fb;
 }

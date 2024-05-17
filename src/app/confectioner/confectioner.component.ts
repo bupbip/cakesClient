@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../models/User";
 import {NotificationService} from "../services/notification.service";
 import {UserService} from "../services/user.service";

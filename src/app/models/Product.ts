@@ -15,5 +15,6 @@ export class Product {
     public ownerUsername?: string,
     public image?: any,
     public consumableProducts?: ConsumableProduct[]
-  ) {}
+  ) {
+  }
 }

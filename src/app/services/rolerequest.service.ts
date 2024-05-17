@@ -22,11 +22,11 @@ export class RolerequestService {
     return this.http.get<RoleRequest[]>(ROLEREQUEST_API + 'get-all', {headers: headers});
   }
 
-  public approve(request : RoleRequest): Observable<string> {
+  public approve(request: RoleRequest): Observable<string> {
     return this.http.post<string>(ROLEREQUEST_API + 'approve', request);
   }
 
-  public decline(request : RoleRequest): Observable<any> {
+  public decline(request: RoleRequest): Observable<any> {
     return this.http.post<string>(ROLEREQUEST_API + 'decline', request);
   }
 }

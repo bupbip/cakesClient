@@ -1,10 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../models/Product";
-import {ProductService} from "../services/product.service";
 import {NotificationService} from "../services/notification.service";
 import {TokenStorageService} from "../services/token-storage.service";
-import {MatDialog} from "@angular/material/dialog";
-import {OrderService} from "../services/order.service";
 import {RoleRequest} from "../models/RoleRequest";
 import {RolerequestService} from "../services/rolerequest.service";
 
@@ -21,7 +17,7 @@ export class AdminpageComponent implements OnInit {
   constructor(private rolerequestService: RolerequestService,
               private notificationService: NotificationService,
               private tokenStorage: TokenStorageService
-) {
+  ) {
   }
 
   roleRequest: RoleRequest = {
@@ -29,6 +25,7 @@ export class AdminpageComponent implements OnInit {
     user: this.tokenStorage.getUser(),
     requestDatetime: new Date()
   };
+
   ngOnInit(): void {
     this.rolerequestService.getAllRequests().subscribe(
       (requests: RoleRequest[]) => {

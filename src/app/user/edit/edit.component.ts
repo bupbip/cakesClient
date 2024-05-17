@@ -61,12 +61,12 @@ export class EditComponent implements OnInit {
         if (this.user.fillings) this.fillings = this.user.fillings.slice();
         if (this.user.productTypes) this.productTypes = this.user.productTypes;
         console.log(this.user);
-          this.socialLinks.forEach(link => {
-            const userSocial = this.user?.socialNetworks.find(social => social.type.toUpperCase() === link.type);
-            if (userSocial) {
-              link.url = userSocial.url;
-            }
-          });
+        this.socialLinks.forEach(link => {
+          const userSocial = this.user?.socialNetworks.find(social => social.type.toUpperCase() === link.type);
+          if (userSocial) {
+            link.url = userSocial.url;
+          }
+        });
         this.selectedImage = this.user?.image;
       },
       error => {
@@ -210,8 +210,8 @@ export class EditComponent implements OnInit {
   }
 
   addFilling(): void {
-    const newFilling = { name: '', description: '', userId: this.user?.userId};
-    this.fillings.push(<Filling> newFilling);
+    const newFilling = {name: '', description: '', userId: this.user?.userId};
+    this.fillings.push(<Filling>newFilling);
   }
 
   addProductType(): void {
@@ -244,15 +244,15 @@ export class EditComponent implements OnInit {
   }
 
   toggleFillingSelection(productType: ProductType, fillingId: number | undefined): void {
-      // @ts-ignore
+    // @ts-ignore
     const index = productType.fillings.indexOf(<number>fillingId);
-      if (index !== -1) {
-        // @ts-ignore
-        productType.fillings.splice(index, 1);
-      } else {
-        // @ts-ignore
-        productType.fillings.push(<number>fillingId);
-      }
+    if (index !== -1) {
+      // @ts-ignore
+      productType.fillings.splice(index, 1);
+    } else {
+      // @ts-ignore
+      productType.fillings.push(<number>fillingId);
+    }
   }
 
 }

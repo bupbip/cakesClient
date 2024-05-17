@@ -16,6 +16,7 @@ export type DeletableItem = Product | Filling | ProductType | Consumable;
 })
 export class DeleteProductComponent {
   deletedItem: DeletableItem;
+
   constructor(
     public dialogRef: MatDialogRef<DeleteProductComponent>,
     @Inject(MAT_DIALOG_DATA) public item: DeletableItem,

@@ -1,9 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {User} from "../models/User";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ProductService} from "../services/product.service";
 import {NotificationService} from "../services/notification.service";
-import {DeletableItem} from "../user/delete-product/delete-product.component";
 import {Subscriptions} from "../models/Subscriptions";
 import {UserService} from "../services/user.service";
 
@@ -42,7 +40,7 @@ export class MailsubscribeComponent implements OnInit {
   apply() {
     this.userService.saveUser(this.user).subscribe(
       response => {
-          this.dialogRef.close(true);
+        this.dialogRef.close(true);
       },
       error => {
         this.notificationService.showSnackBar("Не удалось оформить подписку. Попробуйте позднее.");

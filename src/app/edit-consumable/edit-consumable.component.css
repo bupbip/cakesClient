@@ -4,6 +4,7 @@
   flex-direction: column;
   margin: 1rem;
 }
+
 .delete-header {
   font-size: 1.4rem;
   font-weight: 400;
@@ -12,10 +13,12 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .btn-group {
   display: flex;
   flex-direction: row;
 }
+
 .btn {
   padding: 0 1rem;
   margin: 0 3rem;
@@ -36,6 +39,7 @@
   flex-shrink: 0;
   cursor: pointer;
 }
+
 .count-change-buttons {
   width: 3rem;
   height: 3rem;
@@ -53,6 +57,7 @@
   flex-shrink: 0;
   cursor: pointer;
 }
+
 .product-count {
   width: 3rem;
   margin: 0 1rem;
@@ -67,6 +72,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .product-count-group {
   height: 8rem;
   display: flex;
@@ -74,6 +80,7 @@
   border-radius: 0.5rem;
   flex-shrink: 0;
 }
+
 .fields {
   display: flex;
   flex-direction: column;

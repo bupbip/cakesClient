@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/User";
-import {Product} from "../models/Product";
 import {TokenStorageService} from "./token-storage.service";
 
 const USER_API = 'http://localhost:4302/api/v1/user/';
@@ -25,7 +24,7 @@ export class UserService {
       .set('skip', skip.toString())
       .set('limit', limit.toString());
 
-    return this.http.get<User[]>(USER_API + 'get-confectioners', { params: params });
+    return this.http.get<User[]>(USER_API + 'get-confectioners', {params: params});
   }
 
   saveUser(user: User | undefined) {

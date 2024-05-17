@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 .main-window {
   box-sizing: border-box;
   padding: 2.9rem 6.2rem 0 3.55rem;
@@ -12,18 +13,21 @@
   flex-direction: column;
   background-color: #ffffff;
 }
+
 .main-fields {
   position: relative;
   display: flex;
   flex-shrink: 0;
   flex-direction: row;
 }
+
 .field {
   width: 26rem;
   height: auto;
   cursor: pointer;
   margin-bottom: 2rem;
 }
+
 .field-label {
   margin-bottom: 0.6rem;
   font-size: 1.4rem;
@@ -33,6 +37,7 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .field-input {
   width: 100%;
   height: 5.9rem;
@@ -47,11 +52,13 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .description-field {
   width: 52.5rem;
   height: 10.2rem;
   flex-shrink: 0;
 }
+
 .description-input {
   width: 100%;
   height: 5.9rem;
@@ -67,14 +74,17 @@
   resize: none;
   outline: none;
 }
+
 .image-group {
   margin: 0 2rem;
 }
+
 .image-container {
   width: 25rem;
   height: 30.6417rem;
   flex-direction: row;
 }
+
 .update-image {
   margin-top: 2.7rem;
   width: 25rem;
@@ -92,6 +102,7 @@
   border-radius: 0.6rem;
   flex-shrink: 0;
 }
+
 .update-image label {
   display: flex; /* Используем flexbox */
   align-items: center; /* Центрируем по вертикали */
@@ -100,14 +111,17 @@
   height: 100%;
   cursor: pointer;
 }
+
 .product-image-container {
   height: 100%;
   background-color: #d9d9d9;
 }
+
 .image {
   width: 100%;
   height: 100%;
 }
+
 .image-label {
   width: 7.6rem;
   height: 1.7rem;
@@ -120,10 +134,12 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .result-price {
   width: 30rem;
   height: 10.2rem;
 }
+
 .consumables-list {
   margin-top: 0.5rem;
   align-items: center;
@@ -131,6 +147,7 @@
   flex-direction: column;
   flex-shrink: 0;
 }
+
 .consumables-label {
   text-align: center;
   font-size: 2.5rem;
@@ -142,6 +159,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .consumable-line-group {
   width: 100%;
   height: 19.2rem;
@@ -149,6 +167,7 @@
   align-items: center;
   flex-shrink: 0;
 }
+
 .consumable-column-group {
   margin-right: 3rem;
   height: 100%;
@@ -157,11 +176,13 @@
   display: flex;
   flex-direction: column;
 }
+
 .consumable-expenses {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
+
 .delete-button {
   width: 10rem;
   height: 4rem;
@@ -181,6 +202,7 @@
   background-color: #18a0fb;
   border-radius: 0.6rem;
 }
+
 .consumable-add-button {
   margin-bottom: 0.9rem;
   width: 90%;
@@ -202,12 +224,14 @@
   flex-shrink: 0;
   cursor: pointer;
 }
+
 .prepare-result-group {
   min-width: 7rem;
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
 }
+
 .prepare-result {
   width: auto;
   height: 4.8rem;
@@ -216,6 +240,7 @@
   flex-shrink: 0;
   margin-right: 2rem;
 }
+
 .prepare-result-label {
   height: 100%;
   text-align: center;
@@ -233,16 +258,19 @@
   flex-shrink: 0;
   padding: 0 1rem;
 }
+
 .result-group {
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
   gap: 3rem;
 }
+
 .result-field {
   cursor: pointer;
   margin-bottom: 2rem;
 }
+
 .accept-button {
   margin: 0 3rem 3rem;
   height: 4rem;

@@ -5,6 +5,7 @@
   flex-direction: column;
   background-color: #ffffff;
 }
+
 .welcome-message {
   margin-right: 0.5rem;
   max-width: 81.3rem;
@@ -15,6 +16,7 @@
   font-family: Inter, 'Source Sans Pro';
   flex-shrink: 0;
 }
+
 .page {
   box-sizing: border-box;
   padding: 7.2rem 10.6rem 10.591rem 9.1rem;
@@ -24,20 +26,24 @@
   flex-direction: column;
   flex-shrink: 0;
 }
+
 .image-left {
   display: flex;
   flex-direction: column;
 }
+
 .image-right {
   display: flex;
   flex-direction: column;
 }
+
 .images {
   margin-bottom: 10rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
+
 .image-1 {
   margin-right: 29.1rem;
   width: 47rem;
@@ -47,6 +53,7 @@
   border-radius: 4.1rem;
   flex-shrink: 0;
 }
+
 .image-2 {
   width: 47rem;
   height: 31rem;
@@ -55,6 +62,7 @@
   border-radius: 4.1rem;
   flex-shrink: 0;
 }
+
 .text-group {
   margin: 0 0.45rem 7.009rem 0.45rem;
   display: flex;
@@ -62,6 +70,7 @@
   flex-shrink: 0;
   justify-content: center;
 }
+
 .text {
   max-width: 47rem;
   display: flex;
@@ -74,6 +83,7 @@
   font-family: Inter, 'Source Sans Pro';
   flex-shrink: 0;
 }
+
 .buttons {
   height: 3.8rem;
   display: flex;
@@ -81,6 +91,7 @@
   flex-shrink: 0;
   gap: 3rem;
 }
+
 .button {
   width: 20.8rem;
   height: 100%;
@@ -97,6 +108,7 @@
   text-align: center;
   justify-content: center;
 }
+
 .button:hover {
   background-color: white;
   color: #18a0fb;

@@ -11,8 +11,10 @@
           Дата выполнения: {{order.completeDate | date:'dd.MM.yyyy'}}
         </p>
         <div class="order-costs">Стоимость: {{order.resultPrice}}</div>
-        <div class="order-expenses" *ngIf="user.username == order.confectioner?.username">Расходы: {{order.spentPrice}}</div>
-        <div class="order-income" *ngIf="order && order.resultPrice !== undefined && order.spentPrice !== undefined && user.username == order.confectioner?.username">
+        <div class="order-expenses" *ngIf="user.username == order.confectioner?.username">
+          Расходы: {{order.spentPrice}}</div>
+        <div class="order-income"
+             *ngIf="order && order.resultPrice !== undefined && order.spentPrice !== undefined && user.username == order.confectioner?.username">
           Доход: {{ order.resultPrice - order.spentPrice }}
         </div>
       </div>
@@ -52,8 +54,10 @@
         </p>
         <div class="order-status">Статус: {{getStatusView(order.status)}}</div>
         <div class="edit-order">
-          <p class="edit-order-label noselect" (click)="editOrder(order)" *ngIf="user.username == order.confectioner?.username">Редактировать заказ</p>
-          <p class="edit-order-label noselect" (click)="leaveFeedback(order)" *ngIf="user.username == order.customer?.username">Оставить отзыв к заказу</p>
+          <p class="edit-order-label noselect" (click)="editOrder(order)"
+             *ngIf="user.username == order.confectioner?.username">Редактировать заказ</p>
+          <p class="edit-order-label noselect" (click)="leaveFeedback(order)"
+             *ngIf="user.username == order.customer?.username">Оставить отзыв к заказу</p>
         </div>
       </div>
     </div>

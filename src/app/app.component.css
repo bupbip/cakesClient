@@ -13,12 +13,14 @@
   flex-shrink: 0;
   justify-content: space-between;
 }
+
 .sample-logo {
   height: calc(100% - 2.5rem);
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
+
 .logo {
   margin-right: 1rem;
   width: 3.5rem;
@@ -27,6 +29,7 @@
   vertical-align: top;
   flex-shrink: 0;
 }
+
 .cakes {
   display: flex;
   align-items: center;
@@ -42,6 +45,7 @@
   margin-right: 2.5rem;
   text-decoration: none;
 }
+
 .link {
   display: flex;
   align-items: center;
@@ -55,6 +59,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .buttons-group,
 .auth-buttons {
   position: relative;
@@ -62,6 +67,7 @@
   display: flex;
   gap: 20px;
 }
+
 .btn {
   height: 4rem;
   display: flex;
@@ -77,11 +83,13 @@
   box-sizing: border-box;
   cursor: pointer;
 }
+
 .register-button {
   width: 15.9rem;
   color: #ffffff;
   background-color: #18a0fb;
 }
+
 .login-button {
   width: 13.3rem;
   color: #18a0fb;
@@ -89,9 +97,11 @@
   background-color: #ffffff;
   transform: translate(40px);
 }
+
 .logout-button {
   margin-right: 2rem;
 }
+
 .nav-bar {
   display: flex;
   gap: 16px;

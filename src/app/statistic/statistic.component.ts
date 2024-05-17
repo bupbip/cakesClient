@@ -5,12 +5,9 @@ import {StatisticService} from "../services/statistic.service";
 import {User} from "../models/User";
 import {Consumable} from "../models/Consumable";
 import {TokenStorageService} from "../services/token-storage.service";
-import {DeletableItem} from "../user/edit/edit.component";
 import {EditConsumableComponent} from "../edit-consumable/edit-consumable.component";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteProductComponent} from "../user/delete-product/delete-product.component";
-import {ProductType} from "../models/ProductType";
-import {CreateOrderComponent} from "../order/create-order/create-order.component";
 import {MailsubscribeComponent} from "../mailsubscribe/mailsubscribe.component";
 import {UserService} from "../services/user.service";
 
@@ -127,7 +124,7 @@ export class StatisticComponent implements OnInit {
   }
 
   addConsumable() {
-    const emptyConsumable : Consumable = {
+    const emptyConsumable: Consumable = {
       name: '',
       quantity: undefined,
       threshold: undefined,

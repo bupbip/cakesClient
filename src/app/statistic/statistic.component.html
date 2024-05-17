@@ -32,48 +32,60 @@
     </p>
   </div>
   <div class="consumables">
-  <table class="table">
-    <thead class="table-header">
-    <tr class="table-header-col">
-      <th class="table-header-text" colspan="6">Расходные материалы</th>
-      <p class="add-element" (click)="addConsumable()">+</p>
-    </tr>
-    </thead>
-    <tbody class="table-body">
-    <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Название</div></th>
-      <td class="table-cell" *ngFor="let consumable of consumables ; let i = index">
-        <input [(ngModel)]="consumable.name" class="textarea"/>
-        <img src="../../../assets/bin.png" class="delete-filling" (click)="openDeleteModal(consumable)" width="20px">
-      </td>
-    </tr>
-    <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Наличие</div></th>
-      <td class="table-cell" *ngFor="let consumable of consumables">
-        <div class="frame">
-          <div *ngIf="consumable && consumable.quantity !== undefined && consumable.threshold !== undefined">
-            <div *ngIf="consumable.quantity >= consumable.threshold" class="availability-ok-figure">
-              <div class="availability-ok-text">В достатке</div>
-            </div>
-            <div *ngIf="consumable.quantity < consumable.threshold" class="availability-bad-figure">
-              <div class="availability-bad-text">Мало</div>
+    <table class="table">
+      <thead class="table-header">
+      <tr class="table-header-col">
+        <th class="table-header-text" colspan="6">Расходные материалы</th>
+        <p class="add-element" (click)="addConsumable()">+</p>
+      </tr>
+      </thead>
+      <tbody class="table-body">
+      <tr class="table-column">
+        <th class="table-column-header">
+          <div class="table-column-header-text">Название</div>
+        </th>
+        <td class="table-cell" *ngFor="let consumable of consumables ; let i = index">
+          <input [(ngModel)]="consumable.name" class="textarea"/>
+          <img src="../../../assets/bin.png" class="delete-filling" (click)="openDeleteModal(consumable)" width="20px">
+        </td>
+      </tr>
+      <tr class="table-column">
+        <th class="table-column-header">
+          <div class="table-column-header-text">Наличие</div>
+        </th>
+        <td class="table-cell" *ngFor="let consumable of consumables">
+          <div class="frame">
+            <div *ngIf="consumable && consumable.quantity !== undefined && consumable.threshold !== undefined">
+              <div *ngIf="consumable.quantity >= consumable.threshold" class="availability-ok-figure">
+                <div class="availability-ok-text">В достатке</div>
+              </div>
+              <div *ngIf="consumable.quantity < consumable.threshold" class="availability-bad-figure">
+                <div class="availability-bad-text">Мало</div>
+              </div>
             </div>
           </div>
-        </div>
-      </td>
-    </tr>
-    <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Количество</div></th>
-      <td class="table-cell" *ngFor="let consumable of consumables"><div class="table-cell-text">
-        {{consumable.quantity}} {{consumable.quantityType}}
-      </div></td>
-    </tr>
-    <tr class="table-column table-column-settings">
-      <th class="table-column-header"><div class="table-column-header-text"></div></th>
-      <td class="table-cell" *ngFor="let consumable of consumables"><img class="consumable-settings-img" src="../../assets/tablecellcontrols.png" (click)="openEditModal(consumable)"></td>
-    </tr>
+        </td>
+      </tr>
+      <tr class="table-column">
+        <th class="table-column-header">
+          <div class="table-column-header-text">Количество</div>
+        </th>
+        <td class="table-cell" *ngFor="let consumable of consumables">
+          <div class="table-cell-text">
+            {{consumable.quantity}} {{consumable.quantityType}}
+          </div>
+        </td>
+      </tr>
+      <tr class="table-column table-column-settings">
+        <th class="table-column-header">
+          <div class="table-column-header-text"></div>
+        </th>
+        <td class="table-cell" *ngFor="let consumable of consumables"><img class="consumable-settings-img"
+                                                                           src="../../assets/tablecellcontrols.png"
+                                                                           (click)="openEditModal(consumable)"></td>
+      </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   </div>
 </div>

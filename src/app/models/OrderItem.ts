@@ -6,5 +6,6 @@ export class OrderItem {
     public quantity: number,
     public resultImage?: any,
     public orderItemId?: number
-  ) {}
+  ) {
+  }
 }

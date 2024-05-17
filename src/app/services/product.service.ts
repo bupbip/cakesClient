@@ -20,10 +20,10 @@ export class ProductService {
       .set('skip', skip.toString())
       .set('limit', limit.toString());
 
-    return this.http.get<Product[]>(PRODUCTS_API + 'get-all', { params: params });
+    return this.http.get<Product[]>(PRODUCTS_API + 'get-all', {params: params});
   }
 
-  public getAllUserProducts(username : String): Observable<Product[]> {
+  public getAllUserProducts(username: String): Observable<Product[]> {
     return this.http.get<Product[]>(`${PRODUCTS_API}get-all?username=${username}`);
   }
 

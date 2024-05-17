@@ -19,22 +19,22 @@ import {ConfectionerGuardService} from "./helper/confectioner-guard.service";
  */
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main', pathMatch: 'full'},
-  { path: 'main', component: IndexComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'registration', component: RegisterComponent},
-  { path: 'production', component: ProductComponent},
-  { path: 'confectioners', component: ConfectionerComponent},
-  { path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardService]},
-  { path: 'profile', redirectTo: '/profile/', pathMatch: 'full'},
-  { path: 'edit', component: EditComponent, canActivate: [AuthGuardService]},
-  { path: 'orders', component: OrderComponent, canActivate: [AuthGuardService]},
-  { path: 'admin', component: AdminpageComponent, canActivate: [AdminGuardService] },
-  { path: 'statistic', component: StatisticComponent, canActivate: [ConfectionerGuardService]}
+  {path: '', redirectTo: '/main', pathMatch: 'full'},
+  {path: 'main', component: IndexComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registration', component: RegisterComponent},
+  {path: 'production', component: ProductComponent},
+  {path: 'confectioners', component: ConfectionerComponent},
+  {path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'profile', redirectTo: '/profile/', pathMatch: 'full'},
+  {path: 'edit', component: EditComponent, canActivate: [AuthGuardService]},
+  {path: 'orders', component: OrderComponent, canActivate: [AuthGuardService]},
+  {path: 'admin', component: AdminpageComponent, canActivate: [AdminGuardService]},
+  {path: 'statistic', component: StatisticComponent, canActivate: [ConfectionerGuardService]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 

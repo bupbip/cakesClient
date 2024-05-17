@@ -4,6 +4,7 @@
   flex-direction: column;
   margin: 1rem;
 }
+
 .delete-header {
   margin: 2rem 0;
   font-size: 1.4rem;
@@ -13,10 +14,12 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .btn-group {
   display: flex;
   flex-direction: row;
 }
+
 .btn {
   padding: 0 1rem;
   margin: 0 3rem;

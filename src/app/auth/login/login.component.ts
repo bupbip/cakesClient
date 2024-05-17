@@ -65,10 +65,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/profile', username]);
           // window.location.reload();
         }
-      } , error => {
-      console.log(error);
-      this.notificationService.showSnackBar(error);
-    }
+      }, error => {
+        console.log(error);
+        this.notificationService.showSnackBar(error);
+      }
     );
   }
 }

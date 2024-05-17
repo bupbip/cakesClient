@@ -29,7 +29,8 @@
   </div>
   <div class="main-info-group">
     <div class="button noselect" (click)="saveProfile()">Применить изменения</div>
-    <div class="button noselect" (click)="addProduct()" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">Добавить продукт
+    <div class="button noselect" (click)="addProduct()"
+         *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">Добавить продукт
     </div>
     <div class="button noselect" (click)="changeRole()" *ngIf="user?.role === 'ROLE_CUSTOMER'">Стать кондитером</div>
     <div class="update-image">
@@ -37,7 +38,8 @@
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
     </div>
   </div>
-  <table class="table" title="Таблица для добавления вариантов начинок" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
+  <table class="table" title="Таблица для добавления вариантов начинок"
+         *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Начинки</th>
@@ -46,21 +48,26 @@
     </thead>
     <tbody class="table-body">
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Название</div></th>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Название</div>
+      </th>
       <td class="table-cell" *ngFor="let filling of fillings; let i = index">
         <input [(ngModel)]="filling.name" class="textarea"/>
         <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="openDeleteModal(filling)">
       </td>
     </tr>
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Описание</div></th>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Описание</div>
+      </th>
       <td class="table-cell" *ngFor="let filling of fillings">
         <textarea class="textarea" placeholder="Нажмите чтобы заполнить..."></textarea>
       </td>
     </tr>
     </tbody>
   </table>
-  <table class="table" title="Таблица для добавления вариантов типов продукции" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
+  <table class="table" title="Таблица для добавления вариантов типов продукции"
+         *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Моя продукция</th>
@@ -70,30 +77,44 @@
     </thead>
     <tbody class="table-body">
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Тип продукции</div></th>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Тип продукции</div>
+      </th>
       <td class="table-cell" *ngFor="let productType of productTypes ; let i = index">
         <input [(ngModel)]="productType.name" class="textarea"/>
         <img src="../../../assets/bin.png" class="delete-filling" width="20px" (click)="openDeleteModal(productType)">
       </td>
     </tr>
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Возможность заказа</div></th>
-      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [(ngModel)]="productType.canOrder"></td>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Возможность заказа</div>
+      </th>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes"
+                                                                             [(ngModel)]="productType.canOrder"></td>
     </tr>
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Возможность выбора веса</div></th>
-      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [(ngModel)]="productType.canWeight"></td>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Возможность выбора веса</div>
+      </th>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes"
+                                                                             [(ngModel)]="productType.canWeight"></td>
     </tr>
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Возможность выбора количества</div></th>
-      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes" [(ngModel)]="productType.canCount"></td>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Возможность выбора количества</div>
+      </th>
+      <td class="table-cell" *ngFor="let productType of productTypes"><input type="checkbox" class="checkboxes"
+                                                                             [(ngModel)]="productType.canCount"></td>
     </tr>
     <tr class="table-column">
-      <th class="table-column-header"><div class="table-column-header-text">Начинки</div></th>
+      <th class="table-column-header">
+        <div class="table-column-header-text">Начинки</div>
+      </th>
       <td class="table-cell fillings" *ngFor="let productType of productTypes">
         <div *ngFor="let filling of user?.fillings">
           <label class="filling noselect" *ngIf="filling && filling.name && filling.name.trim().length > 0">
-            <input type="checkbox" [ngModel]="isFillingSelected(productType, filling?.fillingId)" (change)="toggleFillingSelection(productType, filling?.fillingId)">
+            <input type="checkbox" [ngModel]="isFillingSelected(productType, filling?.fillingId)"
+                   (change)="toggleFillingSelection(productType, filling?.fillingId)">
             {{ filling.name }}
           </label>
         </div>
