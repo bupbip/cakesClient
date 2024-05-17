@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="rating-area" *ngIf="order == undefined">
+    <p class="text">Выберите оценку:</p>
+    <div class="stars">
+      <input type="radio" id="star-5" name="rating" value="5" [(ngModel)]="rating">
+      <label for="star-5" title="Оценка «5»"></label>
+      <input type="radio" id="star-4" name="rating" value="4" [(ngModel)]="rating">
+      <label for="star-4" title="Оценка «4»"></label>
+      <input type="radio" id="star-3" name="rating" value="3" [(ngModel)]="rating">
+      <label for="star-3" title="Оценка «3»"></label>
+      <input type="radio" id="star-2" name="rating" value="2" [(ngModel)]="rating">
+      <label for="star-2" title="Оценка «2»"></label>
+      <input type="radio" id="star-1" name="rating" value="1" [(ngModel)]="rating">
+      <label for="star-1" title="Оценка «1»"></label>
+    </div>
+  </div>
+  <div class="feedback-area" *ngIf="order != undefined">
+    <p class="feedback-text">Пожалуйста, оставьте отзыв:</p>
+    <textarea [(ngModel)]="order.comment"></textarea>
+  </div>
+  <div class="feedback-area" *ngIf="order == undefined">
+    <p class="feedback-text">Пожалуйста, оставьте отзыв:</p>
+    <textarea [(ngModel)]="feedback.comment"></textarea>
+  </div>
+  <div class="btn-group">
+    <div class="btn noselect" (click)="approve()">Применить</div>
+    <div class="btn noselect" (click)="undo()">Отмена</div>
+  </div>
+</div>

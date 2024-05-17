@@ -31,6 +31,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {EnterTheViewportNotifierDirective} from "./services/enter-the-viewport-notifier.directive";
 import { EditConsumableComponent } from './edit-consumable/edit-consumable.component';
 import { MailsubscribeComponent } from './mailsubscribe/mailsubscribe.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MailsubscribeComponent } from './mailsubscribe/mailsubscribe.component'
     AdminpageComponent,
     EnterTheViewportNotifierDirective,
     EditConsumableComponent,
-    MailsubscribeComponent
+    MailsubscribeComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
     </div>
   </div>
-  <table class="table" title="Краткая справочная информация" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
+  <table class="table" title="Таблица для добавления вариантов начинок" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Начинки</th>
@@ -60,7 +60,7 @@
     </tr>
     </tbody>
   </table>
-  <table class="table" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
+  <table class="table" title="Таблица для добавления вариантов типов продукции" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <thead class="table-header">
     <tr class="table-header-col">
       <th class="table-header-text" colspan="6">Моя продукция</th>

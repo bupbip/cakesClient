@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="order-body">
-        <div class="products-list" *ngFor="let product of order.products">
+        <div class="products-list" *ngFor="let product of order.products; let i = index; let last = last">
           <div class="order-desire-image">
             <p class="desire-image-label">Желаемый результат</p>
             <div class="desire-image">
@@ -26,11 +26,14 @@
           </div>
           <div class="auto-group-ayhu-ooq">
             <div class="order-description">
+              <p class="order-weight">Вес: {{product.product.weight}} кг.</p>
+              <p class="order-count">Количество: {{product.quantity}} шт.</p>
               <p class="description-text">
                 {{product.product.comment}}
               </p>
-              <p class="order-weight">Вес: {{product.product.weight}} кг.</p>
-              <p class="order-count">Количество: {{product.quantity}} шт.</p>
+              <p class="description-text" *ngIf="last">
+                {{order.comment}}
+              </p>
             </div>
           </div>
           <div class="order-result-image">
@@ -41,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="order-info" [ngStyle]="{'gap': user.username == order.confectioner?.username ? '27rem' : '37rem'}">
+      <div class="order-info">
         <p class="order-users">
           Заказчик: {{order.customer?.username}}
           <br/>
@@ -50,6 +53,7 @@
         <div class="order-status">Статус: {{getStatusView(order.status)}}</div>
         <div class="edit-order">
           <p class="edit-order-label noselect" (click)="editOrder(order)" *ngIf="user.username == order.confectioner?.username">Редактировать заказ</p>
+          <p class="edit-order-label noselect" (click)="leaveFeedback(order)" *ngIf="user.username == order.customer?.username">Оставить отзыв к заказу</p>
         </div>
       </div>
     </div>

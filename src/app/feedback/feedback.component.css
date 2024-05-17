@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.rating-area {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  margin-right: 1rem;
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #000000;
+  font-family: Poppins, 'Source Sans Pro';
+}
+
+.stars {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  float: right;
+  width: 42px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
+}
+
+.stars label:before {
+  content: '★';
+}
+
+.stars input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px #c60;
+}
+
+.stars label:hover,
+.stars label:hover ~ label {
+  color: gold;
+}
+
+.stars input:checked + label:hover,
+.stars input:checked + label:hover ~ label,
+.stars input:checked ~ label:hover,
+.stars input:checked ~ label:hover ~ label,
+.stars label:hover ~ input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
+}
+
+.stars label:active {
+  position: relative;
+}
+
+.feedback-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.feedback-text {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #000000;
+  font-family: Poppins, 'Source Sans Pro';
+}
+
+textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 100px;
+  resize: none;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  font-family: Poppins, 'Source Sans Pro';
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0 1rem;
+  margin: 0 3rem;
+  min-width: 7rem;
+  width: auto;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 1.2175;
+  letter-spacing: -0.03rem;
+  color: #ffffff;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #18a0fb;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}

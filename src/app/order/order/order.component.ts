@@ -6,6 +6,7 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {User} from "../../models/User";
 import {CreateOrderComponent} from "../create-order/create-order.component";
 import {MatDialog} from "@angular/material/dialog";
+import {FeedbackComponent} from "../../feedback/feedback.component";
 
 @Component({
   selector: 'app-order',
@@ -58,6 +59,15 @@ export class OrderComponent implements OnInit {
         });
     });
   };
+
+  leaveFeedback(order: Order) {
+    const orderCopy: Order = JSON.parse(JSON.stringify(order));
+    const dialogRef = this.dialog.open(FeedbackComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: {order: orderCopy}
+    });
+  }
 
   getStatusView(status: string | undefined) {
     return this.orderService.getStatusView(status);

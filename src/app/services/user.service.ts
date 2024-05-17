@@ -16,14 +16,6 @@ export class UserService {
               private tokenStorage: TokenStorageService) {
   }
 
-  getUserById(id: number): Observable<any> {
-    return this.http.get(USER_API + id);
-  }
-
-  getCurrentUser(): Observable<any> {
-    return this.http.get(USER_API);
-  }
-
   getUserByUsername(username: String): Observable<User> {
     return this.http.get<User>(USER_API + 'get?username=' + username);
   }

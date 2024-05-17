@@ -12,6 +12,7 @@ import {OrderComponent} from "./order/order/order.component";
 import {AdminpageComponent} from "./adminpage/adminpage.component";
 import {AdminGuardService} from "./helper/admin-guard.service";
 import {StatisticComponent} from "./statistic/statistic.component";
+import {ConfectionerGuardService} from "./helper/confectioner-guard.service";
 
 /**
  * Что показывать когда пользователь заходит на URL
@@ -29,7 +30,7 @@ const routes: Routes = [
   { path: 'edit', component: EditComponent, canActivate: [AuthGuardService]},
   { path: 'orders', component: OrderComponent, canActivate: [AuthGuardService]},
   { path: 'admin', component: AdminpageComponent, canActivate: [AdminGuardService] },
-  { path: 'statistic', component: StatisticComponent}
+  { path: 'statistic', component: StatisticComponent, canActivate: [ConfectionerGuardService]}
 ];
 
 @NgModule({

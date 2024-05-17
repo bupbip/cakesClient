@@ -11,6 +11,8 @@ import {EditProductComponent} from "../edit-product/edit-product.component";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateOrderComponent} from "../../order/create-order/create-order.component";
 import {OrderService} from "../../services/order.service";
+import {Order} from "../../models/Order";
+import {FeedbackComponent} from "../../feedback/feedback.component";
 
 @Component({
   selector: 'app-profile',
@@ -74,5 +76,14 @@ export class ProfileComponent implements OnInit {
         });
     })
   };
+
+  leaveFeedback(user: User | undefined) {
+    // const orderCopy: Order = JSON.parse(JSON.stringify(order));
+    const dialogRef = this.dialog.open(FeedbackComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: {userTo: user}
+    });
+  }
 
 }

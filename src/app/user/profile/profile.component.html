@@ -17,7 +17,8 @@
         <div class="contacts-field">
           <div class="contacts">
             <div class="social" *ngFor="let link of user?.socialNetworks">
-              <img class="social-image" *ngIf="link.url !== ''" [src]="'./assets/' + link.type.toLowerCase() + '.png'" [alt]="link.type"/>
+              <img class="social-image" *ngIf="link.url !== ''" [src]="'./assets/' + link.type.toLowerCase() + '.png'"
+                   [alt]="link.type"/>
               <p class="social-link" *ngIf="link.url">{{link.url}}</p>
             </div>
           </div>
@@ -30,6 +31,7 @@
   <div class="main-info-group" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <p class="username">{{user?.username}}</p>
     <p class="rating">Рейтинг: 4.75</p>
+    <div class="leave-feedback noselect" (click)="leaveFeedback(user)">Оставить отзыв</div>
     <div class="make-order noselect" (click)="makeOrder()">Оформить заказ</div>
   </div>
   <div class="works" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
@@ -51,35 +53,16 @@
     <p class="feedback-header">
       Отзывы
     </p>
-    <div class="feedback-card">
+    <div class="feedback-card" *ngFor="let feedback of user?.feedbacksTo">
       <div class="feedback-data">
-        <p class="feedback-username">Никнейм</p>
-        <div class="stars">
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
+        <p class="feedback-username">{{feedback.userFrom?.username}}</p>
+        <div class="stars"*ngIf="feedback.rating !== undefined">
+          <img class="star" src="../../../assets/star-filled.png" *ngFor="let _ of [].constructor(feedback.rating)"/>
+          <img class="star" src="../../../assets/star-empty.png" *ngFor="let _ of [].constructor(5 - feedback.rating)"/>
         </div>
-        <p class="feedback-date">28.11.2023</p>
+        <p class="feedback-date">{{feedback.createdDate | date:'dd.MM.yyyy'}}</p>
       </div>
-      <p class="feedback-text">Заказывал продукт “Короткое наименование”. Произвёл приятное впечатление. Но был сладковат.
-        Поэтому 4.</p>
-    </div>
-    <div class="feedback-card">
-      <div class="feedback-data">
-        <p class="feedback-username">Никнейм</p>
-        <div class="stars">
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-filled.png"/>
-          <img class="star" src="../../../assets/star-empty.png"/>
-        </div>
-        <p class="feedback-date">28.11.2023</p>
-      </div>
-      <p class="feedback-text">Заказывал продукт “Короткое наименование”. Произвёл приятное впечатление. Но был сладковат.
-        Поэтому 4.</p>
+      <p class="feedback-text">{{feedback.comment}}</p>
     </div>
   </div>
 </div>

@@ -14,6 +14,7 @@ export class Order {
     public preferPrice?: number,
     public spentPrice?: number,
     public resultPrice?: number,
+    public comment?: string,
     public products: OrderItem[] = []
   ) {
   }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Order} from "../models/Order";
 import {Observable} from "rxjs";
 import {User} from "../models/User";
@@ -26,10 +26,6 @@ export class OrderService {
 
   createOrder(order: Order): Observable<any> {
     return this.http.post(ORDER_API + 'save-order', order);
-  }
-
-  getAllOrders(): Observable<any> {
-    return this.http.get(ORDER_API + 'all');
   }
 
   getAllOrdersByUser(user: User): Observable<any> {
