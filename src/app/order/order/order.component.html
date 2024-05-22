@@ -28,6 +28,8 @@
           </div>
           <div class="auto-group-ayhu-ooq">
             <div class="order-description">
+              <p class="order-weight">Тип: {{product.product.productType?.name}}</p>
+              <p class="order-weight">Начинка: {{product.product.topping?.name}}</p>
               <p class="order-weight">Вес: {{product.product.weight}} кг.</p>
               <p class="order-count">Количество: {{product.quantity}} шт.</p>
               <p class="description-text">
@@ -48,9 +50,11 @@
       </div>
       <div class="order-info">
         <p class="order-users">
-          Заказчик: {{order.customer?.username}}
+          Заказчик:
+          <a href="/profile/{{order.customer?.username}}">{{order.customer?.username}}</a>
           <br/>
-          Кондитер: {{order.confectioner?.username}}
+          Кондитер:
+          <a href="/profile/{{order.confectioner?.username}}">{{order.confectioner?.username}}</a>
         </p>
         <div class="order-status">Статус: {{getStatusView(order.status)}}</div>
         <div class="edit-order">

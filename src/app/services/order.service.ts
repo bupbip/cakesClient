@@ -4,7 +4,7 @@ import {Order} from "../models/Order";
 import {Observable} from "rxjs";
 import {User} from "../models/User";
 
-const ORDER_API = 'http://localhost:4303/api/v1/order/';
+const ORDER_API = 'http://82.97.248.87:4303/api/v1/order/';
 
 
 @Injectable({

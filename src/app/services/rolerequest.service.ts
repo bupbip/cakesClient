@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {RoleRequest} from "../models/RoleRequest";
 import {Injectable} from "@angular/core";
 
-const ROLEREQUEST_API = 'http://localhost:4302/api/v1/role-request/';
+const ROLEREQUEST_API = 'http://82.97.248.87:4302/api/v1/role-request/';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class RolerequestService {
       Authorization: 'Bearer ' + this.tokenStorage.getToken()
     };
     return this.http.get<RoleRequest[]>(ROLEREQUEST_API + 'get-all', {headers: headers});
+  }
+
+  public save(request: RoleRequest): Observable<string> {
+    return this.http.post<string>(ROLEREQUEST_API + 'save', request);
   }
 
   public approve(request: RoleRequest): Observable<string> {

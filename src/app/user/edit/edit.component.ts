@@ -14,6 +14,8 @@ import {DeleteProductComponent} from "../delete-product/delete-product.component
 import {ProductType} from "../../models/ProductType";
 import {Filling} from "../../models/Filling";
 import {FillingsService} from "../../services/fillings.service";
+import {RolerequestService} from "../../services/rolerequest.service";
+import {RoleRequest} from "../../models/RoleRequest";
 
 export type DeletableItem = Product | Filling | ProductType;
 
@@ -48,6 +50,7 @@ export class EditComponent implements OnInit {
               private tokenStorageService: TokenStorageService,
               private sanitizer: DomSanitizer,
               private notificationService: NotificationService,
+              private roleRequestService: RolerequestService,
               private router: Router) {
   }
 
@@ -204,8 +207,7 @@ export class EditComponent implements OnInit {
 
   changeRole() {
     if (this.user) {
-      this.user.role = "ROLE_CONFECTIONER";
-      this.saveProfile();
+      this.roleRequestService.save(new RoleRequest(this.user, new Date()))
     }
   }
 

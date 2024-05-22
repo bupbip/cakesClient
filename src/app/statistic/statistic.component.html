@@ -20,8 +20,8 @@
     </div>
   </div>
   <div class="income-outcome-group">
-    <div class="income-text">Доходы за апрель: {{statistic[currMonth - 1].income}}</div>
-    <div class="outcome-text">Расходы за апрель: {{statistic[currMonth - 1].expences}}</div>
+    <div class="income-text"> Доходы за {{months[currMonth - 1]?.fullValue}}: {{statistic[currMonth - 1].income}}</div>
+    <div class="outcome-text">Расходы за {{months[currMonth - 1]?.fullValue}}: {{statistic[currMonth - 1].expences}}</div>
   </div>
   <div class="month-stats-group">
     <p class="income-stats-label">

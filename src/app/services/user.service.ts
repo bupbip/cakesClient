@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {User} from "../models/User";
 import {TokenStorageService} from "./token-storage.service";
 
-const USER_API = 'http://localhost:4302/api/v1/user/';
+const USER_API = 'http://82.97.248.87:4302/api/v1/user/';
 
 @Injectable({
   providedIn: 'root'

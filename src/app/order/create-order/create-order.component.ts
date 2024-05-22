@@ -49,6 +49,7 @@ export class CreateOrderComponent {
       // @ts-ignore
       this.productTypes = this.order.confectioner.productTypes;
       this.addEmptyProduct();
+      console.log(this.productTypes);
     } else if (data.product != undefined) {
       this.order.customer = this.tokenStorageService.getUser();
       this.addProduct(data.product);
@@ -64,6 +65,7 @@ export class CreateOrderComponent {
           // this.notificationService.showSnackBar(error.message);
         }
       );
+      console.log("data.product");
       console.log(data.product);
       console.log(this.productTypes);
     } else if (data.order != undefined) {
@@ -72,6 +74,7 @@ export class CreateOrderComponent {
       this.productTypes = this.order.confectioner.productTypes;
       // @ts-ignore
       this.toppings = this.order.confectioner.fillings;
+      console.log("data.order" + data.order);
     }
     this.statisticService.getAllConsumables().subscribe(
       (consumables: Consumable[]) => {
@@ -82,9 +85,14 @@ export class CreateOrderComponent {
         this.notificationService.showSnackBar(error.message);
       }
     );
+    if (!this.order.createdDate) {
+      this.order.createdDate = new Date();
+    }
   }
 
   addEmptyProduct() {
+    let prd = new Product();
+    prd.productType = {productTypeId: undefined};
     this.order.products.push(new OrderItem(new Product(), 1));
   }
 
@@ -172,4 +180,11 @@ export class CreateOrderComponent {
     item.product.consumableProducts.splice(index, 1);
   }
 
+  compareProductTypes(pt1: any, pt2: any): boolean {
+    return pt1 && pt2 ? pt1.productTypeId === pt2.productTypeId : pt1 === pt2;
+  }
+
+  compareFillings(pt1: any, pt2: any): boolean {
+    return pt1 && pt2 ? pt1.fillingId === pt2.fillingId : pt1 === pt2;
+  }
 }

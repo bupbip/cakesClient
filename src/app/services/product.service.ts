@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {Product} from "../models/Product";
 import {TokenStorageService} from "./token-storage.service";
 
-const PRODUCTS_API = 'http://localhost:4302/api/v1/product/';
+const PRODUCTS_API = 'http://82.97.248.87:4302/api/v1/product/';
 
 @Injectable({
   providedIn: 'root'

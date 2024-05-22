@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Filling} from "../models/Filling";
 import {Observable} from "rxjs";
 
-const FILLING_API = 'http://localhost:4302/api/v1/fillings/';
+const FILLING_API = 'http://82.97.248.87:4302/api/v1/fillings/';
 
 @Injectable({
   providedIn: 'root'

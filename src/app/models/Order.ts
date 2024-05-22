@@ -6,7 +6,7 @@ export class Order {
     public orderId?: number,
     public customer?: User,
     public confectioner?: User,
-    public createdDate: Date = new Date(),
+    public createdDate?: Date,
     public completeDate?: Date,
     public deliveryType?: string,
     public address?: string,

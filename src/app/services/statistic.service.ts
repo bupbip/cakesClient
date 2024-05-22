@@ -6,8 +6,8 @@ import {Statistic} from "../models/Statistic";
 import {User} from "../models/User";
 import {Consumable} from "../models/Consumable";
 
-const STATISTIC_API = 'http://localhost:4304/api/v1/statistic/';
-const CONSUMABLE_API = 'http://localhost:4304/api/v1/consumable/';
+const STATISTIC_API = 'http://82.97.248.87:4304/api/v1/statistic/';
+const CONSUMABLE_API = 'http://82.97.248.87:4304/api/v1/consumable/';
 
 @Injectable({
   providedIn: 'root'

@@ -30,8 +30,8 @@
   </div>
   <div class="main-info-group" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
     <p class="username">{{user?.username}}</p>
-    <p class="rating">Рейтинг: 4.75</p>
-    <div class="leave-feedback noselect" (click)="leaveFeedback(user)">Оставить отзыв</div>
+    <p class="rating">Рейтинг: {{averageRating}}</p>
+    <div class="leave-feedback noselect" *ngIf="user?.username != tokenStorageService.getUser().username" (click)="leaveFeedback(user)">Оставить отзыв</div>
     <div class="make-order noselect" (click)="makeOrder()">Оформить заказ</div>
   </div>
   <div class="works" *ngIf="user?.role === 'ROLE_CONFECTIONER' || user?.role === 'ROLE_ADMIN'">
@@ -53,6 +53,7 @@
     <p class="feedback-header">
       Отзывы
     </p>
+    <p class="no-feedbacks-message" *ngIf="user?.feedbacksTo?.length == 0">У данного пользователя ещё нет отзывов</p>
     <div class="feedback-card" *ngFor="let feedback of user?.feedbacksTo">
       <div class="feedback-data">
         <p class="feedback-username">{{feedback.userFrom?.username}}</p>

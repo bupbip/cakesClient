@@ -66,8 +66,7 @@ export class LoginComponent implements OnInit {
           // window.location.reload();
         }
       }, error => {
-        console.log(error);
-        this.notificationService.showSnackBar(error);
+        this.notificationService.showSnackBar("Неправильный логин или пароль. Попробуйте ещё раз.");
       }
     );
   }

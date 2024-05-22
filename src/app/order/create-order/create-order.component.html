@@ -16,15 +16,17 @@
       <div class="fields-list">
         <div class="field">
           <label class="field-label">Тип изделия:</label>
-          <div *ngIf="orderItem.product.productType">
-            <select class="field-input" [(ngModel)]="orderItem.product.productType.productTypeId"
-                    (change)="getFillingsForProductType(orderItem.product.productType)">
-              <option *ngFor="let productType of productTypes" [value]="productType.productTypeId"
+          <div>
+            <select class="field-input" [(ngModel)]="orderItem.product.productType"
+                    (change)="getFillingsForProductType(orderItem.product.productType)"
+                    [compareWith]="compareProductTypes">
+              <option *ngFor="let productType of productTypes" [ngValue]="productType"
                       class="product-type-label">
                 {{productType.name}}
               </option>
             </select>
           </div>
+
         </div>
         <div class="field">
           <label class="field-label">Количество:</label>
@@ -36,9 +38,9 @@
         </div>
         <div class="field">
           <label class="field-label">Начинка:</label>
-          <div *ngIf="orderItem.product.topping">
-            <select class="field-input" [(ngModel)]="orderItem.product.topping.fillingId">
-              <option *ngFor="let topping of toppings" [value]="topping.fillingId" class="field-label">
+          <div>
+            <select class="field-input" [(ngModel)]="orderItem.product.topping" [compareWith]="compareFillings">
+              <option *ngFor="let topping of toppings" [value]="topping" [ngValue]="topping" class="field-label">
                 {{topping.name}}
               </option>
             </select>

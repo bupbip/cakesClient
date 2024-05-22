@@ -21,9 +21,10 @@ export class ProfileComponent implements OnInit {
   public products: Product[] = [];
   private username: string = '';
   public user: User | undefined;
+  public averageRating: any = undefined;
 
   constructor(private dialog: MatDialog,
-              private tokenStorageService: TokenStorageService,
+              public tokenStorageService: TokenStorageService,
               private productService: ProductService,
               private userService: UserService,
               private sanitizer: DomSanitizer,
@@ -38,6 +39,7 @@ export class ProfileComponent implements OnInit {
       (user: User) => {
         this.user = user;
         console.log(user);
+        this.calculateAverageRating();
       },
       error => {
         // this.notificationService.showSnackBar(error.message);
@@ -82,6 +84,16 @@ export class ProfileComponent implements OnInit {
       height: 'auto',
       data: {userTo: user}
     });
+  }
+
+  calculateAverageRating() {
+    const feedbacks = this.user?.feedbacksTo;
+    if (feedbacks && feedbacks.length > 0) {
+      const sum = feedbacks.reduce((total, feedback) => {
+        return feedback.rating !== undefined ? total + feedback.rating : total;
+      }, 0);
+      this.averageRating = Math.round((sum / feedbacks.length) * 100) / 100;
+    }
   }
 
 }

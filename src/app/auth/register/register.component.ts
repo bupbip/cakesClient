@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
   createRegisterForm(): FormGroup {
     return this.fb.group({
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', Validators.compose([Validators.required])]
@@ -47,13 +47,18 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.registerForm.value.confirmPassword,
     };
 
-    console.log(regData);
-    this.authService.register(regData).subscribe(data => {
-      this.notificationService.showSnackBar(data.message);
-      this.router.navigate(['/login']);
-    }, error => {
-      this.notificationService.showSnackBar(error);
-    });
-  }
+    if (regData.username.length < 5) {
+      this.notificationService.showSnackBar("Имя пользователя должно содержать больше 5 символов.")
+    } else if (regData.password.length < 8) {
+      this.notificationService.showSnackBar("Пароль должен содержать больше 8 символов.")
+    } else {
+      this.authService.register(regData).subscribe(data => {
+        this.notificationService.showSnackBar(data.message);
+        this.router.navigate(['/login']);
+      }, error => {
+        this.notificationService.showSnackBar("Что-то пошло не так. Попробуйте повторить позднее.");
+      });
+    }
+  };
 
 }

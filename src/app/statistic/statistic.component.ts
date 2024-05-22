@@ -22,19 +22,20 @@ export class StatisticComponent implements OnInit {
   year: number;
   currMonth: number;
   months: any[] = [
-    {value: 1, viewValue: 'Янв'},
-    {value: 2, viewValue: 'Февр'},
-    {value: 3, viewValue: 'Март'},
-    {value: 4, viewValue: 'Апр'},
-    {value: 5, viewValue: 'Май'},
-    {value: 6, viewValue: 'Июнь'},
-    {value: 7, viewValue: 'Июль'},
-    {value: 8, viewValue: 'Авг'},
-    {value: 9, viewValue: 'Сент'},
-    {value: 10, viewValue: 'Окт'},
-    {value: 11, viewValue: 'Нояб'},
-    {value: 12, viewValue: 'Дек'},
+    {value: 1, viewValue: 'Янв', fullValue: 'январь'},
+    {value: 2, viewValue: 'Февр', fullValue: 'февраль'},
+    {value: 3, viewValue: 'Март', fullValue: 'март'},
+    {value: 4, viewValue: 'Апр', fullValue: 'апрель'},
+    {value: 5, viewValue: 'Май', fullValue: 'май'},
+    {value: 6, viewValue: 'Июнь', fullValue: 'июнь'},
+    {value: 7, viewValue: 'Июль', fullValue: 'июль'},
+    {value: 8, viewValue: 'Авг', fullValue: 'август'},
+    {value: 9, viewValue: 'Сент', fullValue: 'сентябрь'},
+    {value: 10, viewValue: 'Окт', fullValue: 'октябрь'},
+    {value: 11, viewValue: 'Нояб', fullValue: 'ноябрь'},
+    {value: 12, viewValue: 'Дек', fullValue: 'декабрь'},
   ];
+
 
   consumables: Consumable[] = [];
 
