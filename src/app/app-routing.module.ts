@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'registration', component: RegisterComponent},
   {path: 'production', component: ProductComponent},
   {path: 'confectioners', component: ConfectionerComponent},
-  {path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'profile/:username', component: ProfileComponent},
   {path: 'profile', redirectTo: '/profile/', pathMatch: 'full'},
   {path: 'edit', component: EditComponent, canActivate: [AuthGuardService]},
   {path: 'orders', component: OrderComponent, canActivate: [AuthGuardService]},

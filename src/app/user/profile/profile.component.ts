@@ -4,7 +4,7 @@ import {Product} from "../../models/Product";
 import {ProductService} from "../../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {NotificationService} from "../../services/notification.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../../models/User";
 import {UserService} from "../../services/user.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -30,15 +30,21 @@ export class ProfileComponent implements OnInit {
               private sanitizer: DomSanitizer,
               private notificationService: NotificationService,
               private route: ActivatedRoute,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username') || '';
+    console.log(this.username);
     this.userService.getUserByUsername(this.username).subscribe(
       (user: User) => {
         this.user = user;
-        console.log(user);
+
+        if (this.user.role === "ROLE_CUSTOMER" &&
+          (this.tokenStorageService.getUser() && this.tokenStorageService.getUser().role === "ROLE_CUSTOMER" || this.tokenStorageService.getUser() == null)) {
+          this.router.navigate(['login'])
+        }
         this.calculateAverageRating();
       },
       error => {
@@ -46,6 +52,7 @@ export class ProfileComponent implements OnInit {
       }
     );
 
+    // @ts-ignore
     this.productService.getAllUserProducts(this.username).subscribe(
       (products: Product[]) => {
         this.products = products;
